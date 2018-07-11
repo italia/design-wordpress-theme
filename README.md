@@ -13,7 +13,7 @@ WPPA propone una **soluzione open-source e gratuita**, ideale per comuni, istitu
 ---
 
 ## Come utlizzare WPPA
-* Scaricare il file [.zip](https://raw.githubusercontent.com/marcogargano/wppa/master/kit/wppa.zip) in locale.
+* Scaricare il file [.zip](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/wppa.zip) in locale.
 * Aggingere un nuovo tema nella sezione _"Aspetto" > "Temi"_.
 * Selezionare _"Aggiungi nuovo"_ e successivamente _"Carica tema"_.
 * Ora scegliere il file .zip scaricato in precedenza, senza decomplimerlo e cliccare _"Installa ora"_.
