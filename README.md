@@ -1,4 +1,4 @@
-# WPPA
+# ![developers.italia](https://docs.developers.italia.it/assets/icons/favicon-32x32.png "developers.italia") WPPA
 ## Tema di WordPress per la Pubblica Amministrazione 
 
 
