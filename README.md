@@ -68,7 +68,7 @@ Per una migliore gestione dei siti su WordPress, consigliamo di installare i seg
 ## Segnalazione bug e richieste di aiuto
 Vuoi segnalare un bug o fare una richiesta?
 
-Prima di tutto assicurati che sia un problema relativo al tema Bootstrap Italia e non alla libreria Bootstrap da cui deriva (in tal caso puoi fare riferimento al [repository di Bootstrap](https://github.com/twbs/bootstrap), poi dai un'occhiata a come creare una [issue](https://github.com/italia/bootstrap-italia/blob/master/CONTRIBUTING.md#creare-una-issue).
+Prima di tutto assicurati che sia un problema relativo al tema WordPress e non a plugin installati o impostazioni del CMS, poi dai un'occhiata a come creare una [issue](https://github.com/italia/bootstrap-italia/blob/master/CONTRIBUTING.md#creare-una-issue) ed infine, se lo ritieni necessario, apri la iusse [in questo repository](https://github.com/italia/design-wordpress-theme/issues).
 
 ## Come contribuire
 Vorresti dare una mano su Bootstrap Italia? Sei nel posto giusto!
