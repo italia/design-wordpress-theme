@@ -1,19 +1,23 @@
-# ![developers.italia](https://docs.developers.italia.it/assets/icons/favicon-32x32.png "developers.italia") WPPA
+# ![developers.italia](https://docs.developers.italia.it/assets/icons/favicon-32x32.png "developers.italia") Design Italia
 ## Tema di WordPress per la Pubblica Amministrazione 
 
 
-WPPA è un semplice tema utilizzabile per i **siti internet** della Pubblica Amministrazione italiana.
+Design Italia è un semplice tema utilizzabile per i **siti internet** della Pubblica Amministrazione italiana.
 
-WPPA è sviluppato per [**WordPress 4**](https://it.wordpress.org/) (CMS open-source), su framework [**Bootstrap 4**](https://getbootstrap.com/). 
+Design Italia è sviluppato per [**WordPress 4**](https://it.wordpress.org/) (CMS open-source), su framework [**Bootstrap 4**](https://getbootstrap.com/). 
 
-WPPA rispetta le [**nuove linee guida di design dell'Agenzia per l'Italia digitale**](https://design-italia.readthedocs.io/it/stable/index.html) rilasciare dal [**Team per la trasformazione digitale**](https://teamdigitale.governo.it/) e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel [**Piano triennale**](https://pianotriennale-ict.italia.it/) per l'informatica nella Pubblica Amministrazione 2017/2019.
+Design Italia rispetta le [**nuove linee guida di design dell'Agenzia per l'Italia digitale**](https://design-italia.readthedocs.io/it/stable/index.html) rilasciare dal [**Team per la trasformazione digitale**](https://teamdigitale.governo.it/) e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel [**Piano triennale**](https://pianotriennale-ict.italia.it/) per l'informatica nella Pubblica Amministrazione 2017/2019.
 
-WPPA propone una **soluzione open-source e gratuita**, ideale per comuni, istituti e piccoli enti pubblici in genere che hanno scelto di utilizzare WordPress per il proprio sito intenet.
+Design Italia propone una **soluzione open-source e gratuita**, ideale per comuni, istituti e piccoli enti pubblici in genere che hanno scelto di utilizzare WordPress per il proprio sito intenet.
 
 ---
 
-## Come utlizzare WPPA
-* Scaricare il file [.zip](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/wppa.zip) in locale.
+#### [**Guarda la demo**](http://design-italia.marcogargano.com/) | [**Scarica il tema**](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.zip)
+
+---
+
+## Come utlizzare Design Italia
+* Scaricare il file [.zip](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.zip) in locale.
 * Aggingere un nuovo tema nella sezione _"Aspetto" > "Temi"_.
 * Selezionare _"Aggiungi nuovo"_ e successivamente _"Carica tema"_.
 * Ora scegliere il file .zip scaricato in precedenza, senza decomplimerlo e cliccare _"Installa ora"_.
@@ -25,16 +29,16 @@ Gli aggiornamenti verranno notificati all'interno dell'amministrazione di WordPr
 
 ---
 
-## Principali caratteristiche di WPPA
-* **WordPress** - WPPA è realizzato per l'ultima versione di WordPress disponibile in italiano, attualmente la versione 4.9.6.
-* **Bootstrap** - WPPA è sviluppato su framework Bootstrap 4. Può esser utilizzato direttamente nell'editor di WordPress come HTML.
-* **Responsive** - WPPA si adatta a disposiviti sia desktop che mobile, senza perdere alcuna funzionalità.
-* **4 posizioni del menu** - WPPA mette a disposizione 4 posizioni di menu, nelle quali è possibile gestire la selezione della lingua e i canali social.
-* **3 aree widget** - WPPA offre 3 aree dove è possibile inserire widget: una presente in home-page, un'altra nel footer e infine nella sidebar.
-* **Logo e titolo** - WPPA permette la personalizzazione del logo, del titolo e del motto del sito direttamente dalla personalizzazione del tema.
-* **Colori e link** - WPPA consente di selezionare e personalizzare i colori per la testata, il footer e i suoi link.
-* **Home-page** - WPPA ha un template differente per la home-page che ti permette di comunicare al meglio al tuo pubblico.
-* **Pochi file** - WPPA è sviluppato cercando di utilizzare pochi file php nel tema, in modo che possa esser la base per sviluppi propri.
+## Principali caratteristiche di Design Italia
+* **WordPress** - Design Italia è realizzato per l'ultima versione di WordPress disponibile in italiano, attualmente la versione 4.9.6.
+* **Bootstrap** - Design Italia è sviluppato su framework Bootstrap 4. Può esser utilizzato direttamente nell'editor di WordPress come HTML.
+* **Responsive** - Design Italia si adatta a disposiviti sia desktop che mobile, senza perdere alcuna funzionalità.
+* **4 posizioni del menu** - Design Italia mette a disposizione 4 posizioni di menu, nelle quali è possibile gestire la selezione della lingua e i canali social.
+* **3 aree widget** - Design Italia offre 3 aree dove è possibile inserire widget: una presente in home-page, un'altra nel footer e infine nella sidebar.
+* **Logo e titolo** - Design Italia permette la personalizzazione del logo, del titolo e del motto del sito direttamente dalla personalizzazione del tema.
+* **Colori e link** - Design Italia consente di selezionare e personalizzare i colori per la testata, il footer e i suoi link.
+* **Home-page** - Design Italia ha un template differente per la home-page che ti permette di comunicare al meglio al tuo pubblico.
+* **Pochi file** - Design Italia è sviluppato cercando di utilizzare pochi file php nel tema, in modo che possa esser la base per sviluppi propri.
 
 ---
 
