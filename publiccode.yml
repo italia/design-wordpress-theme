@@ -1,0 +1,50 @@
+### publiccode.yml
+
+publiccode-yaml-version: "http://w3id.org/publiccode/version/0.1"
+
+name: Design Italia
+url: "https://github.com/italia/design-wordpress-theme/"
+softwareVersion: "dev"
+releaseDate: "2017-07-16"
+
+platforms:
+  - web
+
+tags:
+  - content-management
+
+developmentStatus: development
+
+softwareType: "standalone"
+
+description:
+  eng:
+    localisedName: Design Italia
+    genericName: WordPress Tema
+    shortDescription: >
+          Design Italia è un semplice tema utilizzabile per i siti internet 
+          della Pubblica Amministrazione italiana.
+
+    longDescription: >
+          Design Italia è sviluppato per WordPress 4 (CMS open-source), su framework Bootstrap 4.
+          Design Italia rispetta le nuove linee guida di design dell'Agenzia per l'Italia digitale 
+          rilasciare dal Team per la trasformazione digitale e le caratteristiche per i 
+          servizi web della Pubblica Amministrazione contenute nel Piano triennale per 
+          l'informatica nella Pubblica Amministrazione 2017/2019.
+
+    featureList:
+       - Web
+
+legal:
+  license: AGPL-3.0
+
+maintenance:
+  type: "community"
+
+  contacts:
+    - name: Marco Gargano
+
+localisation:
+  localisationReady: yes
+  availableLanguages:
+    - ita
