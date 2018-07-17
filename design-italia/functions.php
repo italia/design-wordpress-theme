@@ -281,5 +281,5 @@ function wppa_breadcrumb() {
 require 'theme-update-checker.php';
 $example_update_checker = new ThemeUpdateChecker(
     'wppa',
-    'https://raw.githubusercontent.com/marcogargano/wppa/master/kit/wppa.json'
+    'https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.json'
 );
