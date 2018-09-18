@@ -38,14 +38,16 @@ function wppa_setup()	{
 
 $args = array(
 	'default-color' => 'ffffff',
-	'default-image' => 'img/blank.png',
+  'default-image' => get_template_directory_uri() . '/img/blank.png',
 );
 add_theme_support( 'custom-background', $args );
 }
 
 add_action('wp_enqueue_scripts', 'wppa_load_scripts');
 function wppa_load_scripts() {
-	wp_enqueue_script('jquery');
+  wp_enqueue_script( 'bootstrap-min', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array(), true );
+  // wp_enqueue_script( 'bootstrap-italia-min', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.min.js', array(), true );
+	// wp_enqueue_script('jquery');
 }
 
 /* AGGIUNGI ASSETS DI BOOTSTRAP ITALIA */
@@ -81,12 +83,13 @@ function wppa_filter_wp_title($title) {
 	return $title . esc_attr(get_bloginfo('name'));
 }
 
-add_action('widgets_init', 'wppa_widgets_init');
 
-function wppa_widgets_init() {
+if (function_exists('register_sidebar')) {
+// function wppa_widgets_init() {
 	register_sidebar(array(
 		'name' => __('Home Widget Area', 'wppa') ,
 		'id' => 'home-widget-area',
+		'description'   => __( 'Widget area che compare in homepage.', 'wppa' ),
 		'before_widget' => '<li id="%1$s" class="col-lg widget-container %2$s">',
 		'after_widget' => "</li>",
 		'before_title' => '<h3 class="widget-title">',
@@ -96,6 +99,7 @@ function wppa_widgets_init() {
 	register_sidebar(array(
 		'name' => __('Sidebar Widget Area', 'wppa') ,
 		'id' => 'primary-widget-area',
+		'description'   => __( 'Widget area che compare nella sidebar.', 'wppa' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => "</li>",
 		'before_title' => '<h3 class="widget-title">',
@@ -105,12 +109,15 @@ function wppa_widgets_init() {
 	register_sidebar( array(
 		'name' => __('Footer Widget Area', 'wppa') ,
 		'id' => 'footer-widget-area',
+		'description'   => __( 'Widget area che compare nel footer.', 'wppa' ),
 		'before_widget' => '<li id="%1$s" class="col-lg widget-container %2$s">',
 		'after_widget' => "</li>",
 		'before_title' => '<h5 class="widget-title"><strong>',
 		'after_title' => '</strong></h5>',
 	));
 }
+// add_action('widgets_init', 'wppa_widgets_init');
+
 
 function wppa_custom_pings($comment) {
 	$GLOBALS['comment'] = $comment;
@@ -283,3 +290,117 @@ $example_update_checker = new ThemeUpdateChecker(
     'wppa',
     'https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.json'
 );
+
+
+
+
+
+
+
+
+
+function wppa_italia_buttons_1($buttons) {
+    array_unshift($buttons, 'styleselect');
+    return $buttons;
+}
+add_filter('mce_buttons_2', 'wppa_italia_buttons_1');
+
+/*
+* Callback function to filter the MCE settings
+*/
+ 
+function my_mce_before_init_insert_formats( $init_array ) {  
+ 
+// Define the style_formats array
+ 
+    $style_formats = array(  
+        array(  
+          'title' => 'Bottone principale',  
+          'block' => 'a',
+          'classes' => 'btn btn-primary',
+          'attributes' => array(
+            'href' => '#',
+          ),
+          'wrapper' => true,
+        ),  
+        array(  
+          'title' => 'Bottone secondario',  
+          'block' => 'a',
+          'classes' => 'btn btn-secondary',
+          'attributes' => array(
+            'href' => '#',
+          ),
+          'wrapper' => true,
+        ),
+        array(  
+          'title' => 'Bottone verde',  
+          'block' => 'a',
+          'classes' => 'btn btn-success',
+          'attributes' => array(
+            'href' => '#',
+          ),
+          'wrapper' => true,
+        ),
+        array(  
+          'title' => 'Bottone rosso',  
+          'block' => 'a',
+          'classes' => 'btn btn-danger',
+          'attributes' => array(
+            'href' => '#',
+          ),
+          'wrapper' => true,
+        ),
+        array(  
+          'title' => 'Bottone giallo',  
+          'block' => 'a',
+          'classes' => 'btn btn-warning',
+          'attributes' => array(
+            'href' => '#',
+          ),
+          'wrapper' => true,
+        ),
+        array(
+          'title' => 'Bottone piatto',  
+          'block' => 'a',
+          'classes' => 'btn btn-link',
+          'attributes' => array(
+            'href' => '#',
+          ),
+          'wrapper' => true,
+        ),
+        /* array(  
+          'title' => 'Bottone grigio',  
+          'block' => 'a',
+          'classes' => 'btn btn-info',
+          'attributes' => array(
+            'href' => '#',
+          ),
+          'wrapper' => true,
+        ),
+        array(  
+          'title' => 'Bottone chiaro',  
+          'block' => 'a',
+          'classes' => 'btn btn-light',
+          'attributes' => array(
+            'href' => '#',
+          ),
+          'wrapper' => true,
+        ),
+        array(  
+          'title' => 'Bottone scuro',  
+          'block' => 'a',
+          'classes' => 'btn btn-dark',
+          'attributes' => array(
+            'href' => '#',
+          ),
+          'wrapper' => true,
+        ), */
+    );  
+    // Insert the array, JSON ENCODED, into 'style_formats'
+    $init_array['style_formats'] = json_encode( $style_formats );  
+     
+    return $init_array;  
+   
+} 
+// Attach callback to 'tiny_mce_before_init' 
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 

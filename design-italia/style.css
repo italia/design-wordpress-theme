@@ -360,6 +360,10 @@ ul li li {
 		padding-top: 0px;
 		padding-bottom: 0px;
 	}
+	.branding img {
+		max-width: 100%;
+		padding-top: 25%;
+	}
   .menu-main .nav .menu-item-has-children:hover ul {
 		position: relative;
 		display: block;
