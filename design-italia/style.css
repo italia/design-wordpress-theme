@@ -202,13 +202,13 @@ ul li li {
 /* Custom */
 [class^="branding"], 
 [class^="branding"] a, 
-[class^="menu"] a {
+[class^="branding"] [class^="menu"] a {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	color: #fff;
 }
 [class^="branding"] a:hover, 
-[class^="menu"] a:hover {
+[class^="branding"] [class^="menu"] a:hover {
 	color: #fff;
 }
 .branding-up {
@@ -453,7 +453,7 @@ ul li li {
 	margin-bottom: 30px;
 }
 
-.widget-area .widget-container {
+.-area .widget-container {
 	margin-bottom: 30px;
 }
 
@@ -506,6 +506,10 @@ body.home #content {
 	border-top: solid 1px #ddd;
 	padding: 10px 0;
 }
+.widget-area li li ul {
+	padding: 15px 0px 0px 0px;
+  text-indent: 15px;
+}
 .widget-area a {
 	font-weight: 600;
 }
@@ -520,6 +524,11 @@ body.home #content {
 	float: left;
 	margin: 10px 10px 5px 0;
 }
+
+.widget-area.primary-widget-area .widget-container {
+	margin-bottom: 15px;
+}
+
 
 #cookie-notice {
 	background-color: #1c2024 !important;
@@ -543,4 +552,106 @@ body.home #content {
 }
 #cookie-notice a {
 	color: #65dde0;
+}
+
+nav-tabs:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	-webkit-box-shadow: 0 0 2rem rgba(0, 0, 0, .15);
+	box-shadow: 0 0 2rem rgba(0, 0, 0, .15);
+	bottom: 0;
+	left: 10%;
+	right: 10%;
+	width: 80%;
+	height: 50%;
+	border-radius: 100%
+}
+
+
+#container .sow-tabs-tab-container, 
+#container .sow-tabs-panel-container {
+	background-color: transparent;
+	position: relative;
+  z-index: 1;
+}
+.sow-tabs-panel-container {
+	box-shadow: 0px -2px 0px 0px rgba(0,0,0,.15);
+	/* box-shadow: 0px 30px 20px -30px inset rgba(0,0,0,.2); */
+	z-index: 0;
+}
+#container .sow-tabs-panel-container .sow-tabs-panel {
+	padding: 15px 30px 30px;
+}
+#container .sow-tabs-tab-container .sow-tabs-tab {
+	font-weight: 600;
+	color: #5c6f82;
+	border-bottom: 2px solid transparent
+}
+#container .sow-tabs-tab-container .sow-tabs-tab:hover {
+	background-color: transparent;
+	border-bottom: 2px solid #b1b1b3
+}
+#container .sow-tabs-tab-container .sow-tabs-tab-selected {
+	border-bottom: 2px solid #06c;
+	color: #06c;
+	background-color: transparent;
+}
+
+
+#container .sow-accordion .sow-accordion-panel {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: -1px;
+}
+#container .sow-accordion .sow-accordion-panel-header {
+	background-color: transparent;
+	color: #06c;
+	font-weight: 600;
+}
+#container .sow-accordion .sow-accordion-panel-content .sow-accordion-panel-border {
+	background-color: transparent;
+}
+#container .sow-icon-ionicons[data-sow-icon]:before {
+	content: '\e818';
+	font-family: italia-icon-font;
+}
+#container .sow-accordion-panel-open .sow-icon-ionicons[data-sow-icon]:before {
+	content: '\e810';
+}
+
+
+#container .ow-button-base a.ow-button-hover:hover {
+	text-decoration: none;
+}
+
+
+/* Widget Calendar */
+
+#wp-calendar {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 16px;
+	background-color: transparent
+}
+
+#wp-calendar td,
+#wp-calendar th {
+	padding-top: .8em;
+	padding-bottom: .8em;
+	vertical-align: middle;
+	border-top: 1px solid #d6dce3
+}
+
+#wp-calendar thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #d6dce3
+}
+
+#wp-calendar tbody+tbody {
+	border-top: 2px solid #d6dce3
+}
+
+#wp-calendar .table {
+	background-color: #fff
 }

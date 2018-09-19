@@ -53,10 +53,10 @@ function wppa_load_scripts() {
 /* AGGIUNGI ASSETS DI BOOTSTRAP ITALIA */
 add_action( 'wp_enqueue_scripts', 'enqueue_wppa_styles' );
 function enqueue_wppa_styles() {
-    wp_enqueue_style( 'bootstrap-italia-min', get_stylesheet_directory_uri() . "/bootstrap-italia/css/bootstrap-italia.min.css");
-    wp_enqueue_style( 'bootstrap-italia-map', get_stylesheet_directory_uri() . "/bootstrap-italia/css/bootstrap-italia.min.css.map");
-    wp_enqueue_style( 'italia-icon-font', get_stylesheet_directory_uri() . "/bootstrap-italia/css/italia-icon-font.css");
-    wp_enqueue_style( 'general-style', get_stylesheet_directory_uri() . "/style.css");
+    wp_enqueue_style( 'bootstrap-italia-min', get_template_directory_uri() . "/bootstrap-italia/css/bootstrap-italia.min.css");
+    wp_enqueue_style( 'bootstrap-italia-map', get_template_directory_uri() . "/bootstrap-italia/css/bootstrap-italia.min.css.map");
+    wp_enqueue_style( 'italia-icon-font', get_template_directory_uri() . "/bootstrap-italia/css/italia-icon-font.css");
+    wp_enqueue_style( 'general-style', get_template_directory_uri() . "/style.css");
 };
 
 add_action('comment_form_before', 'wppa_enqueue_comment_reply_script');
@@ -105,6 +105,16 @@ if (function_exists('register_sidebar')) {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	));
+
+  register_sidebar(array(
+  	'name' => __('Page Widget Area', 'wppa') ,
+  	'id' => 'page-widget-area',
+  	'description'   => __( 'Widget area che compare nelle pagine.', 'wppa' ),
+  	'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+  	'after_widget' => "</li>",
+  	'before_title' => '<h3 class="widget-title">',
+  	'after_title' => '</h3>',
+  ));
 
 	register_sidebar( array(
 		'name' => __('Footer Widget Area', 'wppa') ,

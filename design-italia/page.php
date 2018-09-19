@@ -19,7 +19,7 @@
          <?php if ( ! post_password_required() ) comments_template( '', true ); ?>
          <?php endwhile; endif; ?>
       </div>
-      
+
       </div>
    </div>
 </section>

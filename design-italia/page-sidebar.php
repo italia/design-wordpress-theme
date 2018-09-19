@@ -24,8 +24,14 @@
       </div>
       
       <div class="col-sm-4 offset-sm-1">
-         <?php get_sidebar(); ?>
-      </div>
+   		<?php if ( is_active_sidebar( 'page-widget-area' ) ) : ?>
+   		<div class="container-fluid widget-area">
+   		   <ul class="xoxo">
+   		      <?php dynamic_sidebar( 'page-widget-area' ); ?>
+   		   </ul>
+   		</div>
+   		<?php endif; ?>
+		</div>
       
       </div>
    </div>

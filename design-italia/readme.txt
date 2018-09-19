@@ -62,6 +62,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.5 - Aggiunta widget area per sidebar page, stilizzazione widget, fix child theme
+
 * 0.4 - Aggiunta pagina template con sidebar, aggiornamento personalizzazione del tema, aggiunta libreria js Design Italia, fix around
 
 * 0.3 - Wordpress Store fix
