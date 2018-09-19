@@ -6,7 +6,7 @@ Requires at least: WordPress 4.1
 
 Tested up to: WordPress 4.9-trunk
 
-Version: 0.3
+Version: 0.5
 
 License: AGPL-3.0
 
