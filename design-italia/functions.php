@@ -294,11 +294,14 @@ function wppa_breadcrumb() {
   echo '</ul>';
 }
 
-/* UPDATER THEME VERSION  - https://w-shadow.com/blog/2011/06/02/automatic-updates-for-commercial-themes/ */
-require 'theme-update-checker.php';
-$example_update_checker = new ThemeUpdateChecker(
-    'wppa',
-    'https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.json'
+/* 
+  UPDATER THEME: https://github.com/YahnisElsts/plugin-update-checker/
+*/
+require 'plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+  'https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.json',
+  __FILE__, //Full path to the main plugin file or functions.php.
+  'unique-plugin-or-theme-slug'
 );
 
 
