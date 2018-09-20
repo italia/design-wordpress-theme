@@ -6,8 +6,6 @@ Requires at least: WordPress 4.1
 
 Tested up to: WordPress 4.9-trunk
 
-Version: 0.5
-
 License: AGPL-3.0
 
 License URI: LICENSE
@@ -61,6 +59,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 ## Changelog
+
+* 0.6 - Aggiunta librerie js Bootstrap Italia, fix around
 
 * 0.5 - Aggiunta widget area per sidebar page, stilizzazione widget, fix child theme
 

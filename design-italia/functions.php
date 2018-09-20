@@ -45,7 +45,11 @@ add_theme_support( 'custom-background', $args );
 
 add_action('wp_enqueue_scripts', 'wppa_load_scripts');
 function wppa_load_scripts() {
-  wp_enqueue_script( 'bootstrap-min', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array(), true );
+  wp_enqueue_script( 'bootstrap-min', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array(), true );
+  wp_enqueue_script( 'bootstrap-italia-bundle-min', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.bundle.min.js', array(), true );
+  wp_enqueue_script( 'bootstrap-italia-bundle-min-map', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.bundle.min.js.map', array(), true );
+  wp_enqueue_script( 'bootstrap-italia-min', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.min.js', array(), true );
+  wp_enqueue_script( 'bootstrap-italia-min-map', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.min.js.map', array(), true );
   // wp_enqueue_script( 'bootstrap-italia-min', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.min.js', array(), true );
 	// wp_enqueue_script('jquery');
 }
