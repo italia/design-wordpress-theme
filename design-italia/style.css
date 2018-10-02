@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un semplice tema utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia è sviluppato per WordPress 4 (CMS open-source), su framework Bootstrap 4. Design Italia rispetta le nuove linee guida di design dell'Agenzia per l'Italia digitale rilasciare dal Team per la trasformazione digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l'informatica nella Pubblica Amministrazione 2017/2019. Design Italia propone una soluzione open-source e gratuita, ideale per comuni, istituti e piccoli enti pubblici in genere che hanno scelto di utilizzare WordPress per il proprio sito intenet.
-Version: 0.6
+Version: 0.7
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -196,7 +196,7 @@ ul li {
 	list-style-position: outside;
 }
 ul li li {
-	list-style: disc;
+	/* list-style: disc; */
 	list-style-position: inside;
 }
 /* Custom */
@@ -247,7 +247,7 @@ ul li li {
 	padding: 15px 10px;
 }
 .nav li a {
-	font-weight: 700;
+	font-weight: 400;
 }
 .branding-up .nav li {
 	padding: 0 10px;
@@ -268,6 +268,33 @@ ul li li {
   position: absolute;
   top: -999em;
   left: -999em;
+}
+.menu-main .nav li ul {
+	padding: 10px 0;
+	background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+}
+.menu-main .nav li ul:before {
+	content: '';
+	position: absolute;
+	top: -6px;
+	left: 24px;
+	width: 18px;
+	height: 18px;
+	border-radius: 4px;
+	background-color: #fff;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.menu-main .nav li ul a, 
+.menu-main .nav li ul a:hover, 
+.menu-main .nav li:hover ul a {
+	font-size: .889em;
+	color: #1173d4;
+}
+.menu-main .nav li ul a:hover {
+	text-decoration: underline;
 }
 .menu-main .nav li {
   display: inline-block;
@@ -298,16 +325,24 @@ ul li li {
 .menu-main .nav .current-menu-item > a,
 .menu-main .nav .current-menu-ancestor > a {
   color: #fff;
-  text-decoration: underline;
+}
+.menu-main .nav > li:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+.menu-main .nav .current-menu-item, 
+.menu-main .nav .current-menu-ancestor {
+	box-shadow: inset 0 -2px 0 #fff;
+}
+.menu-main .nav .menu-item-has-children {
+	padding-right: 20px;
 }
 .menu-main .nav .menu-item-has-children > a::before {
-  content: "";
-  position: absolute;
-  right: 10px;
-  top: 55%;
-  transform: translateY(-50%);
-  border: 4px solid transparent;
-  border-top-color: currentColor;
+	content: '\e818';
+	font-family: italia-icon-font;
+	font-size: 12px;
+	position: absolute;
+  right: 15px;
+  top: 40%;
 }
 .menu-main .nav ul .menu-item-has-children > a::before {
   right: 2px;
@@ -418,7 +453,11 @@ ul li li {
 	margin-bottom: 15px;
 }
 .searchform:after {
-	content: '🔍';
+	/*content: '🔍';*/
+	content: '\e831';
+	font-family: "italia-icon-font";
+  font-smoothing: antialiased;
+	color: #333;
 	pointer-events: none;
 	width: 50px;
 	height: 50px;
@@ -439,11 +478,11 @@ ul li li {
 	padding-right: 15px;
 	background-color: #fff;
 	border: none;
-	box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+	/*box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);*/
 }
 .searchform [type="submit"] {
 	width: 60px;
-	background-color: #f6f6f6;
+	/*background-color: #f6f6f6;*/
 	text-indent: -99999px;
 }
 
@@ -466,7 +505,7 @@ ul li li {
 #footer a {
 	color: #65dcdf;
 }
-#footer .widget-area li li {
+#footer .widget-area li {
 	border-top: solid 1px rgba(221, 221, 221, 0.3);
 }
 #footer hr {
@@ -501,14 +540,15 @@ body.home #content {
 
 .widget-area li {
 	list-style: none;
-}
-.widget-area li li {
 	border-top: solid 1px #ddd;
 	padding: 10px 0;
 }
-.widget-area li li ul {
+.widget-area li ul {
 	padding: 15px 0px 0px 0px;
   text-indent: 15px;
+}
+.widget-area li li {
+	border: none;
 }
 .widget-area a {
 	font-weight: 600;
@@ -520,6 +560,7 @@ body.home #content {
 
 .widget-area .wp-post-image {
 	width: 100px;
+	width: 90%;
 	height: auto;
 	float: left;
 	margin: 10px 10px 5px 0;
@@ -531,7 +572,7 @@ body.home #content {
 
 
 #cookie-notice {
-	background-color: #1c2024 !important;
+	background-color: #00264d !important;
 	color: #fff !important;
 	padding: 15px 30px;
 	font-size: 100%;
@@ -568,6 +609,7 @@ nav-tabs:after {
 	border-radius: 100%
 }
 
+/* SO - Accordion e tebs */
 
 #container .sow-tabs-tab-container, 
 #container .sow-tabs-panel-container {
@@ -608,6 +650,13 @@ nav-tabs:after {
 	background-color: transparent;
 	color: #06c;
 	font-weight: 600;
+  -webkit-transition: background-color .2s ease-in-out;
+  -moz-transition: background-color .2s ease-in-out;
+  -o-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
+}
+#container .sow-accordion .sow-accordion-panel-header:hover {
+	background-color: #e6ecf2;
 }
 #container .sow-accordion .sow-accordion-panel-content .sow-accordion-panel-border {
 	background-color: transparent;
@@ -616,15 +665,63 @@ nav-tabs:after {
 	content: '\e818';
 	font-family: italia-icon-font;
 }
+#container .sow-accordion-panel-open .sow-accordion-title, 
+#container .sow-accordion-panel-open .sow-icon-ionicons[data-sow-icon]:before {
+	color: #5c6f82;
+}
 #container .sow-accordion-panel-open .sow-icon-ionicons[data-sow-icon]:before {
 	content: '\e810';
 }
-
+#container .sow-accordion .sow-accordion-panel-open .sow-accordion-title:before {
+	height: 2px;
+	width: 56px;
+	border-radius: 2px;
+	background-color: #0073e6;
+	position: absolute;
+	top: 0;
+	display: block;
+	content: "";
+	left: 25px;
+}
 
 #container .ow-button-base a.ow-button-hover:hover {
 	text-decoration: none;
 }
 
+/* SO - Slider post */
+
+.sow-carousel-wrapper ul.sow-carousel-items li.sow-carousel-item h3 {
+	text-align: left;
+	font-weight: 700;
+	font-size: 1em;
+}
+.sow-carousel-title a.sow-carousel-next,
+.sow-carousel-title a.sow-carousel-previous {
+	background: transparent;
+  height: 30px;
+  width: 30px;
+  line-height: initial;	
+}
+.sow-carousel-title a.sow-carousel-next:before, 
+.sow-carousel-title a.sow-carousel-previous:before {
+	font-family: "italia-icon-font";
+	font-size: 3em;
+	color: #65dcdf;
+}
+.sow-carousel-title a.sow-carousel-previous:before {
+	content: '\e803';
+}
+.sow-carousel-title a.sow-carousel-next:before {
+	content: '\e804';
+}
+.sow-carousel-title a.sow-carousel-next:hover, 
+.sow-carousel-title a.sow-carousel-previous:hover {
+	background: inherit;
+}
+.sow-carousel-title a.sow-carousel-next:hover:before, 
+.sow-carousel-title a.sow-carousel-previous:hover:before {
+	color: #333;
+}
 
 /* Widget Calendar */
 

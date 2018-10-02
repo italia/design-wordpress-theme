@@ -5,8 +5,8 @@
       	<div class="col-sm-7">
       	
 					<header class="header">
-						<h1 class="entry-title"><?php _e( 'Archivio per: ', 'wppa' ); ?><?php single_cat_title(); ?></h1>
 						<?php if ( '' != category_description() ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . category_description() . '</div>' ); ?>
+						<h3 class="entry-title"><?php _e( 'Archivio per: ', 'wppa' ); ?><?php single_cat_title(); ?></h3>
 					</header>
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<hr>

@@ -1,6 +1,6 @@
 <?php 
 /**
- * Template name: Homepage
+ * Template name: Pagina home
  * 
 **/
 get_header(); ?>
@@ -29,10 +29,10 @@ get_header(); ?>
    <div class="container">
 
       <?php if ( is_active_sidebar( 'home-widget-area' ) ) : ?>
-      <div class="container-fluid widget-area">
-         <ul class="row xoxo">
+      <div class="widget-area">
+         <div class="row xoxo">
             <?php dynamic_sidebar( 'home-widget-area' ); ?>
-         </ul>
+         </div>
       </div>
       <?php endif; ?>
 
