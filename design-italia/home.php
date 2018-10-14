@@ -6,15 +6,18 @@
 get_header(); ?>
 <section id="content" role="main" class="container">
    <div class="container">
-      
+
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
       <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-         <header class="header sr-only">
-            <h1 class="entry-title"><?php the_title(); ?></h1>
-            <?php edit_post_link(); ?>
+         <header class="header">
+            <hr>
+            <?php // if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+      		<?php if ( !is_search() ) get_template_part( 'entry-footer' ); ?>
+      		<?php if ( !is_search() ) get_template_part( 'entry', 'meta' ); ?>
+            <h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
          </header>
          <section class="entry-content">
-            <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+            <?php edit_post_link(); ?>
             <?php the_content(); ?>
             <div class="entry-links"><?php wp_link_pages(); ?></div>
          </section>

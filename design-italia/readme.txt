@@ -60,6 +60,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.8 - Fix home-page, fix nav, fix around
+
 * 0.7 - Aggiunti template di pagina e post, dipendenza plugin SiteOrigin, stilizzazione widget SiteOrigin, fix around
 
 * 0.6 - Aggiunta librerie js Bootstrap Italia, fix around

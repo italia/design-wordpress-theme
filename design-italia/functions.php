@@ -357,15 +357,6 @@ function wppa_register_required_plugins() {
 }
 
 
-
-
-
-
-
-
-
-
-
 function wppa_italia_buttons_1($buttons) {
     array_unshift($buttons, 'styleselect');
     return $buttons;
@@ -444,10 +435,4 @@ function my_mce_before_init_insert_formats( $init_array ) {
 } 
 // Attach callback to 'tiny_mce_before_init' 
 add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
-
-
-
-
-
-
 

@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un semplice tema utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia è sviluppato per WordPress 4 (CMS open-source), su framework Bootstrap 4. Design Italia rispetta le nuove linee guida di design dell'Agenzia per l'Italia digitale rilasciare dal Team per la trasformazione digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l'informatica nella Pubblica Amministrazione 2017/2019. Design Italia propone una soluzione open-source e gratuita, ideale per comuni, istituti e piccoli enti pubblici in genere che hanno scelto di utilizzare WordPress per il proprio sito intenet.
-Version: 0.7
+Version: 0.8
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -136,6 +136,10 @@ a img.aligncenter {
 
 html {
 	background: #00264d;
+}
+header {
+	position: relative;
+	/*z-index: 10;*/
 }
 
 /* UI Form */
@@ -486,6 +490,7 @@ ul li li {
 	text-indent: -99999px;
 }
 
+.entry-content img, 
 .wp-post-image {
 	max-width: 100%;
 	height: auto;
@@ -528,6 +533,9 @@ ul li li {
 body.home #content {
 	padding-top: 1px;
 	padding-bottom: 1px;
+}
+body.home .header {
+	display: none;
 }
 .home-widget {
 	padding-top: 30px;
@@ -691,36 +699,12 @@ nav-tabs:after {
 /* SO - Slider post */
 
 .sow-carousel-wrapper ul.sow-carousel-items li.sow-carousel-item h3 {
+	text-align: left !important;
+}
+.sow-carousel-wrapper ul.sow-carousel-items li.sow-carousel-item h3 a {
 	text-align: left;
 	font-weight: 700;
 	font-size: 1em;
-}
-.sow-carousel-title a.sow-carousel-next,
-.sow-carousel-title a.sow-carousel-previous {
-	background: transparent;
-  height: 30px;
-  width: 30px;
-  line-height: initial;	
-}
-.sow-carousel-title a.sow-carousel-next:before, 
-.sow-carousel-title a.sow-carousel-previous:before {
-	font-family: "italia-icon-font";
-	font-size: 3em;
-	color: #65dcdf;
-}
-.sow-carousel-title a.sow-carousel-previous:before {
-	content: '\e803';
-}
-.sow-carousel-title a.sow-carousel-next:before {
-	content: '\e804';
-}
-.sow-carousel-title a.sow-carousel-next:hover, 
-.sow-carousel-title a.sow-carousel-previous:hover {
-	background: inherit;
-}
-.sow-carousel-title a.sow-carousel-next:hover:before, 
-.sow-carousel-title a.sow-carousel-previous:hover:before {
-	color: #333;
 }
 
 /* Widget Calendar */
