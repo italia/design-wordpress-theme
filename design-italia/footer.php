@@ -28,11 +28,11 @@
 	<hr>
 	
 		<div class="row">
-			<div class="col-md">
+			<div class="col-auto">
 				<?php wp_nav_menu(array( 'theme_location' => 'menu-footer', 'container' => 'ul', 'menu_class' => 'nav' )); ?>
 			</div>
-			<div class="col-md text-right copyright">
-				<p>
+			<div class="col copyright">
+				<p class="text-right">
 					<?php echo sprintf( __( '%1$s %2$s %3$s', 'wppa' ), '&copy;', date( 'Y' ), esc_html( get_bloginfo( 'name' ) ) ); ?>
 				</p>
 			</div>

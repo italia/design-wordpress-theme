@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un semplice tema utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia è sviluppato per WordPress 4 (CMS open-source), su framework Bootstrap 4. Design Italia rispetta le nuove linee guida di design dell'Agenzia per l'Italia digitale rilasciare dal Team per la trasformazione digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l'informatica nella Pubblica Amministrazione 2017/2019. Design Italia propone una soluzione open-source e gratuita, ideale per comuni, istituti e piccoli enti pubblici in genere che hanno scelto di utilizzare WordPress per il proprio sito intenet.
-Version: 0.8
+Version: 0.9
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -440,7 +440,9 @@ ul li li {
 	overflow-wrap: break-word;
 	text-overflow: ellipsis;
 }
-
+.breadcrumb-item a {
+	font-weight: 600;
+}
 #comments {
 	padding-top: 60px;
 	padding-bottom: 15px;
@@ -482,7 +484,7 @@ ul li li {
 	padding-right: 15px;
 	background-color: #fff;
 	border: none;
-	/*box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);*/
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
 }
 .searchform [type="submit"] {
 	width: 60px;
@@ -490,11 +492,55 @@ ul li li {
 	text-indent: -99999px;
 }
 
+.post {
+	display: inline-block;
+	clear: both;
+}
 .entry-content img, 
 .wp-post-image {
 	max-width: 100%;
 	height: auto;
 	margin-bottom: 30px;
+}
+
+.panel-grid > div {
+	padding: 2rem 0;
+}
+
+.widget_last_post {
+	margin-top: 1.5rem;
+}
+.widget-area .widget_last_post .widget_last_post_wrap {
+	min-width: 100%;
+}
+.widget_last_post .widget_last_post_wrap {
+	min-width: 15rem;
+}
+.widget_last_post .widget_last_post_inner {
+	border-top: solid 1px #ddd;
+	padding: 1rem 2rem 1rem 0rem;
+}
+.widget_last_post .widget_last_post_inner .wp-post-image {
+	max-width: 70px;
+}
+.widget_last_post .widget_last_post_inner h5 {
+	font-size: .9rem;
+	margin-bottom: 5px;
+}
+.widget_last_post .widget_last_post_inner h4 {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  margin: 1rem 0;
+}
+
+.widget_category_mansory {
+	margin-bottom: 1.5rem;
+}
+.widget_category_mansory .widget-title {
+	margin-bottom: 1.5rem;
+}
+.widget_category_mansory .card img {
+	margin: 0;
 }
 
 .-area .widget-container {
@@ -507,6 +553,9 @@ ul li li {
 	background-color: #00264d;
 	color: #fff;
 }
+#footer .disable a {
+	color: inherit;
+}
 #footer a {
 	color: #65dcdf;
 }
@@ -518,6 +567,9 @@ ul li li {
 }
 #footer .widget-area {
 	padding-top: 60px;
+}
+#footer .nav li {
+  padding: 15px 30px 15px 0px;
 }
 .copyright {
 	padding-top: 15px;
@@ -695,6 +747,12 @@ nav-tabs:after {
 #container .ow-button-base a.ow-button-hover:hover {
 	text-decoration: none;
 }
+.ow-button-base a {
+	padding: 12px 24px;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.5;
+}
 
 /* SO - Slider post */
 
@@ -706,6 +764,33 @@ nav-tabs:after {
 	font-weight: 700;
 	font-size: 1em;
 }
+/*.sow-carousel-title a.sow-carousel-next,
+.sow-carousel-title a.sow-carousel-previous {
+	background: transparent;
+  height: 30px;
+  width: 30px;
+  line-height: initial;	
+}
+.sow-carousel-title a.sow-carousel-next:before, 
+.sow-carousel-title a.sow-carousel-previous:before {
+	font-family: "italia-icon-font";
+	font-size: 3em;
+	color: #65dcdf;
+}
+.sow-carousel-title a.sow-carousel-previous:before {
+	content: '\e803';
+}
+.sow-carousel-title a.sow-carousel-next:before {
+	content: '\e804';
+}
+.sow-carousel-title a.sow-carousel-next:hover, 
+.sow-carousel-title a.sow-carousel-previous:hover {
+	background: inherit;
+}
+.sow-carousel-title a.sow-carousel-next:hover:before, 
+.sow-carousel-title a.sow-carousel-previous:hover:before {
+	color: #333;
+}*/
 
 /* Widget Calendar */
 
