@@ -535,7 +535,7 @@ class Category_Posts extends WP_Widget {
                     if ( has_post_thumbnail() && true === $thumbnail ) { ?>
 
                     <div class="card-img-top">
-                      <a href="<?php the_title(esc_url(get_permalink())); ?>" title="<?php the_title(); ?>">
+                      <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                         <?php the_post_thumbnail( 'large' ); ?>
                       </a>
                     </div><!--/.post-thumbnail-->
@@ -554,7 +554,7 @@ class Category_Posts extends WP_Widget {
                             <?php the_excerpt(); ?>
                         </div><!-- .entry-summary -->
                     <?php } ?>
-                    <a href="<?php the_title(esc_url(get_permalink())); ?>" title="<?php the_title(); ?>" class="btn btn-primary">Leggi tutto</a>
+                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="btn btn-primary">Leggi tutto</a>
                   </div>
 
                 </article><!-- #post-## -->
