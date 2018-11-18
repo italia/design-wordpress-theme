@@ -50,7 +50,6 @@
                         <div class="container">
                            <div class="row">
                               <div class="col menu-social">
-                                 <!-- <p>Social</p> -->
                                  <?php wp_nav_menu( array( 'theme_location' => 'menu-social', 'container' => 'ul', 'menu_class' => 'nav')); ?>
                               </div>
                               <div class="w-100 d-none d-lg-block"></div>

@@ -4,7 +4,7 @@
  * 
 **/
 get_header(); ?>
-<section id="content" role="main" class="container">
+<section id="content" role="main" class="container home-content">
    <div class="container">
 
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

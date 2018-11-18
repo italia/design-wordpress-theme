@@ -25,7 +25,7 @@
       
       <div class="col-sm-4 offset-sm-1">
    		<?php if ( is_active_sidebar( 'page-widget-area' ) ) : ?>
-   		<div class="container-fluid widget-area">
+   		<div class="container-fluid widget-area page-widget-area">
    		   <ul class="xoxo">
    		      <?php dynamic_sidebar( 'page-widget-area' ); ?>
    		   </ul>

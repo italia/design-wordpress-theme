@@ -9,7 +9,6 @@
                <h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'wppa' ), get_search_query() ); ?></h1>
             </header>
             <?php while ( have_posts() ) : the_post(); ?>
-            <hr>
             <?php get_template_part( 'entry' ); ?>
             <?php endwhile; ?>
             <?php get_template_part( 'nav', 'below' ); ?>

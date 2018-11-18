@@ -11,7 +11,7 @@
 						<?php rewind_posts(); ?>
 					</header>
 					<?php while ( have_posts() ) : the_post(); ?>
-					<hr>
+
 					<?php get_template_part( 'entry' ); ?>
 					<?php endwhile; ?>
 					<?php get_template_part( 'nav', 'below' ); ?>

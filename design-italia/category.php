@@ -9,7 +9,7 @@
 						<h3 class="entry-title"><?php _e( 'Archivio per: ', 'wppa' ); ?><?php single_cat_title(); ?></h3>
 					</header>
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-					<hr>
+
 					<?php get_template_part( 'entry' ); ?>
 					<?php endwhile; endif; ?>
 					<?php get_template_part( 'nav', 'below' ); ?>

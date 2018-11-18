@@ -60,6 +60,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.11 - Agginuto pager, fix around
+
 * 0.10 - Fix custom widget
 
 * 0.9 - Aggiunto custom widget per categoria, ottimizzato widget ultimi post, fix around

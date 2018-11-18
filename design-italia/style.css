@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un semplice tema utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia è sviluppato per WordPress 4 (CMS open-source), su framework Bootstrap 4. Design Italia rispetta le nuove linee guida di design dell'Agenzia per l'Italia digitale rilasciare dal Team per la trasformazione digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l'informatica nella Pubblica Amministrazione 2017/2019. Design Italia propone una soluzione open-source e gratuita, ideale per comuni, istituti e piccoli enti pubblici in genere che hanno scelto di utilizzare WordPress per il proprio sito intenet.
-Version: 0.10
+Version: 0.11
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -429,6 +429,10 @@ ul li li {
   }
 }
 
+.menu-social {
+	min-height: 57px;
+}
+
 .breadcrumb {
 	margin-top: 30px;
 	background-color: #f6f6f6;
@@ -443,6 +447,51 @@ ul li li {
 .breadcrumb-item a {
 	font-weight: 600;
 }
+
+ul.page-numbers {
+	width: 100%;
+	margin: 30px 0;
+	text-align: center;
+}
+.page-numbers li {
+	display: inline-block;
+}
+.page-numbers li a, 
+.page-numbers li span {
+	display: block;
+	padding: .5rem .9rem;
+	border: solid 1px transparent;
+	border-radius: 4px;
+	font-size: .9rem;
+	font-weight: 600;
+	color: #5b6f82;
+}
+.page-numbers li .current {
+	color: #0066cc;
+	border-color: #0066cc;
+  cursor: default;
+}
+.page-numbers li .dots {
+	padding: .5rem .1rem;
+}
+.page-numbers li a:hover {
+	color: #0066cc;
+	text-decoration: none;
+	border-color: #ddd;
+	/*background-color: #ddd;*/
+}
+.page-numbers li:first-child a,
+.page-numbers li:last-child a {
+	font-size: .7rem;
+}
+.page-numbers li:first-child a:hover,
+.page-numbers li:last-child a:hover {
+	border-color: transparent;
+	background-color: transparent;
+}
+
+
+
 #comments {
 	padding-top: 60px;
 	padding-bottom: 15px;
@@ -492,10 +541,7 @@ ul li li {
 	text-indent: -99999px;
 }
 
-.post {
-	display: inline-block;
-	clear: both;
-}
+
 .entry-content img, 
 .wp-post-image {
 	max-width: 100%;
@@ -589,10 +635,26 @@ body.home #content {
 body.home .header {
 	display: none;
 }
+body.archive article, 
+body.search article {
+	border-bottom: solid 1px #ddd;
+	padding: 2rem 0;
+}
+
+
 .home-widget {
 	padding-top: 30px;
 	background-color: #eee;
 }
+.home-content > .container > .post {
+	display: inline-block;
+	clear: both;
+}
+.home-content > .container > .post:nth-child(n+2) {
+	border-top: solid 1px #ddd;
+	padding-top: 60px;
+}
+
 
 .widget-area {
 	padding: 30px 0;
@@ -626,8 +688,9 @@ body.home .header {
 	margin: 10px 10px 5px 0;
 }
 
-.widget-area.primary-widget-area .widget-container {
-	margin-bottom: 15px;
+.widget-area.primary-widget-area .widget-container, 
+.widget-area.page-widget-area .widget-container {
+	margin-bottom: 30px;
 }
 
 

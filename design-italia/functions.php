@@ -197,6 +197,7 @@ Class wppa_recent_posts_widget extends WP_Widget_Recent_Posts {
   </div>
 
 
+  
   <?php echo $args['after_widget']; ?>
   <?php
   // Reset the global $the_post as this query will have stomped on it
@@ -307,6 +308,41 @@ function wppa_breadcrumb() {
   echo '</ul>';
 }
 
+// Numbered Pagination
+if ( !function_exists( 'wppa_pagination' ) ) {
+	
+	function wppa_pagination() {
+		
+		$prev_arrow = is_rtl() ? '<i class="it-chevron-right"></i>' : '<i class="it-chevron-left"></i>';
+		$next_arrow = is_rtl() ? '<i class="it-chevron-left"></i>' : '<i class="it-chevron-right"></i>';
+		
+		global $wp_query;
+		$total = $wp_query->max_num_pages;
+		$big = 999999999; // need an unlikely integer
+		if( $total > 1 )  {
+			 if( !$current_page = get_query_var('paged') )
+				 $current_page = 1;
+			 if( get_option('permalink_structure') ) {
+				 $format = 'page/%#%/';
+			 } else {
+				 $format = '&paged=%#%';
+			 }
+			echo paginate_links(array(
+				'base'			=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'format'		=> $format,
+				'current'		=> max( 1, get_query_var('paged') ),
+				'total' 		=> $total,
+				'mid_size'		=> 2,
+				'type' 			=> 'list',
+				'prev_text'		=> $prev_arrow,
+				'next_text'		=> $next_arrow,
+			 ) );
+		}
+	}
+	
+}
+
+
 
 /*
   LIBS @/lib
@@ -350,6 +386,9 @@ function wppa_register_required_plugins() {
 	);
 	tgmpa( $plugins, $config );
 }
+
+
+
 
 function wppa_italia_buttons_1($buttons) {
     array_unshift($buttons, 'styleselect');
@@ -431,11 +470,7 @@ function my_mce_before_init_insert_formats( $init_array ) {
 add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
 
 
-/* 
-  
-  Custom widget 
 
-*/
 
 function custom_excerpt_length( $length ) {
 	return 20;
