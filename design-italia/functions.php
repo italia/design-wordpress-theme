@@ -45,21 +45,18 @@ add_theme_support( 'custom-background', $args );
 
 add_action('wp_enqueue_scripts', 'wppa_load_scripts');
 function wppa_load_scripts() {
-  wp_enqueue_script( 'bootstrap-min', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array(), true );
-  wp_enqueue_script( 'bootstrap-italia-bundle-min', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.bundle.min.js', array(), true );
-  wp_enqueue_script( 'bootstrap-italia-bundle-min-map', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.bundle.min.js.map', array(), true );
-  wp_enqueue_script( 'bootstrap-italia-min', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.min.js', array(), true );
-  wp_enqueue_script( 'bootstrap-italia-min-map', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.min.js.map', array(), true );
-  // wp_enqueue_script( 'bootstrap-italia-min', get_template_directory_uri() . '/bootstrap-italia/js/bootstrap-italia.min.js', array(), true );
-	// wp_enqueue_script('jquery');
+  wp_enqueue_script( 'bootstrap-italia-bundle-min', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.23.0/dist/js/bootstrap-italia.bundle.min.js', array(), true );
+  wp_enqueue_script( 'bootstrap-italia-bundle-min-map', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.23.0/dist/js/bootstrap-italia.bundle.min.js.map', array(), true );
+  wp_enqueue_script( 'bootstrap-italia-min', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.23.0/dist/js/bootstrap-italia.min.js', array(), true );
+  wp_enqueue_script( 'bootstrap-italia-min-map', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.23.0/dist/js/bootstrap-italia.min.js.map', array(), true );
 }
 
 /* AGGIUNGI ASSETS DI BOOTSTRAP ITALIA */
 add_action( 'wp_enqueue_scripts', 'enqueue_wppa_styles' );
 function enqueue_wppa_styles() {
-    wp_enqueue_style( 'bootstrap-italia-min', get_template_directory_uri() . "/bootstrap-italia/css/bootstrap-italia.min.css");
-    wp_enqueue_style( 'bootstrap-italia-map', get_template_directory_uri() . "/bootstrap-italia/css/bootstrap-italia.min.css.map");
-    wp_enqueue_style( 'italia-icon-font', get_template_directory_uri() . "/bootstrap-italia/css/italia-icon-font.css");
+    wp_enqueue_style( 'bootstrap-italia-min', "https://cdn.jsdelivr.net/npm/bootstrap-italia@0.10.3/dist/css/bootstrap-italia.min.css");
+    wp_enqueue_style( 'bootstrap-italia-map', "https://cdn.jsdelivr.net/npm/bootstrap-italia@0.10.3/dist/css/bootstrap-italia.min.css.map");
+    wp_enqueue_style( 'italia-icon-font', "https://cdn.jsdelivr.net/npm/bootstrap-italia@0.14.1/dist/css/italia-icon-font.css");
     wp_enqueue_style( 'general-style', get_template_directory_uri() . "/style.css");
 };
 
@@ -195,8 +192,6 @@ Class wppa_recent_posts_widget extends WP_Widget_Recent_Posts {
     </div>
   <?php endwhile; ?>
   </div>
-
-
   
   <?php echo $args['after_widget']; ?>
   <?php
@@ -387,9 +382,6 @@ function wppa_register_required_plugins() {
 	tgmpa( $plugins, $config );
 }
 
-
-
-
 function wppa_italia_buttons_1($buttons) {
     array_unshift($buttons, 'styleselect');
     return $buttons;
@@ -469,8 +461,11 @@ function my_mce_before_init_insert_formats( $init_array ) {
 // Attach callback to 'tiny_mce_before_init' 
 add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
 
+/* 
+  
+  Custom widget 
 
-
+*/
 
 function custom_excerpt_length( $length ) {
 	return 20;
