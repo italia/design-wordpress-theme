@@ -60,6 +60,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.13 - Fix js
+
 * 0.12 - Passaggio a cdn
 
 * 0.11 - Agginuto pager, fix around

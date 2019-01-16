@@ -43,14 +43,6 @@ $args = array(
 add_theme_support( 'custom-background', $args );
 }
 
-add_action('wp_enqueue_scripts', 'wppa_load_scripts');
-function wppa_load_scripts() {
-  wp_enqueue_script( 'bootstrap-italia-bundle-min', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.23.0/dist/js/bootstrap-italia.bundle.min.js', array(), true );
-  wp_enqueue_script( 'bootstrap-italia-bundle-min-map', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.23.0/dist/js/bootstrap-italia.bundle.min.js.map', array(), true );
-  wp_enqueue_script( 'bootstrap-italia-min', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.23.0/dist/js/bootstrap-italia.min.js', array(), true );
-  wp_enqueue_script( 'bootstrap-italia-min-map', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.23.0/dist/js/bootstrap-italia.min.js.map', array(), true );
-}
-
 /* AGGIUNGI ASSETS DI BOOTSTRAP ITALIA */
 add_action( 'wp_enqueue_scripts', 'enqueue_wppa_styles' );
 function enqueue_wppa_styles() {
