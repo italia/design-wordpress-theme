@@ -39,6 +39,7 @@ Gli aggiornamenti verranno notificati all'interno dell'amministrazione di WordPr
 * Salvare il file [.json](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/template-home.json) in locale.
 * Installare e attivare [Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/) e i widget interessati di [SiteOrigin Widgets Bundle](https://wordpress.org/plugins/so-widgets-bundle/).
 * Selezionare _"Page Builder"_ nella sezione Aggiungi pagina.
+* In _"Attributi della pagina"_ > _"Modello"_ impostare Pagina Home. 
 * Ora scegliere _"Layout"_ nella barra dell'editor.
 * Selezionare _"Importa/Esporta"_.
 * Inserire il file .json salvato in precedenza.
