@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un semplice tema utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia è sviluppato per WordPress 4 (CMS open-source), su framework Bootstrap 4. Design Italia rispetta le nuove linee guida di design dell'Agenzia per l'Italia digitale rilasciare dal Team per la trasformazione digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l'informatica nella Pubblica Amministrazione 2017/2019. Design Italia propone una soluzione open-source e gratuita, ideale per comuni, istituti e piccoli enti pubblici in genere che hanno scelto di utilizzare WordPress per il proprio sito intenet.
-Version: 0.13
+Version: 0.14
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -131,6 +131,33 @@ a img.aligncenter {
 .bypostauthor, 
 .gallery-caption {}
 
+.post-edit-link {
+	position: fixed;
+	z-index: 999;
+	left: 0;
+	right: 0;
+	bottom: 15px;
+	top: auto;
+	margin: 0 auto;
+	width: 150px;
+	padding: 10px;
+	border-radius: 50px;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 80%;
+	font-weight: 600;
+	background-color: #c00;
+	box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
+	transition: all .3s ease-in-out;
+}
+.post-edit-link:hover {
+	color: #ffffff;
+	text-decoration: none;
+	background-color: #f00;
+	box-shadow: 0 2px 30px rgba(0, 0, 0, .3);
+}
 
 /* CUSTOM STYLE */
 
@@ -628,12 +655,13 @@ ul.page-numbers {
 	padding-top: 30px;
 	padding-bottom: 60px;
 }
-body.home #content {
-	padding-top: 1px;
-	padding-bottom: 1px;
-}
-body.home .header {
+body.page-template-home .header {
 	display: none;
+}
+body.page-template-home #content, 
+body.page-template-home .entry-content {
+	margin-top: 0;
+	padding-top: 0;
 }
 body.archive article, 
 body.search article {
