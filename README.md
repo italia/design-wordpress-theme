@@ -18,9 +18,7 @@ Design Italia propone una **soluzione open-source e gratuita**, ideale per comun
 
 ---
 
-Vuoi che il tuo sito assomigli alla home-page della demo?
-
-[**Scarica il template dell'home-page**](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/template-home.json) <sub><sup>(plugin necessari: SiteOrigin Page Builder e Widgets Bundle)</sub></sup>
+Vuoi che il tuo sito assomigli alla home-page della demo? [**Scarica il template**](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/template-home.json) <sub><sup>(plugin necessari: SiteOrigin Page Builder e Widgets Bundle)</sub></sup>
 
 ---
 
