@@ -4,7 +4,7 @@ Contributors: Marco Gargano
 
 Requires at least: WordPress 4.1
 
-Tested up to: WordPress 4.9-trunk
+Tested up to: WordPress 5.0-trunk
 
 License: AGPL-3.0
 
@@ -15,9 +15,13 @@ Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, cust
 
 ## Description
 
-Design Italia è un semplice tema utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia è sviluppato per WordPress 4 (CMS open-source), su framework Bootstrap 4. 
+Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana.
 
-Design Italia rispetta le nuove linee guida di design dell'Agenzia per l'Italia digitale rilasciare dal Team per la trasformazione digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l'informatica nella Pubblica Amministrazione 2017/2019. 
+Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019.
+
+Nel tema vengono integrate le componenti di Bootstrap Italia.
+
+Design Italia è sviluppato per WordPress 5 (CMS open-source), su framework Bootstrap 4.
 
 Design Italia propone una soluzione open-source e gratuita, ideale per comuni, istituti e piccoli enti pubblici in genere che hanno scelto di utilizzare WordPress per il proprio sito intenet.
 

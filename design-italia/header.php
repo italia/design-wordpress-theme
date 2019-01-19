@@ -32,9 +32,9 @@
                         <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
                         $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
                         if ( has_custom_logo() ) {
-                           echo '<img class="custom-logo" src="'. esc_url( $logo[0] ) .'">';
+                           echo '<img alt="'. esc_html( get_bloginfo( 'name' ) ) .'" class="custom-logo" src="'. esc_url( $logo[0] ) .'">';
                         } else {
-                           echo '<img class="custom-logo" src="'. get_template_directory_uri() . '/img/custom-logo.png' .'">';
+                           echo '<img alt="'. esc_html( get_bloginfo( 'name' ) ) .'" class="custom-logo" src="'. get_template_directory_uri() . '/img/custom-logo.png' .'">';
                         } ?>
                         
                      	<?php //wppa_the_custom_logo(); ?>
