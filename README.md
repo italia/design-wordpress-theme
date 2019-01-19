@@ -18,12 +18,12 @@ Design Italia propone una **soluzione open-source e gratuita**, ideale per comun
 
 ---
 
-Vuoi che il tuo sito assomigli alla home-page della demo? [**Scarica il template**](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/template-home.json) <sub><sup>(plugin necessari: SiteOrigin Page Builder e Widgets Bundle)</sub></sup>
+Vuoi che il tuo sito assomigli alla home-page della demo? [**Utilizza il template**](#come-importare-il-template) <sub><sup>(plugin necessari: SiteOrigin Page Builder e Widgets Bundle)</sub></sup>
 
 ---
 
 ## Come utlizzare Design Italia
-* Scaricare il file [.zip](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.zip) in locale.
+* Salvare il file [.zip](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.zip) in locale.
 * Aggingere un nuovo tema nella sezione _"Aspetto" > "Temi"_.
 * Selezionare _"Aggiungi nuovo"_ e successivamente _"Carica tema"_.
 * Ora scegliere il file .zip scaricato in precedenza, senza decomplimerlo e cliccare _"Installa ora"_.
@@ -35,8 +35,18 @@ Gli aggiornamenti verranno notificati all'interno dell'amministrazione di WordPr
 
 ---
 
+## Come importare il template
+* Salvare il file [.json](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/template-home.json) in locale.
+* Installare e attivare [Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/) e i widget interessati di [SiteOrigin Widgets Bundle](https://wordpress.org/plugins/so-widgets-bundle/).
+* Selezionare _"Page Builder"_ nella sezione Aggiungi pagina.
+* Selezionare _"Layout"_ nella barra dell'editor.
+* Selezionare _"Importa/Esporta"_.
+* Inserire il file .json salvato in precedenza.
+
+---
+
 ## Principali caratteristiche di Design Italia
-* **WordPress** - Design Italia è realizzato per l'ultima versione di WordPress disponibile in italiano, attualmente la versione 4.9.6.
+* **WordPress** - Design Italia è realizzato per l'ultima versione di WordPress disponibile in italiano, attualmente 5.0.3.
 * **Bootstrap** - Design Italia è sviluppato su framework Bootstrap 4. Può esser utilizzato direttamente nell'editor di WordPress come HTML.
 * **Responsive** - Design Italia si adatta a disposiviti sia desktop che mobile, senza perdere alcuna funzionalità.
 * **4 posizioni del menu** - Design Italia mette a disposizione 4 posizioni di menu, nelle quali è possibile gestire la selezione della lingua e i canali social.
@@ -44,7 +54,6 @@ Gli aggiornamenti verranno notificati all'interno dell'amministrazione di WordPr
 * **Logo e titolo** - Design Italia permette la personalizzazione del logo, del titolo e del motto del sito direttamente dalla personalizzazione del tema.
 * **Colori e link** - Design Italia consente di selezionare e personalizzare i colori per la testata, il footer e i suoi link.
 * **Home-page** - Design Italia ha un template differente per la home-page che ti permette di comunicare al meglio al tuo pubblico.
-* **Pochi file** - Design Italia è sviluppato cercando di utilizzare pochi file php nel tema, in modo che possa esser la base per sviluppi propri.
 
 ---
 
