@@ -24,7 +24,7 @@ Vuoi che il tuo sito assomigli alla home-page della demo? [**Utilizza il templat
 
 ## Come utlizzare Design Italia
 * Salvare il file [.zip](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.zip) in locale.
-* Aggingere un nuovo tema nella sezione _"Aspetto" > "Temi"_.
+* Aggiungere un nuovo tema nella sezione _"Aspetto" > "Temi"_.
 * Selezionare _"Aggiungi nuovo"_ e successivamente _"Carica tema"_.
 * Ora scegliere il file .zip scaricato in precedenza, senza decomplimerlo e cliccare _"Installa ora"_.
 * Selezionare _"Attiva"_ per poter utilizzare il tema.
@@ -39,7 +39,7 @@ Gli aggiornamenti verranno notificati all'interno dell'amministrazione di WordPr
 * Salvare il file [.json](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/template-home.json) in locale.
 * Installare e attivare [Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/) e i widget interessati di [SiteOrigin Widgets Bundle](https://wordpress.org/plugins/so-widgets-bundle/).
 * Selezionare _"Page Builder"_ nella sezione Aggiungi pagina.
-* Selezionare _"Layout"_ nella barra dell'editor.
+* Ora scegliere _"Layout"_ nella barra dell'editor.
 * Selezionare _"Importa/Esporta"_.
 * Inserire il file .json salvato in precedenza.
 
