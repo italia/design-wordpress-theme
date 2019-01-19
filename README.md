@@ -2,17 +2,25 @@
 ## Tema di WordPress per la Pubblica Amministrazione 
 
 
-Design Italia è un semplice tema utilizzabile per i **siti internet** della Pubblica Amministrazione italiana.
+**Design Italia** è un tema di WordPress utilizzabile per i **siti internet** della Pubblica Amministrazione italiana.
 
-Design Italia è sviluppato per [**WordPress 4**](https://it.wordpress.org/) (CMS open-source), su framework [**Bootstrap 4**](https://getbootstrap.com/). 
+Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal [**Team per la Trasformazione Digitale**](https://teamdigitale.governo.it/) e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019.
 
-Design Italia rispetta le [**nuove linee guida di design dell'Agenzia per l'Italia digitale**](https://design-italia.readthedocs.io/it/stable/index.html) rilasciare dal [**Team per la trasformazione digitale**](https://teamdigitale.governo.it/) e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel [**Piano triennale**](https://pianotriennale-ict.italia.it/) per l'informatica nella Pubblica Amministrazione 2017/2019.
+Nel tema vengono integrate le componenti di [**Bootstrap Italia**](https://italia.github.io/bootstrap-italia/).
+
+Design Italia è sviluppato per [**WordPress 5**](https://it.wordpress.org/) (CMS open-source), su framework [**Bootstrap 4**](https://getbootstrap.com/). 
 
 Design Italia propone una **soluzione open-source e gratuita**, ideale per comuni, istituti e piccoli enti pubblici in genere che hanno scelto di utilizzare WordPress per il proprio sito intenet.
 
 ---
 
 #### [**Guarda la demo**](http://design-italia.marcogargano.com/) | [**Scarica il tema**](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/design-italia.zip)
+
+---
+
+Vuoi che il tuo sito assomigli alla home-page della demo?
+
+[**Scarica il template dell'home-page**](https://raw.githubusercontent.com/italia/design-wordpress-theme/master/template-home.json) <sub><sup>(plugin necessari: SiteOrigin Page Builder e Widgets Bundle)</sub></sup>
 
 ---
 
@@ -46,6 +54,11 @@ Gli aggiornamenti verranno notificati all'interno dell'amministrazione di WordPr
 
 Per una migliore gestione dei siti su WordPress, consigliamo di installare i seguenti plugins.
 
+#### Integrazione suggerita
+
++ [Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/) - Gestione pagine avanzata
++ [SiteOrigin Widgets Bundle](https://wordpress.org/plugins/so-widgets-bundle/) - Pacchetto widgets aggiuntivi
+
 #### Integrazione Pubblica Amministrazione
 
 + [Amministrazione Trasparente](https://it.wordpress.org/plugins/amministrazione-trasparente/) - Diffusione di informazioni
@@ -53,19 +66,14 @@ Per una migliore gestione dei siti su WordPress, consigliamo di installare i seg
 + [Albo Pretorio on-line](https://wordpress.org/plugins/albo-pretorio-on-line/) - Atti in adempimento
 + [WP Spid Italia](https://wordpress.org/plugins/wp-spid-italia/) - Sistema Pubblico di Identità Digitale
 
-#### Funzionalità di base
+#### Funzionalità ulteriori
 
 + [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) - Gestione SEO avanzata
 + [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) - Creazione form di contatto
 + [dFactory Cookie Notice](https://wordpress.org/plugins/cookie-notice/) - Notifica utilizzo cookies
 + [Akismet](https://wordpress.org/plugins/akismet/) - Anti spam
-
-#### Funzionalità avanzate
-
-+ [Download Manager](https://wordpress.org/plugins/download-manager/) - Gestione allegati e documenti
 + [Google Analytics Dashboard](https://wordpress.org/plugins/google-analytics-dashboard-for-wp/) - Integrzione Google Analytics
-+ [Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/) - Creazione struttura pagine
-+ [Custom Field Suite](https://wordpress.org/plugins/custom-field-suite/) - Creazione di nuovi campi
++ [Download Manager](https://wordpress.org/plugins/download-manager/) - Gestione allegati e documenti
 
 ---
 
