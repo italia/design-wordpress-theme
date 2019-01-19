@@ -132,15 +132,14 @@ a img.aligncenter {
 .gallery-caption {}
 
 .post-edit-link {
-	position: fixed;
+	position: absolute;
 	z-index: 999;
-	left: 0;
-	right: 0;
-	bottom: 15px;
-	top: auto;
+	left: auto;
+	right: 15px;
+	bottom: auto;
+	top: 15px;
 	margin: 0 auto;
-	width: 150px;
-	padding: 10px;
+	padding: 10px 30px;
 	border-radius: 50px;
 	color: #fff;
 	text-align: center;
@@ -149,7 +148,6 @@ a img.aligncenter {
 	font-size: 80%;
 	font-weight: 600;
 	background-color: #c00;
-	box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
 	transition: all .3s ease-in-out;
 }
 .post-edit-link:hover {
@@ -660,6 +658,7 @@ body.page-template-home .header {
 }
 body.page-template-home #content, 
 body.page-template-home .entry-content {
+	position: relative;
 	margin-top: 0;
 	padding-top: 0;
 }
