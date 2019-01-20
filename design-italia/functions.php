@@ -7,6 +7,21 @@ function wppa_setup()	{
 	add_theme_support('automatic-feed-links');
 	add_theme_support('post-thumbnails');
   
+  
+  /* ADD BIG 4:3 THUMBS */
+  if ( function_exists( 'add_theme_support' ) ) { 
+    add_theme_support( 'post-thumbnails' );
+    add_image_size( 'large-thumb', 640, 480, true); // name, width, height, crop 
+    add_filter('image_size_names_choose', 'my_image_sizes');
+  }
+  function my_image_sizes($sizes) {
+      $addsizes = array(
+          "large-thumb" => __( "Large image")
+      );
+      $newsizes = array_merge($sizes, $addsizes);
+      return $newsizes;
+  }
+
   /* ADD LOGO TO CMS */
   add_theme_support( 'custom-logo', array(
   	'height'      => 80,
@@ -455,12 +470,12 @@ add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
 
 /* 
   
-  Custom widget 
+  Custom widget - DesignItalia - Articoli a griglia
 
 */
 
 function custom_excerpt_length( $length ) {
-	return 20;
+	return 25;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 10 );
 function new_excerpt_more( $more ) {
@@ -475,8 +490,8 @@ class Category_Posts extends WP_Widget {
     {
         parent::__construct(
             'widget_category_posts', 
-            _x( 'DesignItalia - Articoli per categoria', 'DesignItalia - Articoli per categoria' ), 
-            [ 'description' => __( 'Widget che visualizza gli articoli di una categoria selezionata in stile Masonry.' ) ] 
+            _x( 'DesignItalia - Articoli a griglia', 'DesignItalia - Articoli a griglia' ), 
+            [ 'description' => __( 'Widget che visualizza gli articoli di una categoria selezionata in stile Masonry, a griglia.' ) ] 
         );
         $this->alt_option_name = 'widget_category_posts';
 
@@ -507,7 +522,7 @@ class Category_Posts extends WP_Widget {
 
         ob_start();
 
-        $title          = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Category Posts' );
+        $title          = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Articoli per categoria' );
         /** This filter is documented in wp-includes/default-widgets.php */
         $title          = apply_filters( 'widget_title', $title, $instance, $this->id_base );
         $number         = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
@@ -663,19 +678,19 @@ class Category_Posts extends WP_Widget {
         <p>
             <?php $checked = ( $random ) ? ' checked=\"checked\" ' : ''; ?>
             <input type="checkbox" id="<?php echo $this->get_field_id( 'rand' ); ?>" name="<?php echo $this->get_field_name( 'rand' ); ?>" value="true" <?php echo $checked; ?> />    
-            <label for="<?php echo $this->get_field_id('rand'); ?>"><?php _e( 'Visualizza articoli casualmente' ); ?></label>
+            <label for="<?php echo $this->get_field_id('rand'); ?>"><?php _e( 'Visualizza articoli casualmente. Se deselezionato, verranno visualizzati prima i più recenti.' ); ?></label>
         </p>
 
         <p>
             <?php $checked = ( $excerpt ) ? ' checked=\"checked\" ' : ''; ?>
             <input type="checkbox" id="<?php echo $this->get_field_id( 'excerpt' ); ?>" name="<?php echo $this->get_field_name( 'excerpt' ); ?>" value="true" <?php echo $checked; ?> />    
-            <label for="<?php echo $this->get_field_id('excerpt'); ?>"><?php _e( 'Visualizza estratto. Se deselezionato, visualizza solo il titolo dell\'articolo' ); ?></label>
+            <label for="<?php echo $this->get_field_id('excerpt'); ?>"><?php _e( 'Visualizza estratto. Se deselezionato, visualizza solo il titolo dell\'articolo.' ); ?></label>
         </p>
 
         <p>
             <?php $checked = ( $thumbnail ) ? ' checked=\"checked\" ' : ''; ?>
             <input type="checkbox" id="<?php echo $this->get_field_id( 'thumbnail' ); ?>" name="<?php echo $this->get_field_name( 'thumbnail' ); ?>" value="true" <?php echo $checked; ?> />    
-            <label for="<?php echo $this->get_field_id('thumbnail'); ?>"><?php _e( 'Visualizza le thumbnails degli articoli' ); ?></label>
+            <label for="<?php echo $this->get_field_id('thumbnail'); ?>"><?php _e( 'Visualizza le thumbnails degli articoli.' ); ?></label>
         </p>
 
     <?php
@@ -686,4 +701,226 @@ class Category_Posts extends WP_Widget {
 add_action( 'widgets_init', function () 
 {
     register_widget( 'Category_Posts' );
+});
+
+
+/* 
+  
+  Custom widget - DesignItalia - Articoli in orizzontale
+
+*/
+
+class Single_Post extends WP_Widget {
+
+    public function __construct() 
+    {
+        parent::__construct(
+            'widget_single_post', 
+            _x( 'DesignItalia - Articoli in orizzontale', 'DesignItalia - Articoli in orizzontale' ), 
+            [ 'description' => __( 'Widget che visualizza articoli di una categoria selezionata in orizzontale, uno sotto l\'altro.' ) ] 
+        );
+        $this->alt_option_name = 'widget_single_post';
+
+        add_action( 'save_post', [$this, 'flush_widget_cache'] );
+        add_action( 'deleted_post', [$this, 'flush_widget_cache'] );
+        add_action( 'switch_theme', [$this, 'flush_widget_cache'] );
+    }
+
+    public function widget( $args, $instance ) 
+    {
+        $cache = [];
+        if ( ! $this->is_preview() ) {
+            $cache = wp_cache_get( 'widget_cat_posts', 'widget' );
+        }
+
+        if ( ! is_array( $cache ) ) {
+            $cache = [];
+        }
+
+        if ( ! isset( $args['widget_id'] ) ) {
+            $args['widget_id'] = $this->id;
+        }
+
+        if ( isset( $cache[ $args['widget_id'] ] ) ) {
+            echo $cache[ $args['widget_id'] ];
+            return;
+        }
+
+        ob_start();
+
+        $title          = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Articolo singolo' );
+        /** This filter is documented in wp-includes/default-widgets.php */
+        $title          = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+        $number         = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 1;
+        if ( ! $number ) {
+            $number = 1;
+        }
+        $cat_id         = $instance['cat_id'];
+        $random         = $instance['rand'] ? true : false; 
+        $excerpt        = $instance['excerpt'] ? true : false; 
+        $thumbnail      = $instance['thumbnail'] ? true : false; 
+
+        /**
+         * Filter the arguments for the Category Posts widget.
+         * @since 1.0.0
+         * @see WP_Query::get_posts()
+         * @param array $args An array of arguments used to retrieve the category posts.
+         */
+        if( true === $random ) {
+            $query_args = [
+                'posts_per_page'    => $number,
+                'cat'               => $cat_id,
+                'orderby'           => 'rand'
+            ];
+        }else{
+            $query_args = [
+                'posts_per_page'    => $number,
+                'cat'               => $cat_id,
+            ];
+        }
+        $q = new WP_Query( apply_filters( 'single_post_args', $query_args ) );
+
+        if( $q->have_posts() ) {
+
+            echo $args['before_widget'];
+            if ( $title ) {
+                echo $args['before_title'] . $title . $args['after_title'];
+            }               
+
+            while( $q->have_posts() ) {
+                $q->the_post(); ?>
+
+                <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?> > 
+
+                  <div class="col-md novita-testo">
+                    <header class="entry-header">
+                      <h2>
+                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                          <?php the_title(); ?>
+                        </a>
+                      </h2>
+                    </header><!-- .entry-header -->
+                    <?php if( true === $excerpt ) { ?>    
+                      <?php the_excerpt(); ?>
+                    <?php } ?>
+                    <!-- <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="btn btn-secondary btn-sm">Leggi tutto</a> -->
+                    <p><?php foreach(get_the_category() as $category) {
+                          echo '<a class="btn btn-outline-primary btn-xs" href="' . get_category_link($category->cat_ID) . '">' . $category->cat_name . '</a> ';
+                      } ?></p>
+                  </div>
+                  <?php 
+                  if ( has_post_thumbnail() && true === $thumbnail ) { ?>
+
+                  <div class="col-md offset-md-1 novita-foto">
+                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                      <?php the_post_thumbnail( 'large-thumb' ); ?>
+                    </a>
+                  </div><!--/.post-thumbnail-->
+                  <?php   
+                    } 
+                  ?>
+                </article><!-- #post-## -->
+
+                <?php
+            }
+
+            wp_reset_postdata();
+        }
+            echo $args['after_widget']; 
+
+        if ( ! $this->is_preview() ) {
+            $cache[ $args['widget_id'] ] = ob_get_flush();
+            wp_cache_set( 'widget_cat_posts', $cache, 'widget' );
+        } else {
+            ob_end_flush();
+        }
+    }
+
+    public function update( $new_instance, $old_instance ) 
+    {
+        $instance                   = $old_instance;
+        $instance['title']          = strip_tags( $new_instance['title'] );
+        $instance['number']         = (int) $new_instance['number'];
+        $instance['cat_id']         = (int) $new_instance['cat_id'];
+        $instance['rand']           = $new_instance['rand'];
+        $instance['excerpt']        = $new_instance['excerpt'];
+        $instance['thumbnail']      = $new_instance['thumbnail'];
+        $this->flush_widget_cache();
+
+        $alloptions = wp_cache_get( 'alloptions', 'options' );
+        if ( isset($alloptions['widget_single_post']) )
+            delete_option('widget_single_post');
+
+        return $instance;
+    }
+
+    public function flush_widget_cache() 
+    {
+        wp_cache_delete('widget_cat_posts', 'widget');
+    }
+
+    public function form( $instance ) 
+    {
+
+        $title      = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+        $number     = isset( $instance['number'] ) ? absint( $instance['number'] ) : 1;
+        $cat_id     = isset( $instance['cat_id'] ) ? absint( $instance['cat_id'] ) : 1;
+        $random     = isset( $instance['rand'] ) ? $instance['rand'] : false; 
+        $excerpt    = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
+        $thumbnail  = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
+        ?>
+
+        <p>
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Numero di articoli da visualizzare:' ); ?></label>
+            <input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" value="<?php echo $number; ?>" size="3" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('cat_id'); ?>"><?php _e( 'Seleziona la categoria:' )?></label>
+            <select id="<?php echo $this->get_field_id('cat_id'); ?>" name="<?php echo $this->get_field_name('cat_id'); ?>">
+                <?php 
+                $this->categories = get_categories();
+                foreach ( $this->categories as $cat ) {
+                    $selected = ( $cat->term_id == esc_attr( $cat_id ) ) ? ' selected = "selected" ' : '';
+                    $option = '<option '.$selected .'value="' . $cat->term_id;
+                    $option = $option .'">';
+                    $option = $option .$cat->name;
+                    $option = $option .'</option>';
+                    echo $option;
+                }
+                ?>
+            </select>
+        </p>
+
+        <p>
+            <?php $checked = ( $random ) ? ' checked=\"checked\" ' : ''; ?>
+            <input type="checkbox" id="<?php echo $this->get_field_id( 'rand' ); ?>" name="<?php echo $this->get_field_name( 'rand' ); ?>" value="true" <?php echo $checked; ?> />    
+            <label for="<?php echo $this->get_field_id('rand'); ?>"><?php _e( 'Visualizza articolo casualmente. Se deselezionato, verrà visualizzato il più recente.' ); ?></label>
+        </p>
+
+        <p>
+            <?php $checked = ( $excerpt ) ? ' checked=\"checked\" ' : ''; ?>
+            <input type="checkbox" id="<?php echo $this->get_field_id( 'excerpt' ); ?>" name="<?php echo $this->get_field_name( 'excerpt' ); ?>" value="true" <?php echo $checked; ?> />    
+            <label for="<?php echo $this->get_field_id('excerpt'); ?>"><?php _e( 'Visualizza estratto. Se deselezionato, visualizza solo il titolo dell\'articolo.' ); ?></label>
+        </p>
+
+        <p>
+            <?php $checked = ( $thumbnail ) ? ' checked=\"checked\" ' : ''; ?>
+            <input type="checkbox" id="<?php echo $this->get_field_id( 'thumbnail' ); ?>" name="<?php echo $this->get_field_name( 'thumbnail' ); ?>" value="true" <?php echo $checked; ?> />    
+            <label for="<?php echo $this->get_field_id('thumbnail'); ?>"><?php _e( 'Visualizza la thumbnail dell\'articolo.' ); ?></label>
+        </p>
+
+    <?php
+    }
+
+}
+
+add_action( 'widgets_init', function () 
+{
+    register_widget( 'Single_Post' );
 });

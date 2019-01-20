@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.15 - Aggiunto custom widget articoli in orizzontale, fix around
+
 * 0.14 - Fix around
 
 * 0.13 - Fix js
