@@ -50,6 +50,7 @@ Gli aggiornamenti verranno notificati all'interno dell'amministrazione di WordPr
 * **WordPress** - Design Italia è realizzato per l'ultima versione di WordPress disponibile in italiano, attualmente 5.0.3.
 * **Bootstrap** - Design Italia è sviluppato su framework Bootstrap 4. Può esser utilizzato direttamente nell'editor di WordPress come HTML.
 * **Responsive** - Design Italia si adatta a disposiviti sia desktop che mobile, senza perdere alcuna funzionalità.
+* **2 widget personalizzati** - Design Italia offre widget sviluppati appositamente per sfruttare al meglio articoli e categorie, con diverse opzioni disponibili.
 * **4 posizioni del menu** - Design Italia mette a disposizione 4 posizioni di menu, nelle quali è possibile gestire la selezione della lingua e i canali social.
 * **3 aree widget** - Design Italia offre 3 aree dove è possibile inserire widget: una presente in home-page, un'altra nel footer e infine nella sidebar.
 * **Logo e titolo** - Design Italia permette la personalizzazione del logo, del titolo e del motto del sito direttamente dalla personalizzazione del tema.
