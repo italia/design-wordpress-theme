@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.16 - Aggiornamento Bootstrap, fix around
+
 * 0.15 - Aggiunto custom widget articoli in orizzontale, fix around
 
 * 0.14 - Fix around

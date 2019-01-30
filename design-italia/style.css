@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.15
+Version: 0.16
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -240,13 +240,16 @@ ul li li {
 [class^="branding"] [class^="menu"] a:hover {
 	color: #fff;
 }
+#header {
+	background-color: #06c;
+}
 .branding-up {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	background-color: #1c2024;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	background-color: rgba(0, 0, 0, 0.15);
 }
 .branding {
-	background-color: #06c;
+	background-color: transparent;
 }
 .branding h1 {
 	margin-top: 10px;
@@ -260,16 +263,7 @@ ul li li {
 }
 .menu-main {
 	position: relative;
-	background-color: #1173d4;
-}
-.menu-main:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: transparent;
 }
 .nav li {
 	display: block;
@@ -593,6 +587,14 @@ ul.page-numbers {
 	border-top: solid 1px #ddd;
 	padding: 1rem 2rem 1rem 0rem;
 }
+.widget_last_post .widget_last_post_inner h5 a:first-child {
+	padding-left: 15px;
+}
+.widget_last_post .widget_last_post_inner h5 a:first-child:before {
+	content: '● ';
+	position: absolute;
+	left: 6px;
+}
 .widget_last_post .widget_last_post_inner .wp-post-image {
 	max-width: 70px;
 }
@@ -632,7 +634,7 @@ ul.page-numbers {
 #footer {
 	padding-top: 45px;
 	padding-bottom: 15px;
-	background-color: #00264d;
+	background-color: #004080;
 	color: #fff;
 }
 #footer .disable a {

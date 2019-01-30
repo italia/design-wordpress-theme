@@ -191,7 +191,7 @@ Class wppa_recent_posts_widget extends WP_Widget_Recent_Posts {
         <!--<a href="<?php the_permalink(); ?>">-->
         <!--  <?php the_post_thumbnail('thumbnail', array('class' => 'rounded float-right')); ?>-->
         <!--</a>-->
-        <h5><strong>&#9679; <?php the_category( ', ' ); ?></strong></h5>
+        <h5><strong><?php the_category( ', ' ); ?></strong></h5>
       	<h5><?php the_time( get_option( 'date_format' ) ); ?></h5>
         <h4><a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a></h4>
         <p><?php the_excerpt(); ?></p>
@@ -272,11 +272,14 @@ function wppa_customizer_options( $wp_customize ) {
 add_action( 'wp_head', 'wppa_customize_css' );
 function wppa_customize_css() { ?>
   <style type="text/css">
-    .branding, .menu-main { background-color: <?php echo get_theme_mod( 'wppa_head_color', "#0066cc" ); ?>; }
+    #header { background-color: <?php echo get_theme_mod( 'wppa_head_color', "#0066cc" ); ?>; }
     a, a:hover { color: <?php echo get_theme_mod('wppa_link_color', "#0066cc"); ?>; }
-    button, input[type="submit"] { background-color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
-    html, #footer { background-color: <?php echo get_theme_mod( 'wppa_footer_color', '#00264d' ); ?>; }
-    #footer a { color: <?php echo get_theme_mod('wppa_footer_link', "#65dcdf"); ?>; }
+    button, input[type="submit"], .btn-primary { background-color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
+    .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active { background-color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1); }
+    .btn-outline-primary { color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 1px <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
+    .btn-outline-primary:hover, .btn-outline-primary:not(:disabled):not(.disabled):active { color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 2px <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
+    html, #footer { background-color: <?php echo get_theme_mod( 'wppa_footer_color', '#004080' ); ?>; }
+    #footer a { color: <?php echo get_theme_mod('wppa_footer_link', "#ffffff"); ?>; }
   </style>
   <?php
 }
