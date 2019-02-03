@@ -912,6 +912,7 @@ nav-tabs:after {
 .it-footer .searchform input[type="text"], 
 .it-header-wrapper .searchform input[type="text"] {
 	box-shadow: inset 0 -1px 0px #fff;
+	background: transparent;
 }
 
 .it-footer .searchform [type="submit"], 
