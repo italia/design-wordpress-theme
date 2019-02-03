@@ -61,8 +61,8 @@ add_theme_support( 'custom-background', $args );
 /* AGGIUNGI ASSETS DI BOOTSTRAP ITALIA */
 add_action( 'wp_enqueue_scripts', 'enqueue_wppa_styles' );
 function enqueue_wppa_styles() {
-    wp_enqueue_style( 'bootstrap-italia-min', "https://cdn.jsdelivr.net/npm/bootstrap-italia@0.10.3/dist/css/bootstrap-italia.min.css");
-    wp_enqueue_style( 'bootstrap-italia-map', "https://cdn.jsdelivr.net/npm/bootstrap-italia@0.10.3/dist/css/bootstrap-italia.min.css.map");
+    wp_enqueue_style( 'bootstrap-italia-min', "https://cdn.jsdelivr.net/npm/bootstrap-italia@1.0.0/dist/css/bootstrap-italia.min.css");
+    wp_enqueue_style( 'bootstrap-italia-map', "https://cdn.jsdelivr.net/npm/bootstrap-italia@1.0.0/dist/css/bootstrap-italia.min.css.map");
     wp_enqueue_style( 'italia-icon-font', "https://cdn.jsdelivr.net/npm/bootstrap-italia@0.14.1/dist/css/italia-icon-font.css");
     wp_enqueue_style( 'general-style', get_template_directory_uri() . "/style.css");
 };
@@ -130,8 +130,18 @@ if (function_exists('register_sidebar')) {
 		'description'   => __( 'Widget area che compare nel footer.', 'wppa' ),
 		'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
 		'after_widget' => "</div>",
-		'before_title' => '<h5 class="widget-title"><strong>',
-		'after_title' => '</strong></h5>',
+		'before_title' => '<h4 class="widget-title">',
+		'after_title' => '</h4>',
+	));
+
+	register_sidebar( array(
+		'name' => __('Footer Sub Widget Area', 'wppa') ,
+		'id' => 'footer-sub-widget-area',
+		'description'   => __( 'Widget area che compare nel footer sotto.', 'wppa' ),
+		'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
+		'after_widget' => "</div>",
+		'before_title' => '<h4 class="widget-title">',
+		'after_title' => '</h4>',
 	));
 }
 // add_action('widgets_init', 'wppa_widgets_init');
@@ -272,13 +282,13 @@ function wppa_customizer_options( $wp_customize ) {
 add_action( 'wp_head', 'wppa_customize_css' );
 function wppa_customize_css() { ?>
   <style type="text/css">
-    #header { background-color: <?php echo get_theme_mod( 'wppa_head_color', "#0066cc" ); ?>; }
+    .it-header-center-wrapper, .it-header-navbar-wrapper, .it-header-wrapper { background-color: <?php echo get_theme_mod( 'wppa_head_color', "#0066cc" ); ?>; }
     a, a:hover { color: <?php echo get_theme_mod('wppa_link_color', "#0066cc"); ?>; }
     button, input[type="submit"], .btn-primary { background-color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
     .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active { background-color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1); }
     .btn-outline-primary { color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 1px <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
     .btn-outline-primary:hover, .btn-outline-primary:not(:disabled):not(.disabled):active { color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 2px <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
-    html, #footer { background-color: <?php echo get_theme_mod( 'wppa_footer_color', '#004080' ); ?>; }
+    html, #footer, .it-footer-main { background-color: <?php echo get_theme_mod( 'wppa_footer_color', '#004080' ); ?>; }
     #footer a { color: <?php echo get_theme_mod('wppa_footer_link', "#ffffff"); ?>; }
   </style>
   <?php

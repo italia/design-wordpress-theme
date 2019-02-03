@@ -7,76 +7,77 @@
    </head>
    <body <?php body_class(); ?>>
       <div id="wrapper" class="hfeed">
-
          <header id="header" class="" role="banner">
 
-            <section class="branding-up">
-               <div class="container">
-                  <div class="row">
-                     <div class="col">
-                        <!-- <img alt="" src="<?php header_image(); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>"> -->
-                        <img alt="" src="<?php header_image(); ?>" width="200">
-                     </div>
-                     <div class="col text-right">
+         <div class="it-header-wrapper">
+           <div class="it-header-slim-wrapper">
+             <div class="container">
+               <div class="row">
+                 <div class="col-12">
+                   <div class="it-header-slim-wrapper-content">
+                     <!-- <a class="d-none d-lg-block navbar-brand" href="#"> -->
+                        <img class="header-slim-img" alt="" src="<?php header_image(); ?>">
+                     <!-- </a> -->
+                     <div class="header-slim-right-zone">
                         <?php wp_nav_menu(array( 'theme_location' => 'menu-language', 'container' => 'ul', 'menu_class' => 'nav float-right' )); ?>
                      </div>
-                  </div>
+                   </div>
+                 </div>
                </div>
-            </section>
-            
-            <section class="branding">
+             </div>
+           </div>
+           <div class="it-nav-wrapper">
+             <div class="it-header-center-wrapper">
                <div class="container">
-                  <div class="row">
-                     <div class="col-2 col-lg-1">
-                        
-                        <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
-                        $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-                        if ( has_custom_logo() ) {
-                           echo '<img alt="'. esc_html( get_bloginfo( 'name' ) ) .'" class="custom-logo" src="'. esc_url( $logo[0] ) .'">';
-                        } else {
-                           echo '<img alt="'. esc_html( get_bloginfo( 'name' ) ) .'" class="custom-logo" src="'. get_template_directory_uri() . '/img/custom-logo.png' .'">';
-                        } ?>
-                        
-                     	<?php //wppa_the_custom_logo(); ?>
-                     </div>
-                     <div class="col">
-                        <div id="site-title">
-                           <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" rel="home"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a></h1>
-                        </div>
-                        <div id="site-description"><?php bloginfo( 'description' ); ?></div>
-                     </div>
-                     <div class="col-lg-4">
-                        
-                        <div class="container">
-                           <div class="row">
-                              <div class="col menu-social">
-                                 <?php wp_nav_menu( array( 'theme_location' => 'menu-social', 'container' => 'ul', 'menu_class' => 'nav')); ?>
-                              </div>
-                              <div class="w-100 d-none d-lg-block"></div>
-                              <div class="col search-form">
-                                 <?php get_search_form(); ?>
-                              </div>
+                 <div class="row">
+                   <div class="col-12">
+                     <div class="it-header-center-content-wrapper">
+                       <div class="it-brand-wrapper">
+                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" rel="home">
+                           <?php 
+                              $custom_logo_id = get_theme_mod( 'custom_logo' );
+                              $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                              if ( has_custom_logo() ) {
+                                 echo '<img class="icon" src="'. esc_url( $logo[0] ) .'">';
+                              } else {
+                                 echo '<img class="icon" src="'. get_template_directory_uri() . '/img/custom-logo.png' .'">';
+                           } ?>
+                           <div class="it-brand-text">
+                             <h2 class="no_toc"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h2>
+                             <h3 class="no_toc d-none d-md-block"><?php bloginfo( 'description' ); ?></h3>
                            </div>
-                        </div>
-                        
+                         </a>
+                       </div>
+                       <div class="it-right-zone">
+                         <div class="it-socials d-none d-md-flex">
+                           <?php wp_nav_menu( array( 'theme_location' => 'menu-social', 'container' => 'ul', 'menu_class' => 'nav')); ?>
+                         </div>
+                         <div class="it-search-wrapper">
+                           <?php get_search_form(); ?>
+                         </div>
+                       </div>
                      </div>
-                  </div>
+                   </div>
+                 </div>
                </div>
-            </section>
+             </div>
 
-            <nav class="menu-main" role="navigation">
+             <div class="it-header-navbar-wrapper">
+               <nav class="menu-main" role="navigation">
                <div class="container">
-                  <div class="row justify-content-center">
+                 <div class="row">
+                   <div class="col-12">
                      <label for="show-menu-main" class="show-menu-main">Menu</label>
                      <input type="checkbox" id="show-menu-main" role="button">
                      <?php wp_nav_menu(array( 'theme_location' => 'menu-main', 'container' => 'ul', 'menu_class' => 'nav' )); ?>
-                  </div>
-                  <!-- <div class="row">
-                     <?php wp_nav_menu(array( 'theme_location' => 'menu-secondary', 'container' => 'ul', 'menu_class' => 'nav' )); ?>
-                  </div> -->
+                   </div>
+                 </div>
                </div>
-            </nav>
+               </nav>
+             </div>
 
+           </div>
+         </div>
          </header>
 
          <div id="container">
