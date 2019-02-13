@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.18 - Aggiornato widget DesignItalia - Articoli a griglia, fix around
+
 * 0.17 - Migrazione a Bootstrap 1.0.0, fix around
 
 * 0.16 - Aggiornamento Bootstrap, fix around

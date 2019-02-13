@@ -283,7 +283,7 @@ add_action( 'wp_head', 'wppa_customize_css' );
 function wppa_customize_css() { ?>
   <style type="text/css">
     .it-header-center-wrapper, .it-header-navbar-wrapper, .it-header-wrapper { background-color: <?php echo get_theme_mod( 'wppa_head_color', "#0066cc" ); ?>; }
-    a, a:hover { color: <?php echo get_theme_mod('wppa_link_color', "#0066cc"); ?>; }
+    a, a:hover, a.read-more { color: <?php echo get_theme_mod('wppa_link_color', "#0066cc"); ?>; }
     button, input[type="submit"], .btn-primary { background-color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
     .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active { background-color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1); }
     .btn-outline-primary { color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 1px <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
@@ -501,16 +501,16 @@ class Category_Posts extends WP_Widget {
 
     public function __construct() 
     {
-        parent::__construct(
-            'widget_category_posts', 
-            _x( 'DesignItalia - Articoli a griglia', 'DesignItalia - Articoli a griglia' ), 
-            [ 'description' => __( 'Widget che visualizza gli articoli di una categoria selezionata in stile Masonry, a griglia.' ) ] 
-        );
-        $this->alt_option_name = 'widget_category_posts';
+      parent::__construct(
+        'widget_category_posts', 
+        _x( 'DesignItalia - Articoli a griglia', 'DesignItalia - Articoli a griglia' ), 
+        [ 'description' => __( 'Widget che visualizza gli articoli di una categoria selezionata in stile Masonry, a griglia.' ) ] 
+      );
+      $this->alt_option_name = 'widget_category_posts';
 
-        add_action( 'save_post', [$this, 'flush_widget_cache'] );
-        add_action( 'deleted_post', [$this, 'flush_widget_cache'] );
-        add_action( 'switch_theme', [$this, 'flush_widget_cache'] );
+      add_action( 'save_post', [$this, 'flush_widget_cache'] );
+      add_action( 'deleted_post', [$this, 'flush_widget_cache'] );
+      add_action( 'switch_theme', [$this, 'flush_widget_cache'] );
     }
 
     public function widget( $args, $instance ) 
@@ -546,6 +546,8 @@ class Category_Posts extends WP_Widget {
         $random         = $instance['rand'] ? true : false; 
         $excerpt        = $instance['excerpt'] ? true : false; 
         $thumbnail      = $instance['thumbnail'] ? true : false; 
+        $categories     = $instance['categories'] ? true : false; 
+        $date           = $instance['date'] ? true : false; 
 
         /**
          * Filter the arguments for the Category Posts widget.
@@ -593,9 +595,21 @@ class Category_Posts extends WP_Widget {
                       } 
                     ?>
                   <div class="card-body">
-
+                    <div class="category-top">
+                      <!-- <a class="category" href="#">Category</a> -->
+                      <?php if( true === $categories ) { ?> 
+                        <strong>
+                          <?php the_category(', '); ?>
+                        </strong>
+                      <?php } ?>
+                      <?php if( true === $date ) { ?> 
+                        <span class="data">
+                          <?php the_date(); ?>
+                        </span>
+                      <?php } ?>
+                    </div>
                     <header class="entry-header">
-                        <?php the_title( '<h4 class="card-title">', '</h4>' ); ?>
+                      <?php the_title( '<h5 class="card-title big-heading">', '</h5>' ); ?>
                     </header><!-- .entry-header -->
 
                     <?php if( true === $excerpt ) { ?>    
@@ -604,7 +618,7 @@ class Category_Posts extends WP_Widget {
                             <?php the_excerpt(); ?>
                         </div><!-- .entry-summary -->
                     <?php } ?>
-                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="btn btn-primary">Leggi tutto</a>
+                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="read-more">Leggi di pi&ugrave; &nbsp;<i class="it-arrow-right"></i></a>
                   </div>
 
                 </article><!-- #post-## -->
@@ -636,6 +650,8 @@ class Category_Posts extends WP_Widget {
         $instance['rand']           = $new_instance['rand'];
         $instance['excerpt']        = $new_instance['excerpt'];
         $instance['thumbnail']      = $new_instance['thumbnail'];
+        $instance['date']           = $new_instance['date'];
+        $instance['categories']     = $new_instance['categories'];
         $this->flush_widget_cache();
 
         $alloptions = wp_cache_get( 'alloptions', 'options' );
@@ -659,6 +675,8 @@ class Category_Posts extends WP_Widget {
         $random     = isset( $instance['rand'] ) ? $instance['rand'] : false; 
         $excerpt    = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
         $thumbnail  = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
+        $date       = isset( $instance['date'] ) ? $instance['date'] : false; 
+        $categories = isset( $instance['categories'] ) ? $instance['categories'] : false; 
         ?>
 
         <p>
@@ -704,6 +722,18 @@ class Category_Posts extends WP_Widget {
             <?php $checked = ( $thumbnail ) ? ' checked=\"checked\" ' : ''; ?>
             <input type="checkbox" id="<?php echo $this->get_field_id( 'thumbnail' ); ?>" name="<?php echo $this->get_field_name( 'thumbnail' ); ?>" value="true" <?php echo $checked; ?> />    
             <label for="<?php echo $this->get_field_id('thumbnail'); ?>"><?php _e( 'Visualizza le thumbnails degli articoli.' ); ?></label>
+        </p>
+
+        <p>
+            <?php $checked = ( $categories ) ? ' checked=\"checked\" ' : ''; ?>
+            <input type="checkbox" id="<?php echo $this->get_field_id( 'categories' ); ?>" name="<?php echo $this->get_field_name( 'categories' ); ?>" value="true" <?php echo $checked; ?> />    
+            <label for="<?php echo $this->get_field_id('categories'); ?>"><?php _e( 'Visualizza le categorie degli articoli.' ); ?></label>
+        </p>
+
+        <p>
+            <?php $checked = ( $date ) ? ' checked=\"checked\" ' : ''; ?>
+            <input type="checkbox" id="<?php echo $this->get_field_id( 'date' ); ?>" name="<?php echo $this->get_field_name( 'date' ); ?>" value="true" <?php echo $checked; ?> />    
+            <label for="<?php echo $this->get_field_id('date'); ?>"><?php _e( 'Visualizza le date degli articoli.' ); ?></label>
         </p>
 
     <?php
