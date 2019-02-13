@@ -14,9 +14,9 @@
 	                  $custom_logo_id = get_theme_mod( 'custom_logo' );
 	                  $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
 	                  if ( has_custom_logo() ) {
-	                     echo '<img class="icon" src="'. esc_url( $logo[0] ) .'">';
-	                  } else {
-	                     echo '<img class="icon" src="'. get_template_directory_uri() . '/img/custom-logo.png' .'">';
+                       echo '<img class="icon" src="'. esc_url( $logo[0] ) .'" alt="'. esc_html( get_bloginfo( 'name' ) ) .'">';
+                    } else {
+                       echo '<img class="icon" src="'. get_template_directory_uri() . '/img/custom-logo.png' .'" alt="'. esc_html( get_bloginfo( 'name' ) ) .'">';
 	               } ?>
                 <div class="it-brand-text">
                   <h2 class="no_toc"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h2>
