@@ -618,7 +618,7 @@ class Category_Posts extends WP_Widget {
                             <?php the_excerpt(); ?>
                         </div><!-- .entry-summary -->
                     <?php } ?>
-                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="read-more">Leggi di pi&ugrave; &nbsp;<i class="it-arrow-right"></i></a>
+                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="read-more">Leggi di pi&ugrave; &nbsp;<span class="it-arrow-right"></span></a>
                   </div>
 
                 </article><!-- #post-## -->

@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.18
+Version: 0.19
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -212,6 +212,7 @@ ul li li {
 }
 #header {
 	background-color: #06c;
+	color: #fff;
 }
 .branding-up {
 	padding-top: 8px;
@@ -280,6 +281,9 @@ ul li li {
 	background-color: #fff;
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
+}
+.menu-main .nav li ul ul:before {
+	display: none;
 }
 .menu-main .nav li ul a, 
 .menu-main .nav li ul a:hover, 
@@ -356,8 +360,14 @@ ul li li {
 	padding-bottom: 10px;
 	border-top: solid 1px rgba(255, 255, 255, .4);
 }
+.menu-main .nav .menu-item-has-children .menu-item-has-children > a::before {
+	-webkit-transform: rotate(270deg);
+	transform: rotate(270deg);
+	right: 15px;
+	top: 30%;}
 
 /* NAV BAR WITH RESPONSIVE */
+.show-menu-lingua, 
 .show-menu-main {
 	position: relative;
 	text-decoration: none;
@@ -374,10 +384,21 @@ ul li li {
 	left: calc(50% - 45px);
 	top: 28%;
 }
-#show-menu-main[type="checkbox"] {
+.show-menu-lingua {
+	padding: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 50px;
+	font-size: 150%;
+	line-height: 115%;
+}
+#show-menu-main[type="checkbox"], 
+#show-menu-lingua[type="checkbox"] {
 	display: none;
 }
-#show-menu-main[type="checkbox"]:checked ~ .nav {
+#show-menu-main[type="checkbox"]:checked ~ .nav, 
+#show-menu-lingua[type="checkbox"]:checked ~ .nav {
   height: auto;
   opacity: 1;
   overflow: scroll;
@@ -395,27 +416,37 @@ ul li li {
 		max-width: 100%;
 		padding-top: 25%;
 	}
+	#menu-lingua .menu-item-has-children:hover ul, 
   .menu-main .nav .menu-item-has-children:hover ul {
 		position: relative;
 		display: block;
 		top: 0;
 		left: -5px;
   }
+  #menu-lingua {
+  	text-align: right;
+  	margin-top: 30px;
+  }
+  #menu-lingua, 
   .menu-main .nav {
     position: static;
     height: 0;
     opacity: 0;
     overflow: hidden;
   }
+  #menu-lingua li, 
   .menu-main .nav li {
     margin-bottom: 1px;
   }
+  #menu-lingua li, #menu-lingua li a, 
   .menu-main .nav li, .menu-main .nav li a {
     width: 100%;
   }
+  .show-menu-lingua, 
   .show-menu-main {
     display:block;
   }
+  #menu-lingua .menu-item-has-children > a::before, 
   .menu-main .nav .menu-item-has-children > a::before {
     right: 25px;
   }
@@ -607,6 +638,7 @@ ul.page-numbers {
 
 #footer {
 	background-color: #004080;
+	color: #fff;
 }
 #footer .disable a {
 	color: inherit;

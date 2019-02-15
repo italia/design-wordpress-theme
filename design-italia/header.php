@@ -19,6 +19,8 @@
                         <img class="header-slim-img" alt="" src="<?php header_image(); ?>">
                      <!-- </a> -->
                      <div class="header-slim-right-zone">
+                        <label for="show-menu-lingua" class="show-menu-lingua">&#8942;</label>
+                        <input type="checkbox" id="show-menu-lingua" role="button">
                         <?php wp_nav_menu(array( 'theme_location' => 'menu-language', 'container' => 'ul', 'menu_class' => 'nav float-right' )); ?>
                      </div>
                    </div>
