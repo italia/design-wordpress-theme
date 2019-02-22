@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700');
+@import url("block-default/block-button.css");
+@import url("block-default/block-table.css");
+@import url("block-default/block-image.css");
+@import url("block-default/block-cover.css");
+@import url("block-default/block-paragraph.css");
+@import url("block-default/block-title.css");
+@import url("block-default/block-list.css");
+@import url("block-default/block-quote.css");
+@import url("block-default/block-quotehigh.css");
+@import url("block-default/block-gallery.css");
+@import url("block-default/block-pagebreak.css");
+@import url("block-default/block-separator.css");
+@import url("block-default/block-archive.css");
+@import url("block-default/block-lastpost.css");
+@import url("block-default/block-category.css");
+@import url("block-default/block-mediatext.css");
+
+
+.editor-post-title__block .editor-post-title__input, 
+.editor-styles-wrapper {
+	font-family: "Titillium Web", Geneva, Tahoma, sans-serif !important;
+}
+.editor-post-title__block .editor-post-title__input {
+	font-size: 2.666rem;
+	letter-spacing: -1.3px;
+	line-height: 1.25;
+	font-weight: 700;
+}
+
+.entry-content .alignwide {
+	/* margin-left  : -80px;
+	margin-right : -80px; */
+	width: 100%;
+}
+.entry-content .alignfull {
+	/* margin-left: calc( -100vw/2 + 100%/2 );
+	margin-right: calc( -100vw/2 + 100%/2 );
+	min-width: 100vw;
+	width: 100vw; */
+	margin-left: calc( -100vw/2 + 100%/2 );
+	margin-right: calc( -99vw/2 + 101%/2 );
+	min-width: 99vw;
+}
+/*.alignfull img {
+	width: 100vw;
+}*/
+
+.edit-post-visual-editor .editor-post-title__block,
+.edit-post-visual-editor .editor-block-list__block:not([data-align=full]):not([data-align=wide]) {
+max-width: 1024px;
+}
+
+[class*="blu-background"] {
+	background-color: #004d99;
+}
+[class*="grigioscuro-background"] {
+	background-color: #3d4955;
+}
+[class*="bluscuro-background"] {
+	background-color: #17324d;
+}
+[class*="azzurro-background"] {
+	background-color: #0073e6;
+}
+[class*="grigio-background"] {
+	background-color: #5c6f82;
+}
+[class*="grigiochiaro-background"] {
+	background-color: #94a1ae;
+}
+[class*="verde-background"] {
+	background-color: #00cc85;
+}
+[class*="rosso-background"] {
+	background-color: #f73e5a;
+}
+[class*="arancione-background"] {
+	background-color: #ff9900;
+}
+[class*="argento-background"] {
+	background-color: #eef0f6;
+}
+[class*="bianco-background"] {
+	background-color: #ffffff;
+}
+
+[class*="blu-color"] {
+	color: #004d99;
+}
+[class*="grigioscuro-color"] {
+	color: #3d4955;
+}
+[class*="bluscuro-color"] {
+	color: #17324d;
+}
+[class*="azzurro-color"] {
+	color: #0073e6;
+}
+[class*="grigio-color"] {
+	color: #5c6f82;
+}
+[class*="grigiochiaro-color"] {
+	color: #94a1ae;
+}
+[class*="verde-color"] {
+	color: #00cc85;
+}
+[class*="rosso-color"] {
+	color: #f73e5a;
+}
+[class*="arancione-color"] {
+	color: #ff9900;
+}
+[class*="argento-color"] {
+	color: #eef0f6;
+}
+[class*="bianco-color"] {
+	color: #ffffff;
+}

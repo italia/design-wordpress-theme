@@ -1,0 +1,27 @@
+/*.wp-block-quote a, 
+.wp-block-quote a:hover {
+	color: inherit;
+	text-decoration: underline;
+}*/
+.wp-block-quote.is-style-default {
+	border-left: solid 4px;
+	padding-left: 30px;
+}
+.wp-block-quote.is-style-large p {
+	margin-bottom: 0;
+}
+.wp-block-quote.is-style-large cite {
+	color: #656566;
+	font-size: .777rem;
+}
+.wp-block-quote.is-style-large {
+	font-size: 1.25rem;
+	margin: 1.5rem 0;
+}
+.wp-block-quote.is-style-large p, 
+.wp-block-quote.is-style-large cite {
+	font-style: normal;
+}
+.wp-block-quote.is-style-large cite::before {
+    content: "\2014\00A0";
+}

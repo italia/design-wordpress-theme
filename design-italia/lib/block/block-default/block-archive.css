@@ -1,0 +1,106 @@
+.wp-block-categories__list, 
+.wp-block-archives.wp-block-archives-list {
+	padding: 0 15px;
+}
+.wp-block-categories__list li, 
+.wp-block-archives.wp-block-archives-list li {
+	position: relative;
+	list-style: none;
+	padding: 20px;
+	border-bottom: 1px solid #c5c7c9;
+	margin: -1px 0 0 0;
+	align-items: center;
+	text-align: right;
+	z-index: 0;
+	color: #5b6f82;
+	font-size: 12px;
+	letter-spacing: .5px;
+	line-height: 1rem;
+}
+.wp-block-categories__list li ul, 
+.wp-block-categories__list li li, 
+.wp-block-archives.wp-block-archives-list li ul, 
+.wp-block-archives.wp-block-archives-list li li {
+	padding: 0;
+	border: none;
+	margin: 10px 0 0 5px;
+}
+.wp-block-archives.wp-block-archives-list li:hover {
+	border-bottom-color: #fff;
+	box-shadow: 0 2px 20px 0 rgba(0,0,0,.1);
+	background-color: #fff;
+	color: #207bd6;
+	text-decoration: none;
+	z-index: 1;
+}
+.wp-block-archives.wp-block-archives-list li li:hover {
+	box-shadow: none;
+}
+.wp-block-categories__list li a, 
+.wp-block-archives.wp-block-archives-list li a {
+	float: left;
+	text-align: right;
+	font-size: 1rem;
+	font-weight: 600;
+	display: block;
+}
+
+.wp-block-archives.wp-block-archives-dropdown {
+	position: relative;
+	/* padding-top: 20px; */
+}
+.wp-block-archives.wp-block-archives-dropdown:after {
+	content: "";
+	position: absolute;
+	left: 15px;
+	bottom: 20px;
+	speak: none;
+	vertical-align: bottom;
+	width: auto;
+	height: auto;
+	border-top: .3em solid;
+	border-right: .3em solid transparent;
+	border-bottom: 0;
+	border-left: .3em solid transparent;
+}
+/* .wp-block-archives.wp-block-archives-dropdown .screen-reader-text {
+	clip: auto;
+	overflow: auto;
+	height: auto;
+	width: auto;
+	top: -2px;
+	left: 15px;
+	color: #435a70;
+	font-size: .77778rem;
+	font-weight: 600;
+  clip-path: none;
+  z-index: 1;
+} */
+
+.wp-block-archives.wp-block-archives-dropdown select {
+	cursor: pointer;
+	min-height: 45px;
+	width: auto;
+  padding: 8px 8px 8px 40px;
+  font-size: 18px;
+	color: #435a70;
+	border: none;
+  border-radius: 0;
+  box-shadow: 0px 1px 0px 0px;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* CAUTION: IE hackery ahead */
+.wp-block-archives.wp-block-archives-dropdown select::-ms-expand { 
+  display: none; /* remove default arrow in IE 10 and 11 */
+}
+/* target Internet Explorer 9 to undo the custom arrow */
+@media screen and (min-width:0\0) {
+	.wp-block-archives.wp-block-archives-dropdown select {
+		background:none\9;
+		padding: 5px\9;
+	}
+}

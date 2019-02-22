@@ -1,0 +1,15 @@
+.wp-block-table td, 
+.wp-block-table th {
+	padding: 1em;
+	text-align: left;
+	border: 1px solid #d6dce3;
+}
+.wp-block-table.is-style-stripes td,
+.wp-block-table.is-style-stripes th {
+  border: none;
+	border-bottom: 1px solid #d6dce3;
+}
+.wp-block-table tr:hover, 
+.wp-block-table.is-style-stripes tr:nth-child(odd):hover {
+	background-color: #e5f1fa;
+}

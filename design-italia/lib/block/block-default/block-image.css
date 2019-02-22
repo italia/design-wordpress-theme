@@ -1,0 +1,10 @@
+.wp-block-image img {
+	border-radius: 4px;
+}
+.wp-block-image a img:hover {
+	box-shadow: 0 0 0 4px #e5f1fa;
+}
+.wp-block-image figcaption {
+	font-size: 90%;
+	color: #656566;
+}

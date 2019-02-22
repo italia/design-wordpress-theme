@@ -1,0 +1,8 @@
+.wp-block-separator.is-style-wide, 
+.wp-block-separator.is-style-default {
+	margin: 2rem auto;
+}
+.wp-block-separator.is-style-default {
+	border: solid 1px;
+	width: 20%;
+}

@@ -1,0 +1,63 @@
+.wp-block-latest-posts {
+	padding: 0 15px;
+}
+.wp-block-latest-posts li {
+	position: relative;
+	list-style: none;
+	padding: 20px;
+	border-bottom: 1px solid #c5c7c9;
+	margin: -1px 0 0 0;
+	align-items: center;
+	z-index: 0;
+}
+.wp-block-latest-posts li:hover {
+	border-bottom-color: #fff;
+	box-shadow: 0 2px 20px 0 rgba(0,0,0,.1);
+	background-color: #fff;
+	color: #207bd6;
+	text-decoration: none;
+	z-index: 1;
+}    
+.wp-block-latest-posts li a {
+	font-size: 1rem;
+	font-weight: 600;
+	display: block;
+}
+.wp-block-latest-posts__post-date {
+	color: #5b6f82;
+	font-size: 12px;
+	letter-spacing: .5px;
+}
+
+.wp-block-latest-posts.is-grid li {
+	padding: 24px 24px 48px 24px;
+	border-right: 1px solid #d9dadb;
+	border-bottom: none;
+	margin-bottom: 36px;
+}
+.wp-block-latest-posts.is-grid li:hover {
+	border-right: none;
+}
+.wp-block-latest-posts.is-grid li a {
+	line-height: 1.44444rem;
+	font-weight: 700;
+	margin-bottom: 16px;
+}
+.wp-block-latest-posts.is-grid li:after {
+	content: '';
+	height: 1px;
+	width: 128px;
+	background: #d9dadb;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 24px;
+}
+.wp-block-latest-posts.is-grid li:hover:after {
+	height: 0px;
+}
+
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-date {
+	font-family: Lora,Georgia,serif;
+	line-height: 1.2rem;
+}

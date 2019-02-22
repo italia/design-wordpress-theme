@@ -1,0 +1,12 @@
+.wp-block-gallery .blocks-gallery-image figcaption, 
+.wp-block-gallery .blocks-gallery-item figcaption {
+	background: rgba(23,50,77,.85);
+	padding: 16px 24px;
+	font-size: 1rem;
+	font-weight: 600;
+	text-align: left;
+}
+.wp-block-gallery.is-cropped .blocks-gallery-image img, 
+.wp-block-gallery.is-cropped .blocks-gallery-item img {
+	border-radius: 4px;
+}

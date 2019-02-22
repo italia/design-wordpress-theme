@@ -1,0 +1,8 @@
+.wp-block-media-text>figure>img, 
+.wp-block-media-text>figure>video {
+	border-radius: 4px;
+}
+.wp-block-media-text>figure>figcaption {
+	font-size: 90%;
+	color: #656566;
+}

@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.19
+Version: 0.20
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -18,6 +18,8 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licenses/.
 */
+
+@import url("lib/block/block.css");
 
 /* WordPress WYSIWYG Editor Styles */
 .entry-content {
@@ -622,6 +624,15 @@ ul.page-numbers {
 .widget_category_mansory .card img {
 	margin: 0;
 }
+.widget_category_mansory .card.card-bg {
+	overflow: hidden;
+	margin-bottom: 15px;
+	border-radius: 4px;
+	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.1);
+	-moz-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.1);
+	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.1);
+	border: 1px solid #eceff1;
+}
  
 .widget_widget_single_post .novita-testo, 
 .widget_widget_single_post .novita-foto {
@@ -943,6 +954,7 @@ nav-tabs:after {
 }
 .it-footer .searchform input[type="text"], 
 .it-header-wrapper .searchform input[type="text"] {
+	color: #fff;
 	box-shadow: inset 0 -1px 0px #fff;
 	background: transparent;
 }

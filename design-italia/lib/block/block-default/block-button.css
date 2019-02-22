@@ -1,0 +1,21 @@
+.wp-block-button__link {
+	background-color: #004d99;
+	padding: 12px 36px;
+	font-size: 16px;
+	white-space: initial;
+  border-radius: 10rem;
+  line-height: 1.5;
+}
+.wp-block-button__link:hover {
+	text-decoration: none;
+	box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.15);
+}
+.is-style-outline .wp-block-button__link {
+	padding: 12px 24px;
+  border-radius: 4px;
+	background: transparent !important;
+}
+.is-style-squared .wp-block-button__link {
+	padding: 12px 24px;
+  border-radius: 4px;
+}

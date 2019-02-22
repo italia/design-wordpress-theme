@@ -1,0 +1,20 @@
+.wp-block-pullquote.is-style-default blockquote,
+.wp-block-pullquote.is-style-solid-color blockquote {
+	margin: 0px 40% 0px 30px;
+}
+.wp-block-pullquote.is-style-default.alignfull blockquote,
+.wp-block-pullquote.is-style-solid-color.alignfull blockquote {
+	margin: 0px 15%;
+}
+.wp-block-pullquote.is-style-default blockquote p, 
+.wp-block-pullquote.is-style-solid-color blockquote p {
+	font-family: "Titillium Web", Geneva, Tahoma, sans-serif;
+  font-size: 2.66667rem;
+  line-height: 1.25;
+	font-weight: 700;
+  margin-bottom: 24px;
+}
+.wp-block-pullquote.is-style-default {
+	border-top: solid 4px;
+	border-bottom: solid 4px;
+}

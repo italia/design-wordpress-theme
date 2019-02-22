@@ -283,7 +283,7 @@ add_action( 'wp_head', 'wppa_customize_css' );
 function wppa_customize_css() { ?>
   <style type="text/css">
     .it-header-center-wrapper, .it-header-navbar-wrapper, .it-header-wrapper { background-color: <?php echo get_theme_mod( 'wppa_head_color', "#0066cc" ); ?>; }
-    a, a:hover, a.read-more { color: <?php echo get_theme_mod('wppa_link_color', "#0066cc"); ?>; }
+    a, a:hover, a.read-more, .menu-main .nav li ul a, .menu-main .nav li ul a:hover, .menu-main .nav li:hover ul a { color: <?php echo get_theme_mod('wppa_link_color', "#0066cc"); ?>; }
     button, input[type="submit"], .btn-primary { background-color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
     .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active { background-color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1); }
     .btn-outline-primary { color: <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; box-shadow: inset 0 0 0 1px <?php echo get_theme_mod( 'wppa_link_color', "#0066cc" ); ?>; }
@@ -358,6 +358,106 @@ if ( !function_exists( 'wppa_pagination' ) ) {
 }
 
 
+/* *** JUST FOR GUTENBERG ***  */
+
+/* Enqueue WordPress theme styles within Gutenberg. */
+function wppa_gutenberg_styles() {
+	 wp_enqueue_style( 'wppa-gutenberg', get_template_directory_uri() . '/lib/block/block.css', false, '@@pkg.version', 'all' );
+	 // wp_enqueue_style( 'wppa-gutenberg-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.25.2/dist/css/bootstrap-italia.min.css', false, '@@pkg.version', 'all' );
+}
+add_action( 'enqueue_block_editor_assets', 'wppa_gutenberg_styles' );
+
+/* Register support for Gutenberg wide images in your theme */
+function wppa_setup_theme() {
+  add_theme_support( 'align-wide' );
+}
+add_action( 'after_setup_theme', 'wppa_setup_theme' );
+
+function wppa_setup_theme_supported_features() {
+    add_theme_support( 'editor-color-palette', array(
+			array(
+				'name'  => __( 'Blu', 'themeLangDomain' ),
+				'slug' => 'blu',
+				'color' => '#004d99',
+			),
+			array(
+				'name'  => __( 'Grigio scuro', 'themeLangDomain' ),
+				'slug' => 'grigioscuro',
+				'color' => '#3d4955',
+			),
+			array(
+				'name'  => __( 'Blu scuro', 'themeLangDomain' ),
+				'slug' => 'bluscuro',
+				'color' => '#17324d',
+			),
+			array(
+				'name'  => __( 'Azzurro', 'themeLangDomain' ),
+				'slug' => 'azzurro',
+				'color' => '#0073e6',
+			),
+			array(
+				'name'  => __( 'Grigio', 'themeLangDomain' ),
+				'slug' => 'grigio',
+				'color' => '#5c6f82',
+			),
+			array(
+				'name'  => __( 'Grigio chiaro', 'themeLangDomain' ),
+				'slug' => 'grigiochiaro',
+				'color' => '#94a1ae',
+			),
+			array(
+				'name'  => __( 'Verde', 'themeLangDomain' ),
+				'slug' => 'verde',
+				'color' => '#00cc85',
+			),
+			array(
+				'name'  => __( 'Rosso', 'themeLangDomain' ),
+				'slug' => 'rosso',
+				'color' => '#f73e5a',
+			),
+			array(
+				'name'  => __( 'Arancione', 'themeLangDomain' ),
+				'slug' => 'arancione',
+				'color' => '#ff9900',
+			),
+			array(
+				'name'  => __( 'Argento', 'themeLangDomain' ),
+				'slug' => 'argento',
+				'color' => '#eef0f6',
+			),
+			array(
+				'name'  => __( 'Bianco', 'themeLangDomain' ),
+				'slug' => 'bianco',
+				'color' => '#ffffff',
+			)
+		)
+	);
+}
+add_action( 'after_setup_theme', 'wppa_setup_theme_supported_features' );
+
+add_theme_support( 'editor-font-sizes', array(
+    array(
+      'name' => __( 'Piccolo', 'themeLangDomain' ),
+      'size' => 14,
+      'slug' => 'small'
+    ),
+    array(
+      'name' => __( 'Normale', 'themeLangDomain' ),
+      'size' => 18,
+      'slug' => 'normal'
+    ),
+    array(
+      'name' => __( 'Medio', 'themeLangDomain' ),
+      'size' => 22,
+      'slug' => 'medium'
+    ),
+    array(
+      'name' => __( 'Grande', 'themeLangDomain' ),
+      'size' => 32,
+      'slug' => 'big'
+    )
+) );
+
 
 /*
   LIBS @/lib
@@ -401,85 +501,6 @@ function wppa_register_required_plugins() {
 	);
 	tgmpa( $plugins, $config );
 }
-
-function wppa_italia_buttons_1($buttons) {
-    array_unshift($buttons, 'styleselect');
-    return $buttons;
-}
-add_filter('mce_buttons_2', 'wppa_italia_buttons_1');
-
-/*
-* Callback function to filter the MCE settings
-*/
- 
-function my_mce_before_init_insert_formats( $init_array ) {  
- 
-// Define the style_formats array
- 
-    $style_formats = array(  
-        array(  
-          'title' => 'Bottone principale',  
-          'block' => 'a',
-          'classes' => 'btn btn-primary',
-          'attributes' => array(
-            'href' => '#',
-          ),
-          'wrapper' => true,
-        ),  
-        array(  
-          'title' => 'Bottone secondario',  
-          'block' => 'a',
-          'classes' => 'btn btn-secondary',
-          'attributes' => array(
-            'href' => '#',
-          ),
-          'wrapper' => true,
-        ),
-        array(  
-          'title' => 'Bottone verde',  
-          'block' => 'a',
-          'classes' => 'btn btn-success',
-          'attributes' => array(
-            'href' => '#',
-          ),
-          'wrapper' => true,
-        ),
-        array(  
-          'title' => 'Bottone rosso',  
-          'block' => 'a',
-          'classes' => 'btn btn-danger',
-          'attributes' => array(
-            'href' => '#',
-          ),
-          'wrapper' => true,
-        ),
-        array(  
-          'title' => 'Bottone giallo',  
-          'block' => 'a',
-          'classes' => 'btn btn-warning',
-          'attributes' => array(
-            'href' => '#',
-          ),
-          'wrapper' => true,
-        ),
-        array(
-          'title' => 'Bottone piatto',  
-          'block' => 'a',
-          'classes' => 'btn btn-link',
-          'attributes' => array(
-            'href' => '#',
-          ),
-          'wrapper' => true,
-        ),
-    );  
-    // Insert the array, JSON ENCODED, into 'style_formats'
-    $init_array['style_formats'] = json_encode( $style_formats );  
-     
-    return $init_array;  
-   
-} 
-// Attach callback to 'tiny_mce_before_init' 
-add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
 
 /* 
   
@@ -548,6 +569,7 @@ class Category_Posts extends WP_Widget {
         $thumbnail      = $instance['thumbnail'] ? true : false; 
         $categories     = $instance['categories'] ? true : false; 
         $date           = $instance['date'] ? true : false; 
+        $shadow         = $instance['shadow'] ? true : false; 
 
         /**
          * Filter the arguments for the Category Posts widget.
@@ -582,7 +604,13 @@ class Category_Posts extends WP_Widget {
             while( $q->have_posts() ) {
                 $q->the_post(); ?>
 
-                <article id="post-<?php the_ID(); ?>" <?php post_class('card'); ?> > 
+                    <?php if( true === $shadow ) { ?>
+                      <article id="post-<?php the_ID(); ?>" <?php post_class('card card-bg'); ?> >
+                    <?php } else { ?>
+                      <article id="post-<?php the_ID(); ?>" <?php post_class('card'); ?> >
+                    <?php } ?>
+
+
                     <?php 
                     if ( has_post_thumbnail() && true === $thumbnail ) { ?>
 
@@ -651,6 +679,7 @@ class Category_Posts extends WP_Widget {
         $instance['excerpt']        = $new_instance['excerpt'];
         $instance['thumbnail']      = $new_instance['thumbnail'];
         $instance['date']           = $new_instance['date'];
+        $instance['shadow']           = $new_instance['shadow'];
         $instance['categories']     = $new_instance['categories'];
         $this->flush_widget_cache();
 
@@ -676,6 +705,7 @@ class Category_Posts extends WP_Widget {
         $excerpt    = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
         $thumbnail  = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
         $date       = isset( $instance['date'] ) ? $instance['date'] : false; 
+        $shadow     = isset( $instance['shadow'] ) ? $instance['shadow'] : false; 
         $categories = isset( $instance['categories'] ) ? $instance['categories'] : false; 
         ?>
 
@@ -734,6 +764,12 @@ class Category_Posts extends WP_Widget {
             <?php $checked = ( $date ) ? ' checked=\"checked\" ' : ''; ?>
             <input type="checkbox" id="<?php echo $this->get_field_id( 'date' ); ?>" name="<?php echo $this->get_field_name( 'date' ); ?>" value="true" <?php echo $checked; ?> />    
             <label for="<?php echo $this->get_field_id('date'); ?>"><?php _e( 'Visualizza le date degli articoli.' ); ?></label>
+        </p>
+
+        <p>
+            <?php $checked = ( $shadow ) ? ' checked=\"checked\" ' : ''; ?>
+            <input type="checkbox" id="<?php echo $this->get_field_id( 'shadow' ); ?>" name="<?php echo $this->get_field_name( 'shadow' ); ?>" value="true" <?php echo $checked; ?> />    
+            <label for="<?php echo $this->get_field_id('shadow'); ?>"><?php _e( 'Visualizza l\'ombra delle schede.' ); ?></label>
         </p>
 
     <?php
