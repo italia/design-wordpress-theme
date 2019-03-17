@@ -11,7 +11,9 @@ function wppa_setup()	{
   /* ADD BIG 4:3 THUMBS */
   if ( function_exists( 'add_theme_support' ) ) { 
     add_theme_support( 'post-thumbnails' );
-    add_image_size( 'large-thumb', 640, 480, true); // name, width, height, crop 
+    add_image_size( 'large-thumb', 640, 480, true);
+    add_image_size( 'mansory-thumb', 600, 350, true);
+    add_image_size( 'single-alignfull-thumb', 1280, 350, true );
     add_filter('image_size_names_choose', 'my_image_sizes');
   }
   function my_image_sizes($sizes) {
@@ -278,6 +280,52 @@ function wppa_customizer_options( $wp_customize ) {
   ) ) );
 
 }
+
+
+function add_opengraph_doctype($output) {
+    return $output . '
+    xmlns="https://www.w3.org/1999/xhtml"
+    xmlns:og="https://ogp.me/ns#" 
+    xmlns:fb="http://www.facebook.com/2008/fbml"';
+}
+add_filter('language_attributes', 'add_opengraph_doctype');
+
+add_action('wp_head', 'wppa_opengraph');
+function wppa_opengraph() {
+
+  if( is_single() || is_page() ) {
+
+    $post_id = get_queried_object_id();
+
+    $url = get_permalink($post_id);
+    $title = get_the_title($post_id);
+    $site_name = get_bloginfo('name');
+
+    $description = wp_trim_words( get_post_field('post_content', $post_id), 25 );
+
+    $image = get_the_post_thumbnail_url($post_id);
+    if( !empty( get_post_meta($post_id, 'og_image', true) ) ) $image = get_post_meta($post_id, 'og_image', true);
+
+    $locale = get_locale();
+
+    echo '<meta property="og:locale" content="' . esc_attr($locale) . '" />';
+    echo '<meta property="og:type" content="article" />';
+    echo '<meta property="og:title" content="' . esc_attr($title) . ' | ' . esc_attr($site_name) . '" />';
+    echo '<meta property="og:description" content="' . esc_attr($description) . '" />';
+    echo '<meta property="og:url" content="' . esc_url($url) . '" />';
+    echo '<meta property="og:site_name" content="' . esc_attr($site_name) . '" />';
+
+    if($image) echo '<meta property="og:image" content="' . esc_url($image) . '" />';
+
+    // Twitter Card
+    echo '<meta name="twitter:card" content="summary_large_image" />';
+    echo '<meta name="twitter:site" content="@francecarlucci" />';
+    echo '<meta name="twitter:creator" content="@francecarlucci" />';
+
+  }
+
+}
+
 
 add_action( 'wp_head', 'wppa_customize_css' );
 function wppa_customize_css() { ?>
@@ -616,7 +664,10 @@ class Category_Posts extends WP_Widget {
 
                     <div class="card-img-top">
                       <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                        <?php the_post_thumbnail( 'large' ); ?>
+                        <?php 
+            							the_post_thumbnail('mansory-thumb', array('class' => 'img-fluid')); 
+                          // the_post_thumbnail( 'large' ); 
+                        ?>
                       </a>
                     </div><!--/.post-thumbnail-->
                     <?php   

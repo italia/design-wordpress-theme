@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.20
+Version: 0.21
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -104,29 +104,45 @@ a img.aligncenter {
 .gallery-caption {}
 
 .post-edit-link {
-	position: absolute;
-	z-index: 999;
-	left: auto;
-	right: 15px;
-	bottom: auto;
-	top: 15px;
-	margin: 0 auto;
-	padding: 10px 30px;
+	margin: 0;
+	padding: 5px 15px;
 	border-radius: 50px;
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 80%;
+	font-size: .666em;
+	line-height: 3em;
 	font-weight: 600;
 	background-color: #c00;
 	transition: all .3s ease-in-out;
 }
+.post-edit-link:before {
+	content: '\270E';
+	font-size: 18px;
+	margin-right: 7px;
+}
+
+
 .post-edit-link:hover {
 	color: #ffffff;
 	text-decoration: none;
 	background-color: #f00;
 	box-shadow: 0 2px 30px rgba(0, 0, 0, .3);
+}
+
+
+@media print {
+	html {
+		background: transparent;
+	}
+	#footer, 
+	.nav, 
+	.condividi, 
+	.it-right-zone,
+	.post-edit-link {
+		display: none !important;
+	}
 }
 
 /* CUSTOM STYLE */
@@ -244,7 +260,8 @@ ul li li {
 }
 .nav li a {
 	color: #fff;
-	font-weight: 400;
+	font-weight: 600;
+	font-size: .889em;
 }
 .branding-up .nav li {
 	padding: 0 10px;
@@ -341,10 +358,10 @@ ul li li {
 .menu-main .nav .menu-item-has-children > a::before {
 	content: '\e818';
 	font-family: italia-icon-font;
-	font-size: 12px;
+	font-size: 11px;
 	position: absolute;
   right: 15px;
-  top: 40%;
+  top: 37%;
 }
 .menu-main .nav ul .menu-item-has-children > a::before {
   right: 2px;
@@ -418,29 +435,30 @@ ul li li {
 		max-width: 100%;
 		padding-top: 25%;
 	}
-	#menu-lingua .menu-item-has-children:hover ul, 
+	.header-slim-right-zone .nav .menu-item-has-children:hover ul, 
   .menu-main .nav .menu-item-has-children:hover ul {
 		position: relative;
 		display: block;
 		top: 0;
 		left: -5px;
   }
-  #menu-lingua {
+  .header-slim-right-zone .nav {
   	text-align: right;
   	margin-top: 30px;
   }
-  #menu-lingua, 
+  .header-slim-right-zone .nav, 
   .menu-main .nav {
     position: static;
+    width: 100%;
     height: 0;
     opacity: 0;
     overflow: hidden;
   }
-  #menu-lingua li, 
+  .header-slim-right-zone .nav li, 
   .menu-main .nav li {
     margin-bottom: 1px;
   }
-  #menu-lingua li, #menu-lingua li a, 
+  .header-slim-right-zone .nav li, .header-slim-right-zone .nav li a, 
   .menu-main .nav li, .menu-main .nav li a {
     width: 100%;
   }
@@ -448,7 +466,7 @@ ul li li {
   .show-menu-main {
     display:block;
   }
-  #menu-lingua .menu-item-has-children > a::before, 
+  .header-slim-right-zone .nav .menu-item-has-children > a::before, 
   .menu-main .nav .menu-item-has-children > a::before {
     right: 25px;
   }
@@ -458,12 +476,18 @@ ul li li {
 	min-height: 57px;
 }
 
+
+
+
+
 .breadcrumb {
+	padding-left: 0;
+	padding-right: 0;
 	margin-top: 30px;
-	background-color: #f6f6f6;
 }
 .breadcrumb-item {
-	max-width: 300px;
+	font-size: 90%;
+	max-width: 200px;
 	overflow: hidden;
 	white-space: nowrap;
 	overflow-wrap: break-word;
@@ -472,6 +496,9 @@ ul li li {
 .breadcrumb-item a {
 	font-weight: 600;
 }
+
+
+
 
 ul.page-numbers {
 	width: 100%;
@@ -929,6 +956,14 @@ nav-tabs:after {
     font-size: .889em;
     line-height: 2.3em;
 }
+@media screen and (max-width: 767px) {
+	.header-slim-img {
+		position: absolute;
+	}
+	.header-slim-right-zone {
+		width: 100%;
+	}
+}
 
 .it-footer .searchform:after, 
 .it-header-wrapper .searchform:after {
@@ -986,4 +1021,123 @@ nav-tabs:after {
 .it-footer-small-prints {
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+
+.titolo-sezione h2 {
+	font-size: 2.222em;
+	margin: 0;
+	letter-spacing: 0;
+}
+#articolo-dettaglio-testo p {
+	font-family: 'Lora',serif;
+}
+#articolo-dettaglio-testo .thumbnail {
+	margin-bottom: 0;
+	border-bottom: solid 1px #e5e5e5;
+}
+#articolo-dettaglio-testo .thumbnail img {
+	margin-bottom: 1rem;
+}
+#articolo-dettaglio-testo .thumbnail .dida {
+	text-align: center;
+	color: #19191a;
+	font-family: "Titillium Web", Geneva, Tahoma, sans-serif;
+	font-size: .778em;
+}
+#articolo-dettaglio-testo #sidebar {
+	position: relative;
+}
+#articolo-dettaglio-testo #sidebar:after {
+	content: ' ';
+	position: absolute;
+	top: -30px;
+	bottom: -30px;
+	right: -15px;
+	left: auto;
+	border-right: solid 1px #e5e5e5;
+}
+#articolo-dettaglio-testo #sidebar .widget-title {
+	position: relative;
+	font-size: .8888rem;
+	font-weight: 600;
+	padding-bottom: 15px;
+	margin: 30px 0;
+}
+#articolo-dettaglio-testo #sidebar .widget-title:after, 
+#articolo-dettaglio-testo #sidebar .widget-title:before {
+	content: ' ';
+	position: absolute;
+	z-index: 1;
+	bottom: -4px;
+	top: auto;
+	left: -15px;
+	right: auto;
+	height: 4px;
+	width: 15%;
+	background-color: #666;
+	border-radius: 100px;
+}
+#articolo-dettaglio-testo #sidebar .widget-title:after {
+	z-index: 0;
+	left: 15px;
+	right: 0;
+	width: 100%;
+	background-color: #ddd;
+	border-radius: 0;
+}
+#articolo-dettaglio-testo .widget-area {
+	padding-top: 0;
+}
+#articolo-dettaglio-testo .widget-area .widget-container {
+	padding-left: 15px;
+}
+#articolo-dettaglio-testo .widget-area li {
+	padding: 5px 0;
+	border: none;
+}
+#articolo-dettaglio-testo .widget-area li a {
+	font-size: .8888rem;
+}
+#articolo-dettaglio-meta {
+	background-color: #eee;
+}
+
+.argomenti a {
+	display: inline-block;
+	border: 2px solid;
+	margin: 0 8px 12px 0;
+	font-size: .889em;
+	font-weight: 600;
+  padding: 0 .6em;
+  border-radius: 10rem;
+}
+.argomenti a:hover {
+	text-decoration: none;
+	box-shadow: inset 0 0 1000px rgba(0, 0, 0, .1);
+}
+
+.menu-moreaction {
+	padding-left: 15px;
+	font-size: 90%;
+}
+.show-menu-moreaction {
+	cursor: pointer;
+}
+#show-menu-moreaction[type="checkbox"] {
+	display: none;
+}
+#show-menu-moreaction[type="checkbox"] ~ .menu-moreaction {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+#show-menu-moreaction[type="checkbox"]:checked ~ .menu-moreaction {
+  height: auto;
+  opacity: 1;
+  overflow: scroll;
+  -webkit-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }

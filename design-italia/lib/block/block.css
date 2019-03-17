@@ -34,13 +34,10 @@
 	width: 100%;
 }
 .entry-content .alignfull {
-	/* margin-left: calc( -100vw/2 + 100%/2 );
-	margin-right: calc( -100vw/2 + 100%/2 );
-	min-width: 100vw;
-	width: 100vw; */
 	margin-left: calc( -100vw/2 + 100%/2 );
-	margin-right: calc( -99vw/2 + 101%/2 );
-	min-width: 99vw;
+	margin-right: calc( -100vw/2 + 50%/2 );
+	min-width: 100vw;
+	width: 100vw;
 }
 /*.alignfull img {
 	width: 100vw;

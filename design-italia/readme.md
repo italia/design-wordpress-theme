@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.21 - Aggiunto template post Design Italia Comuni, fix nav, fix around
+
 * 0.20 - Supporto all'editor Gutenberg, aggiornato widget DesignItalia - Articoli a griglia, fix around
 
 * 0.19 - Fix nav e fix around
