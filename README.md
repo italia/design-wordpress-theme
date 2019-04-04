@@ -1,4 +1,4 @@
-# ![developers.italia](https://docs.developers.italia.it/assets/icons/favicon-32x32.png "developers.italia") Design Italia
+# ![developers.italia](https://avatars1.githubusercontent.com/u/15377824?s=36&v=4 "developers.italia") Design Italia
 ## Tema di WordPress per la Pubblica Amministrazione 
 
 
