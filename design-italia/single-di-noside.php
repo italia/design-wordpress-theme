@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: DI - Articolo con sidebar
+ * Template Name: DI - Articolo senza sidebar
  * Template Post Type: post, product
  */
  
@@ -17,7 +17,7 @@
 	    </div>
 	  </div>
 	</section>
-	
+
 	<section class="container">
 		<?php get_template_part( 'entry-di-head' ); ?>
 	</section>
@@ -30,10 +30,7 @@
 				</div>
     	</div>
     	<div class="row">
-	      <div class="col-md-3">
- 	       <?php get_sidebar(); ?>
-	      </div>
-    		<div class="offset-md-1 col-md-6">
+    		<div class="offset-md-1 col-md-10">
 					<section class="entry-content contenuto">
 						<?php the_content(); ?>
 						<div class="entry-links"><?php wp_link_pages(); ?></div>
@@ -48,10 +45,11 @@
     <div class="container">
     	<div class="row">
 	      <div class="offset-md-3 col-md-6 mt-5 mb-5 text-center">
-					<div class="argomenti">
-						<h6>Argomenti</h6>
-						<?php the_tags('',''); ?>
-					</div>
+					<?php if ( has_tag() ) { 
+						echo '<div class="argomenti"><h6>Argomenti</h6>';
+						the_tags('','');
+						echo '</div>';
+					} ?>
 	      </div>
     	</div>
   	</div>

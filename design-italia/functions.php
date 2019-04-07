@@ -63,9 +63,9 @@ add_theme_support( 'custom-background', $args );
 /* AGGIUNGI ASSETS DI BOOTSTRAP ITALIA */
 add_action( 'wp_enqueue_scripts', 'enqueue_wppa_styles' );
 function enqueue_wppa_styles() {
-    wp_enqueue_style( 'bootstrap-italia-min', "https://cdn.jsdelivr.net/npm/bootstrap-italia@1.0.0/dist/css/bootstrap-italia.min.css");
-    wp_enqueue_style( 'bootstrap-italia-map', "https://cdn.jsdelivr.net/npm/bootstrap-italia@1.0.0/dist/css/bootstrap-italia.min.css.map");
-    wp_enqueue_style( 'italia-icon-font', "https://cdn.jsdelivr.net/npm/bootstrap-italia@0.14.1/dist/css/italia-icon-font.css");
+    wp_enqueue_style( 'bootstrap-italia-min', get_template_directory_uri() . "/lib/bootstrap-italia/css/bootstrap-italia.min.css");
+    wp_enqueue_style( 'bootstrap-italia-map', get_template_directory_uri() . "/lib/bootstrap-italia/css/bootstrap-italia.min.css.map");
+    wp_enqueue_style( 'bootstrap-italia-icon-font', get_template_directory_uri() . "/lib/bootstrap-italia/css/italia-icon-font.css");
     wp_enqueue_style( 'general-style', get_template_directory_uri() . "/style.css");
 };
 
@@ -319,8 +319,8 @@ function wppa_opengraph() {
 
     // Twitter Card
     echo '<meta name="twitter:card" content="summary_large_image" />';
-    echo '<meta name="twitter:site" content="@francecarlucci" />';
-    echo '<meta name="twitter:creator" content="@francecarlucci" />';
+    // echo '<meta name="twitter:site" content="@account" />';
+    // echo '<meta name="twitter:creator" content="@account" />';
 
   }
 

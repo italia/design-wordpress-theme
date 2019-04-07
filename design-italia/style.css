@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.21
+Version: 0.22
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -20,6 +20,10 @@ You should have received a copy of the GNU Affero General Public License along w
 */
 
 @import url("lib/block/block.css");
+/* @import url("https://prototipo.comune.cagliari.it/static/css/sezioni.min.css");
+@import url("https://prototipo.comune.cagliari.it/static/css/interne.min.css");
+@import url("https://prototipo.comune.cagliari.it/static/css/cagliari.min.css"); */
+
 
 /* WordPress WYSIWYG Editor Styles */
 .entry-content {
@@ -516,30 +520,27 @@ ul.page-numbers {
 	border-radius: 4px;
 	font-size: .9rem;
 	font-weight: 600;
-	color: #5b6f82;
 }
 .page-numbers li .current {
-	color: #0066cc;
-	border-color: #0066cc;
+	border-color: #ccc;
   cursor: default;
 }
 .page-numbers li .dots {
 	padding: .5rem .1rem;
 }
 .page-numbers li a:hover {
-	color: #0066cc;
 	text-decoration: none;
-	border-color: #ddd;
-	/*background-color: #ddd;*/
+	background-color: #eee;
 }
 .page-numbers li:first-child a,
 .page-numbers li:last-child a {
 	font-size: .7rem;
+	line-height: 2.2;
 }
 .page-numbers li:first-child a:hover,
 .page-numbers li:last-child a:hover {
-	border-color: transparent;
-	background-color: transparent;
+	/* border-color: transparent;
+	background-color: transparent; */
 }
 
 
@@ -660,7 +661,12 @@ ul.page-numbers {
 	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.1);
 	border: 1px solid #eceff1;
 }
- 
+@media screen and (max-width: 767px) {
+	.widget_category_mansory .card.card-bg {
+		margin-left: 0;
+	}
+}
+
 .widget_widget_single_post .novita-testo, 
 .widget_widget_single_post .novita-foto {
 	margin-top: 1em;
@@ -1085,6 +1091,14 @@ nav-tabs:after {
 	width: 100%;
 	background-color: #ddd;
 	border-radius: 0;
+}
+@media screen and (max-width: 767px) {
+	#articolo-dettaglio-testo #sidebar:after {
+		content: none;
+	}
+	#articolo-dettaglio-testo #sidebar .widget-title:after {
+		width: calc(100% - 15px);
+	}
 }
 #articolo-dettaglio-testo .widget-area {
 	padding-top: 0;

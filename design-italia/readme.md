@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.22 - Bootstrap Italia in locale, aggiunto template post senza sidebar, fix around
+
 * 0.21 - Aggiunto template post Design Italia Comuni, fix nav, fix around
 
 * 0.20 - Supporto all'editor Gutenberg, aggiornato widget DesignItalia - Articoli a griglia, fix around
