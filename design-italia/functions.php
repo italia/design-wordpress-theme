@@ -145,6 +145,16 @@ if (function_exists('register_sidebar')) {
 		'before_title' => '<h4 class="widget-title">',
 		'after_title' => '</h4>',
 	));
+
+	register_sidebar( array(
+		'name' => __('Single Footer Widget Area', 'wppa') ,
+		'id' => 'single-footer-widget-area',
+		'description'   => __( 'Widget area che compare nel footer del singolo post.', 'wppa' ),
+		'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
+		'after_widget' => "</div>",
+		'before_title' => '<h4 class="widget-title">',
+		'after_title' => '</h4>',
+	));
 }
 // add_action('widgets_init', 'wppa_widgets_init');
 

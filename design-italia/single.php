@@ -16,9 +16,9 @@
       </div>
    </div>
 
-   <!-- <footer class="footer">
+   <footer class="footer">
       <?php get_template_part( 'nav', 'below-single' ); ?>
-   </footer> -->
+   </footer>
 
 </section>
 <?php get_footer(); ?>

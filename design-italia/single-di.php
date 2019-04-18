@@ -31,7 +31,7 @@
     	</div>
     	<div class="row">
 	      <div class="col-md-3">
- 	       <?php get_sidebar(); ?>
+ 	      	<?php get_sidebar(); ?>
 	      </div>
     		<div class="offset-md-1 col-md-6">
 					<section class="entry-content contenuto">
@@ -40,25 +40,43 @@
 					</section>
 	  		</div>
     	</div>
+    	<div class="row">
+	      <div class="col-md-12 mt-4 mb-2">
+					<section class="entry-nav-below">
+						<?php get_template_part( 'nav', 'below-single' ); ?>
+					</section>
+	      </div>
+    	</div>
   	</div>
 	</section>
 
-
+	
+	
   <section id="articolo-dettaglio-meta">
     <div class="container">
+
+      <?php if ( is_active_sidebar( 'single-footer-widget-area' ) ) : ?>
+      <div class="widget-area">
+         <div class="row xoxo">
+            <?php dynamic_sidebar( 'single-footer-widget-area' ); ?>
+         </div>
+      </div>
+      <?php endif; ?>
+
     	<div class="row">
 	      <div class="offset-md-3 col-md-6 mt-5 mb-5 text-center">
-					<div class="argomenti">
-						<h6>Argomenti</h6>
-						<?php the_tags('',''); ?>
-					</div>
+					<?php if ( has_tag() ) { 
+						echo '<div class="argomenti"><h4 class="mb-4">Argomenti</h4>';
+						the_tags('','');
+						echo '</div>';
+					} ?>
 	      </div>
     	</div>
   	</div>
 	</section>
 
 
-				
+
 				
 </article>
 
