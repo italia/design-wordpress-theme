@@ -431,6 +431,7 @@ function wppa_setup_theme() {
 }
 add_action( 'after_setup_theme', 'wppa_setup_theme' );
 
+/* Custom styled buttons within Gutenberg. */
 function wppa_setup_theme_supported_features() {
     add_theme_support( 'editor-color-palette', array(
 			array(
