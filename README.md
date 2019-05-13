@@ -52,7 +52,7 @@ Gli aggiornamenti verranno notificati all'interno dell'amministrazione di WordPr
 * **Responsive** - Design Italia si adatta a disposiviti sia desktop che mobile, senza perdere alcuna funzionalità.
 * **2 widget personalizzati** - Design Italia offre widget sviluppati appositamente per sfruttare al meglio articoli e categorie, con diverse opzioni disponibili.
 * **4 posizioni del menu** - Design Italia mette a disposizione 4 posizioni di menu, nelle quali è possibile gestire la selezione della lingua e i canali social.
-* **6 aree widget** - Design Italia offre 6 aree dove è possibile inserire widget: una presente in home-page, due nel footer, due nella sidebar di post e pagine e infine una ulterione nei footer.
+* **6 aree widget** - Design Italia offre 6 aree dove è possibile inserire widget: una presente in home-page, due nel footer, due nella sidebar di post e pagine e infine un'ulteriore nel footer.
 * **Logo e titolo** - Design Italia permette la personalizzazione del logo, del titolo e del motto del sito direttamente dalla personalizzazione del tema.
 * **Colori e link** - Design Italia consente di selezionare e personalizzare i colori per la testata, il footer e i suoi link.
 * **Home-page** - Design Italia ha un template differente per la home-page che ti permette di comunicare al meglio al tuo pubblico.
