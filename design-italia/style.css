@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.24
+Version: 0.25
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -664,6 +664,7 @@ ul.page-numbers {
 }
 .widget_category_mansory .card.card-bg {
 	overflow: hidden;
+	padding: 0;
 	margin-bottom: 15px;
 	border-radius: 4px;
 	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.1);
@@ -1072,15 +1073,6 @@ nav-tabs:after {
 	right: -15px;
 	left: auto;
 	border-right: solid 1px #e5e5e5;
-}
-#articolo-dettaglio-testo .contenuto:before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    bottom: -90px;
-    left: -93px;
-    right: auto;
-    border-right: solid 1px #e5e5e5;
 }
 #articolo-dettaglio-testo #sidebar .widget-title {
 	position: relative;

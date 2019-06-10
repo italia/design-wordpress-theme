@@ -172,7 +172,9 @@ function wppa_custom_pings($comment) {
 function wppa_comments_number($count) {
 	if (!is_admin()) 	{
 		global $id;
-		$comments_by_type = & separate_comments(get_comments('status=approve&post_id=' . $id));
+		// $comments_by_type = & separate_comments(get_comments('status=approve&post_id=' . $id));
+		$cc = get_comments('status=approve&post_id=' . $id);
+    $comments_by_type = separate_comments($cc);
 		return count($comments_by_type['comment']);
 		} else {
 		return $count;
