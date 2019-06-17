@@ -20,22 +20,22 @@
 					</a>
 				</li>
 				<li>
-					<a href="mailto:?subject=Condiviso&body=<?php the_title(); ?>%0D%0A<?php the_excerpt(); ?>">
+					<a href="mailto:?subject=Condiviso&body=<?php the_title(); ?>%0D%0A<?php echo get_the_excerpt(); ?>%0D%0A<?php the_permalink(); ?>">
 						<span class="it-mail"></span> Invia
 					</a>
 				</li>
 				<li>
-					<a target="_blank" href="https://twitter.com/home?status=<?php the_title(); ?> - <?php echo 'http://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>">
+					<a target="_blank" href="https://twitter.com/home?status=<?php the_title(); ?> - <?php the_permalink(); ?>">
 						<span class="it-twitter"></span> Twitter
 					</a>
 				</li>
 				<li>
-					<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo 'http://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>">
+					<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>">
 						<span class="it-facebook"></span> Facebook
 					</a>
 				</li>
 				<li>
-					<a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo 'http://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>&title=<?php the_title(); ?>&summary=&source=<?php echo 'http://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>">
+					<a target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=<?php the_permalink(); ?>">
 						<span class="it-linkedin"></span> LinkedIn
 					</a>
 				</li>

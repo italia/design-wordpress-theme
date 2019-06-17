@@ -7,6 +7,7 @@
             <?php if ( have_posts() ) : ?>
             <header class="header mt-5 mb-5">
                <h3 class="entry-title"><?php printf( __( 'Search Results for: %s', 'wppa' ), get_search_query() ); ?></h3>
+               <?php //get_search_form(); ?>
             </header>
 
 				<div class="widget_category_mansory">
