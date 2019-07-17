@@ -361,15 +361,15 @@ function wppa_breadcrumb() {
   
   if (is_category() || is_single()) {
     echo '<li class="breadcrumb-item">';
-    the_category('<li class="breadcrumb-item">');
-      if (is_single()) {
+    is_category() ?: the_category('<li class="breadcrumb-item">');
+      if (is_single() && the_title()) {
         echo '<li class="breadcrumb-item">';
         the_title();
 	    echo '</li>';
       }
     echo '</li>';
     
-  } elseif (is_page()) {
+  } elseif (is_page() && the_title()) {
     echo '<li class="breadcrumb-item">';
     echo the_title();
     echo '</li>';
