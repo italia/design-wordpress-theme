@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.27 - Fix around
+
 * 0.26 - Fix around
 
 * 0.25 - Template archivi e categorie, fix around

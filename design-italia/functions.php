@@ -107,9 +107,9 @@ if (function_exists('register_sidebar')) {
 	));
 	
 	register_sidebar(array(
-		'name' => __('Sidebar Widget Area', 'wppa') ,
+		'name' => __('Post Sidebar Widget Area', 'wppa') ,
 		'id' => 'primary-widget-area',
-		'description'   => __( 'Widget area che compare nella sidebar.', 'wppa' ),
+		'description'   => __( 'Widget area che compare nella sidebar dei post.', 'wppa' ),
 		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
 		'after_widget' => "</div>",
 		'before_title' => '<h3 class="widget-title">',
@@ -117,9 +117,9 @@ if (function_exists('register_sidebar')) {
 	));
 
   register_sidebar(array(
-  	'name' => __('Page Widget Area', 'wppa') ,
+  	'name' => __('Page Sidebar Widget Area', 'wppa') ,
   	'id' => 'page-widget-area',
-  	'description'   => __( 'Widget area che compare nelle pagine.', 'wppa' ),
+  	'description'   => __( 'Widget area che compare nella sidebar delle pagine.', 'wppa' ),
   	'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
   	'after_widget' => "</div>",
   	'before_title' => '<h3 class="widget-title">',
@@ -139,7 +139,7 @@ if (function_exists('register_sidebar')) {
 	register_sidebar( array(
 		'name' => __('Footer Sub Widget Area', 'wppa') ,
 		'id' => 'footer-sub-widget-area',
-		'description'   => __( 'Widget area che compare nel footer sotto.', 'wppa' ),
+		'description'   => __( 'Widget area che compare sotto la footer widget area.', 'wppa' ),
 		'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
 		'after_widget' => "</div>",
 		'before_title' => '<h4 class="widget-title">',
@@ -147,9 +147,9 @@ if (function_exists('register_sidebar')) {
 	));
 
 	register_sidebar( array(
-		'name' => __('Single Footer Widget Area', 'wppa') ,
+		'name' => __('Post Footer Widget Area', 'wppa') ,
 		'id' => 'single-footer-widget-area',
-		'description'   => __( 'Widget area che compare nel footer del singolo post.', 'wppa' ),
+		'description'   => __( 'Widget area che compare sotto il contenuto del singolo post.', 'wppa' ),
 		'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
 		'after_widget' => "</div>",
 		'before_title' => '<h4 class="widget-title">',
@@ -188,7 +188,7 @@ Class wppa_recent_posts_widget extends WP_Widget_Recent_Posts {
     if ( ! isset( $args['widget_id'] ) ) {
     $args['widget_id'] = $this->id;
   }
-  $title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : _( 'Ultimi Aritcoli' );
+  $title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : _( 'Ultimi Articoli' );
   /** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
   $title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
   $number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
