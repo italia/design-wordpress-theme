@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.27
+Version: 0.28
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -19,8 +19,8 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licenses/.
 */
 
+@import url("lib/bootstrap-italia/css/fonts.css");
 @import url("lib/block/block.css");
-
 
 /* WordPress WYSIWYG Editor Styles */
 .entry-content {
@@ -264,6 +264,15 @@ ul li li {
 	font-weight: 600;
 	font-size: .889em;
 }
+.nav li a [class^="la"] {
+	zoom: 140%;
+	bottom: -2px;
+	position: relative;
+}
+.nav li a:hover [class^="la"] {
+	text-decoration: none;
+}
+
 .branding-up .nav li {
 	padding: 0 10px;
 }
@@ -307,11 +316,14 @@ ul li li {
 }
 .menu-main .nav li ul a, 
 .menu-main .nav li ul a:hover, 
-.menu-main .nav li:hover ul a {
+.menu-main .nav li ul a:active, 
+.menu-main .nav li:hover ul a, 
+.menu-main .nav li:active ul a {
 	font-size: .889em;
 	color: #1173d4;
 }
-.menu-main .nav li ul a:hover {
+.menu-main .nav li ul a:hover,
+.menu-main .nav li ul a:active {
 	text-decoration: underline;
 }
 .menu-main .nav li {
@@ -321,12 +333,14 @@ ul li li {
   z-index: 99999;
 }
 .menu-main .nav li.focus > ul, 
-.menu-main .nav li:hover > ul {
+.menu-main .nav li:hover > ul, 
+.menu-main .nav li:active > ul {
   top: auto;
   left: auto;
 }
 .menu-main .nav li li.focus > ul, 
-.menu-main .nav li li:hover > ul {
+.menu-main .nav li li:hover > ul, 
+.menu-main .nav li li:active > ul {
   left: 100%;
   top: 0;
 }
@@ -338,13 +352,16 @@ ul li li {
   padding: 0 15px;
 }
 .menu-main .nav a:hover,
+.menu-main .nav a:active,
 .menu-main .nav li:hover > a,
+.menu-main .nav li:active > a,
 .menu-main .nav .focus > a,
 .menu-main .nav .current-menu-item > a,
 .menu-main .nav .current-menu-ancestor > a {
   color: #fff;
 }
-.menu-main .nav > li:hover {
+.menu-main .nav > li:hover, 
+.menu-main .nav > li:active {
 	background-color: rgba(0, 0, 0, 0.1);
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
@@ -353,21 +370,15 @@ ul li li {
 .menu-main .nav .current-menu-ancestor {
 	box-shadow: inset 0 -2px 0 #fff;
 }
-.menu-main .nav .menu-item-has-children {
+/* .menu-main .nav .menu-item-has-children {
 	padding-right: 20px;
-}
-.menu-main .nav .menu-item-has-children > a::before {
+} */
+.menu-main .nav .menu-item-has-children > a:after {
 	content: '\e818';
 	font-family: italia-icon-font;
 	font-size: 11px;
-	position: absolute;
-  right: 15px;
-  top: 37%;
-}
-.menu-main .nav ul .menu-item-has-children > a::before {
-  right: 2px;
-  border-top-color: transparent;
-  border-left-color: currentColor;
+	position: relative;
+	margin: 0 -10px 0 10px;
 }
 .menu-main .nav ul {
   background-color: #1173d4;
@@ -380,14 +391,91 @@ ul li li {
 	padding-bottom: 10px;
 	border-top: solid 1px rgba(255, 255, 255, .4);
 }
-.menu-main .nav .menu-item-has-children .menu-item-has-children > a::before {
+.menu-main .nav .menu-item-has-children .menu-item-has-children > a:after {
+	position: absolute;
+	top: 15px;
 	-webkit-transform: rotate(270deg);
 	transform: rotate(270deg);
-	right: 15px;
-	top: 30%;
 }
 .menu-main .nav .sub-menu ul {
 	margin: 0;
+	position: relative;
+	left: 0;
+}
+
+/* MEGA MENU */
+.menu-main .mega-menu li {
+	position: static;
+}
+.menu-main .mega-menu li a {
+	font-weight: 400;
+}
+.menu-main .mega-menu li ul:before {
+	display: none;
+}
+.menu-main .mega-menu .menu-item-has-children .menu-item-has-children > a:after {
+	content: none;
+}
+.menu-main .mega-menu > li.focus > ul, 
+.menu-main .mega-menu > li:hover > ul, 
+.menu-main .mega-menu > li:active > ul {
+	left: 0;
+	right: 0;
+	position: absolute;
+	padding-top: 25px;
+}
+.menu-main .mega-menu .sub-menu > li {
+	width: 100%;
+	vertical-align: top;
+}
+.menu-main .mega-menu .sub-menu > li li {
+	display: inline-block;
+	min-width: 100%;
+}
+.menu-main .mega-menu .sub-menu {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.menu-main .mega-menu ul > li {
+	-ms-flex-preferred-size: 0;
+	flex-basis: 0;
+	-webkit-box-flex: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	max-width: 100%;
+	vertical-align: top;
+}
+
+.menu-main .mega-menu li li ul, 
+.menu-main .mega-menu li li.focus ul, 
+.menu-main .mega-menu li li:hover ul, 
+.menu-main .mega-menu li li:active ul {
+	left: 0;
+	top: 0;
+	position: relative;
+	box-shadow: none;
+}
+.menu-main .mega-menu li li ul li {
+	padding-left: 0;
+}
+
+.menu-main .nav.mega-menu .heading > a {
+	pointer-events: none;
+	color: #19191a;
+	font-weight: 600;
+}
+.menu-main .nav.mega-menu .more a {
+	margin-top: 10px;
+	font-weight: 600;
+}
+.menu-main .nav.mega-menu .more a [class^="it"], 
+.menu-main .nav.mega-menu .more a [class^="la"]{
+	zoom: .8;
+	margin-left: 10px;
+	text-decoration: none;
 }
 
 /* NAV BAR WITH RESPONSIVE */
@@ -441,11 +529,17 @@ ul li li {
 		padding-top: 25%;
 	}
 	.header-slim-right-zone .nav .menu-item-has-children:hover ul, 
-  .menu-main .nav .menu-item-has-children:hover ul {
+	.header-slim-right-zone .nav .menu-item-has-children:active ul, 
+  .menu-main .nav .menu-item-has-children:hover ul, 
+  .menu-main .nav .menu-item-has-children:active ul {
 		position: relative;
 		display: block;
 		top: 0;
 		left: -5px;
+  }
+  .menu-main .nav .menu-item-has-children:hover ul ul {
+  	left: 0;
+  	
   }
   .header-slim-right-zone .nav {
   	text-align: right;
@@ -471,8 +565,8 @@ ul li li {
   .show-menu-main {
     display:block;
   }
-  .header-slim-right-zone .nav .menu-item-has-children > a::before, 
-  .menu-main .nav .menu-item-has-children > a::before {
+  .header-slim-right-zone .nav .menu-item-has-children > a:before, 
+  .menu-main .nav .menu-item-has-children > a:before {
     right: 25px;
   }
 }
@@ -480,7 +574,6 @@ ul li li {
 .menu-social {
 	min-height: 57px;
 }
-
 
 .entry-nav-below {
 	border-top: solid 1px #e5e5e5;
@@ -496,7 +589,6 @@ ul li li {
 .nav-next span {
 	margin-left: 5px;
 }
-
 
 .breadcrumb {
 	padding-left: 0;
@@ -514,9 +606,6 @@ ul li li {
 .breadcrumb-item a {
 	font-weight: 600;
 }
-
-
-
 
 ul.page-numbers {
 	width: 100%;
@@ -556,8 +645,6 @@ ul.page-numbers {
 	/* border-color: transparent;
 	background-color: transparent; */
 }
-
-
 
 #comments {
 	padding-top: 60px;
@@ -744,7 +831,6 @@ body.search article {
 	padding: 2rem 0;
 }
 
-
 .home-widget {
 	padding-top: 30px;
 	background-color: #eee;
@@ -757,7 +843,6 @@ body.search article {
 	border-top: solid 1px #ddd;
 	padding-top: 60px;
 }
-
 
 .widget-area {
 	padding: 30px 0;
@@ -802,7 +887,6 @@ body.search article {
 .widget-area.page-widget-area .widget-container {
 	margin-bottom: 30px;
 }
-
 
 #cookie-notice {
 	background-color: #00264d !important;
@@ -968,11 +1052,10 @@ nav-tabs:after {
 	background-color: #fff
 }
 
-
-
-
-
 /* Welcome Bootstrap 1 */
+* a {
+	text-decoration: none;
+}
 .it-header-slim-wrapper {
 	background: rgba(0, 0, 0, 0.15);
 	min-height: 43px;

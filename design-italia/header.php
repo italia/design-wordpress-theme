@@ -53,7 +53,9 @@
                        </div>
                        <div class="it-right-zone">
                          <div class="it-socials d-none d-md-flex">
-                           <?php wp_nav_menu( array( 'theme_location' => 'menu-social', 'container' => 'ul', 'menu_class' => 'nav')); ?>
+                           <?php if ( has_nav_menu( 'menu-social' ) ) {
+                              wp_nav_menu( array( 'theme_location' => 'menu-social', 'container' => 'ul', 'menu_class' => 'nav'));
+                           } ?>
                          </div>
                          <div class="it-search-wrapper">
                            <?php get_search_form(); ?>
@@ -72,7 +74,12 @@
                    <div class="col-12">
                      <label for="show-menu-main" class="show-menu-main">Menu</label>
                      <input type="checkbox" id="show-menu-main" role="button">
-                     <?php wp_nav_menu(array( 'theme_location' => 'menu-main', 'container' => 'ul', 'menu_class' => 'nav' )); ?>
+
+                     <?php if ( has_nav_menu( 'menu-main' ) ) {
+                        wp_nav_menu(array( 'theme_location' => 'menu-main', 'container' => 'ul', 'menu_class' => 'nav' ));
+                     } if ( has_nav_menu( 'mega-main' ) ) {
+                        wp_nav_menu(array( 'theme_location' => 'mega-main', 'container' => 'ul', 'menu_class' => 'nav mega-menu' ));
+                     } ?>
                    </div>
                  </div>
                </div>

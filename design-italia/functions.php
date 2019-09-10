@@ -48,6 +48,7 @@ function wppa_setup()	{
 	if (!isset($content_width)) $content_width = 640;
 	register_nav_menus(array(
 		'menu-main' => __('Main Menu', 'wppa'),
+		'mega-main' => __('Mega Menu', 'wppa'),
 		'menu-language'  => __( 'Lingua Menu', 'wppa' ),
 		'menu-social'  => __( 'Social Menu', 'wppa' ),
 		'menu-footer'  => __( 'Footer Menu', 'wppa' )
@@ -63,6 +64,8 @@ add_theme_support( 'custom-background', $args );
 /* AGGIUNGI ASSETS DI BOOTSTRAP ITALIA */
 add_action( 'wp_enqueue_scripts', 'enqueue_wppa_styles' );
 function enqueue_wppa_styles() {
+    // wp_enqueue_style( 'lineawesome-icon-font', "//maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css");
+    wp_enqueue_style( 'lineawesome-icon-min', get_template_directory_uri() . "/lib/bootstrap-italia/css/line-awesome.min.css");
     wp_enqueue_style( 'bootstrap-italia-min', get_template_directory_uri() . "/lib/bootstrap-italia/css/bootstrap-italia.min.css");
     wp_enqueue_style( 'bootstrap-italia-map', get_template_directory_uri() . "/lib/bootstrap-italia/css/bootstrap-italia.min.css.map");
     wp_enqueue_style( 'bootstrap-italia-icon-font', get_template_directory_uri() . "/lib/bootstrap-italia/css/italia-icon-font.css");

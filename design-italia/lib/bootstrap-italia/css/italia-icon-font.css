@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'italia-icon-font';
-  src: url('../font/italia-icon-font.eot?94539880');
-  src: url('../font/italia-icon-font.eot?94539880#iefix') format('embedded-opentype'),
-       url('../font/italia-icon-font.woff2?94539880') format('woff2'),
-       url('../font/italia-icon-font.woff?94539880') format('woff'),
-       url('../font/italia-icon-font.ttf?94539880') format('truetype'),
-       url('../font/italia-icon-font.svg?94539880#italia-icon-font') format('svg');
+  src: url('../fonts/icon/italia-icon-font.eot?94539880');
+  src: url('../fonts/icon/italia-icon-font.eot?94539880#iefix') format('embedded-opentype'),
+       url('../fonts/icon/italia-icon-font.woff2?94539880') format('woff2'),
+       url('../fonts/icon/italia-icon-font.woff?94539880') format('woff'),
+       url('../fonts/icon/italia-icon-font.ttf?94539880') format('truetype'),
+       url('../fonts/icon/italia-icon-font.svg?94539880#italia-icon-font') format('svg');
   font-weight: normal;
   font-style: normal;
 }
