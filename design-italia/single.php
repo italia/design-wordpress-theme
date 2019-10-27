@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<section id="content" role="main" class="container">
+<section id="content" role="main" class="container mt-4 mb-4">
    <div class="container">
       <div class="row">
 

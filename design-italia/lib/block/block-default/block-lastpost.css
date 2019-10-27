@@ -3,7 +3,7 @@
 }
 .wp-block-latest-posts li {
 	position: relative;
-	list-style: none;
+	list-style: none !important;
 	padding: 20px;
 	border-bottom: 1px solid #c5c7c9;
 	margin: -1px 0 0 0;
@@ -34,6 +34,7 @@
 	border-right: 1px solid #d9dadb;
 	border-bottom: none;
 	margin-bottom: 36px;
+	list-style: none;
 }
 .wp-block-latest-posts.is-grid li:hover {
 	border-right: none;

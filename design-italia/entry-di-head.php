@@ -42,7 +42,6 @@
 			</ul>
 		</div>
 
-
 		<!-- <h6>Sezioni</h6>
 		<div class="argomenti">
 			<?php the_category(' '); ?>

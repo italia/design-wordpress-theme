@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.28
+Version: 0.29
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -399,7 +399,7 @@ ul li li {
 }
 .menu-main .nav .sub-menu ul {
 	margin: 0;
-	position: relative;
+	/*position: relative;*/
 	left: 0;
 }
 
@@ -408,7 +408,22 @@ ul li li {
 	position: static;
 }
 .menu-main .mega-menu li a {
+	position: relative;
 	font-weight: 400;
+}
+.menu-main .mega-menu .menu-item-has-children:hover > a:before {
+	content: '';
+	position: absolute;
+	top: auto;
+	left: calc(50% - 9px);
+	bottom: -25px;
+	right: auto;
+	width: 18px;
+	height: 18px;
+	border-radius: 4px;
+	background-color: #fff;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 .menu-main .mega-menu li ul:before {
 	display: none;
@@ -569,7 +584,16 @@ ul li li {
   .menu-main .nav .menu-item-has-children > a:before {
     right: 25px;
   }
+  .menu-main .nav .menu-item-has-children .menu-item-has-children > a:after {
+		top: 13px;
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+  }
+	.menu-main .nav > li.menu-item-has-children > a {
+		pointer-events: none;
+	}
 }
+
 
 .menu-social {
 	min-height: 57px;
@@ -705,6 +729,12 @@ ul.page-numbers {
 	height: auto;
 	margin-bottom: 30px;
 }
+.entry-content ul {
+	padding-left: initial;
+}
+.entry-content li {
+	list-style: initial;
+}
 
 .panel-grid > div {
 	padding: 2rem 0;
@@ -814,8 +844,8 @@ ul.page-numbers {
 
 #content {
 	background-color: #fff;
-	padding-top: 30px;
-	padding-bottom: 60px;
+	/*padding-top: 30px;
+	padding-bottom: 60px;*/
 }
 body.page-template-home .header {
 	display: none;
@@ -1142,26 +1172,27 @@ nav-tabs:after {
 	margin: 0;
 	letter-spacing: 0;
 }
-#articolo-dettaglio-testo p {
+
+[id$="dettaglio-testo"] p {
 	font-family: 'Lora',serif;
 }
-#articolo-dettaglio-testo .thumbnail {
+[id$="dettaglio-testo"] .thumbnail {
 	margin-bottom: 0;
 	border-bottom: solid 1px #e5e5e5;
 }
-#articolo-dettaglio-testo .thumbnail img {
+[id$="dettaglio-testo"] .thumbnail img {
 	margin-bottom: 1rem;
 }
-#articolo-dettaglio-testo .thumbnail .dida {
+[id$="dettaglio-testo"] .thumbnail .dida {
 	text-align: center;
 	color: #19191a;
 	font-family: "Titillium Web", Geneva, Tahoma, sans-serif;
 	font-size: .778em;
 }
-#articolo-dettaglio-testo #sidebar {
+[id$="dettaglio-testo"] #sidebar {
 	position: relative;
 }
-#articolo-dettaglio-testo #sidebar:after {
+[id$="dettaglio-testo"] #sidebar:after {
 	content: ' ';
 	position: absolute;
 	top: -30px;
@@ -1170,15 +1201,15 @@ nav-tabs:after {
 	left: auto;
 	border-right: solid 1px #e5e5e5;
 }
-#articolo-dettaglio-testo #sidebar .widget-title {
+[id$="dettaglio-testo"] #sidebar .widget-title {
 	position: relative;
 	font-size: .8888rem;
 	font-weight: 600;
 	padding-bottom: 15px;
 	margin: 30px 0;
 }
-#articolo-dettaglio-testo #sidebar .widget-title:after, 
-#articolo-dettaglio-testo #sidebar .widget-title:before {
+[id$="dettaglio-testo"] #sidebar .widget-title:after, 
+[id$="dettaglio-testo"] #sidebar .widget-title:before {
 	content: ' ';
 	position: absolute;
 	z-index: 1;
@@ -1191,7 +1222,7 @@ nav-tabs:after {
 	background-color: #666;
 	border-radius: 100px;
 }
-#articolo-dettaglio-testo #sidebar .widget-title:after {
+[id$="dettaglio-testo"] #sidebar .widget-title:after {
 	z-index: 0;
 	left: 15px;
 	right: 0;
@@ -1200,40 +1231,40 @@ nav-tabs:after {
 	border-radius: 0;
 }
 @media screen and (max-width: 1199px) {
-	#articolo-dettaglio-testo .contenuto:before {
+	[id$="dettaglio-testo"] .contenuto:before {
 		content: none;
 	}
 }
 @media screen and (max-width: 767px) {
-	#articolo-dettaglio-testo #sidebar:after {
+	[id$="dettaglio-testo"] #sidebar:after {
 		content: none;
 	}
-	#articolo-dettaglio-testo #sidebar .widget-title:after {
+	[id$="dettaglio-testo"] #sidebar .widget-title:after {
 		width: calc(100% - 15px);
 	}
 }
-#articolo-dettaglio-testo .widget-area {
+[id$="dettaglio-testo"] .widget-area {
 	padding-top: 0;
 }
-#articolo-dettaglio-testo .widget-area .widget-container {
+[id$="dettaglio-testo"] .widget-area .widget-container {
 	padding-left: 15px;
 }
-#articolo-dettaglio-testo .widget-area li {
+[id$="dettaglio-testo"] .widget-area li {
 	padding: 5px 0;
 	border: none;
 }
-#articolo-dettaglio-testo .widget-area li a {
+[id$="dettaglio-testo"] .widget-area li a {
 	font-size: .8888rem;
 }
-#articolo-dettaglio-meta, 
-#articolo-dettaglio-pagination {
+[id$="dettaglio-meta"], 
+[id$="dettaglio-pagination"] {
 	background-color: #eee;
 }
-#articolo-dettaglio-meta {
+[id$="dettaglio-meta"] {
 	position: relative;
 	overflow: hidden;
 }
-#articolo-dettaglio-meta:before {
+[id$="dettaglio-meta"]:before {
 	content: ' ';
 	position: absolute;
 	top: -45px;
@@ -1242,6 +1273,33 @@ nav-tabs:after {
 	background: red;
 	left: 25%;
 	box-shadow: 0px 0px 50px 10px #000;
+}
+
+#container {
+	position: relative;
+}
+.thumbnail-page {
+	position: absolute;
+	top: 0;
+	bottom: auto;
+	left: 0;
+	right: 0;
+	z-index: 0;
+	border: none;
+	margin: 0;
+}
+.wrap-argomento {
+	background-color: #eee;
+	padding-top: 96px;
+}
+.box-argomento {
+	-webkit-box-shadow: 4px 4px 8px 0 rgba(90,103,114,0.1);
+	-moz-box-shadow: 4px 4px 8px 0 rgba(90,103,114,0.1);
+	box-shadow: 4px 4px 8px 0 rgba(90,103,114,0.1);
+	background-color: #fff;
+	border-radius: 4px;
+	position: relative;
+	padding: 0 64px;
 }
 
 .argomenti a {

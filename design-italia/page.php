@@ -6,7 +6,7 @@
       <div class="col-lg-8 offset-lg-2">
          <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
          <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <header class="header">
+            <header class="header mt-5">
                <h1 class="entry-title"><?php the_title(); ?></h1>
                <?php edit_post_link(); ?>
             </header>

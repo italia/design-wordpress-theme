@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.29 - Aggiunti template page Design Italia, fix around
+
 * 0.28 - Integrate icone Line Awesome, aggiunto megamenu, font in locale, aggiornata versione di Bootstrap Italia
 
 * 0.27 - Fix around

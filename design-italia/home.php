@@ -4,12 +4,13 @@
  * 
 **/
 get_header(); ?>
+
 <section id="content" role="main" class="container home-content">
    <div class="container">
 
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
       <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-         <header class="header">
+         <header class="header mt-5">
             <?php // if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
       		<?php if ( !is_search() ) get_template_part( 'entry-footer' ); ?>
       		<?php if ( !is_search() ) get_template_part( 'entry', 'meta' ); ?>
