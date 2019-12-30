@@ -8,6 +8,7 @@
 							<?php   
 								} 
 							?>
+							<?php if ( is_sticky() ) { echo '<div class="flag-icon"></div>'; } ?>
 							<div class="card-body">
 								<div class="category-top">
 									<strong><?php the_category(', '); ?></strong>
@@ -22,5 +23,4 @@
 								</div><!-- .entry-summary -->
 								<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="read-more">Leggi di pi&ugrave; &nbsp;<span class="it-arrow-right"></span></a>
 							</div>
-						
 						</article><!-- #post-## -->

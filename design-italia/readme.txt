@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.30 - Aggiornata versione di Bootstrap Italia (v1.3.8), fix around
+
 * 0.29 - Aggiunti template page Design Italia, fix around
 
 * 0.28 - Integrate icone Line Awesome, aggiunto megamenu, font in locale, aggiornata versione di Bootstrap Italia

@@ -369,34 +369,45 @@ function footer_script(){ ?>
 <?php }
 
 
-
-
-/* AGGIUNGI BREADCRUMP NEI POST */
+/* AGGIUNGI BREADCRUMP NEI POST E NELLE PAGINE */
 function wppa_breadcrumb() {
-	echo '<ul class="breadcrumb">';
-  echo '<li class="breadcrumb-item"><a href="'.home_url().'" rel="nofollow">Home</a></li>';
-  
-  if (is_category() || is_single()) {
-    echo '<li class="breadcrumb-item">';
-    the_category('<li class="breadcrumb-item">');
+  global $post;
+  echo '<ul class="breadcrumb">';
+  if (!is_home()) {
+    echo '<li class="breadcrumb-item"><a href="';
+    echo get_option('home');
+    echo '">';
+    echo 'Home';
+    echo '</a></li>';
+    if (is_category() || is_single()) {
+      echo '<li class="breadcrumb-item">';
+      the_category(' </li><li class="breadcrumb-item"> ');
       if (is_single()) {
-        echo '<li class="breadcrumb-item">';
+        echo '</li><li class="breadcrumb-item">';
         the_title();
-	    echo '</li>';
+        echo '</li>';
       }
-    echo '</li>';
-    
-  } elseif (is_page()) {
-    echo '<li class="breadcrumb-item">';
-    echo the_title();
-    echo '</li>';
-    
-  } elseif (is_search()) {
-    echo '&nbsp;&nbsp;&#187;&nbsp;&nbsp;Cerca risultati per... ';
-    echo '"<em>';
-    echo the_search_query();
-    echo '</em>"';
+    } elseif (is_page()) {
+      if($post->post_parent){
+        $anc = get_post_ancestors( $post->ID );
+        $title = get_the_title();
+        foreach ( $anc as $ancestor ) {
+          $output = '<li class="breadcrumb-item"><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li>';
+        }
+        echo $output;
+        echo '<li class="breadcrumb-item">'.$title.'</li>';
+      } else {
+        echo '<li class="breadcrumb-item">'.get_the_title().'</li>';
+      }
+    }
   }
+  /* elseif (is_tag()) {single_tag_title();}
+  elseif (is_day()) {echo"<li>Archive for "; the_time('F jS, Y'); echo'</li>';}
+  elseif (is_month()) {echo"<li>Archive for "; the_time('F, Y'); echo'</li>';}
+  elseif (is_year()) {echo"<li>Archive for "; the_time('Y'); echo'</li>';}
+  elseif (is_author()) {echo"<li>Author Archive"; echo'</li>';}
+  elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
+  elseif (is_search()) {echo"<li>Search Results"; echo'</li>';} */
   echo '</ul>';
 }
 
@@ -703,6 +714,7 @@ class Category_Posts extends WP_Widget {
                     <?php   
                       } 
                     ?>
+                    <?php if(is_sticky()) { echo '<div class="flag-icon"></div>'; } ?>
                   <div class="card-body">
                     <div class="category-top">
                       <!-- <a class="category" href="#">Category</a> -->

@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.29
+Version: 0.30
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -410,6 +410,9 @@ ul li li {
 .menu-main .mega-menu li a {
 	position: relative;
 	font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .menu-main .mega-menu .menu-item-has-children:hover > a:before {
 	content: '';
@@ -589,11 +592,11 @@ ul li li {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
   }
-	.menu-main .nav > li.menu-item-has-children > a {
-		pointer-events: none;
-	}
 }
 
+[id^="menu-mega-menu"] > li.menu-item-has-children > a {
+	pointer-events: none;
+}
 
 .menu-social {
 	min-height: 57px;
@@ -791,12 +794,23 @@ ul.page-numbers {
 	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.1);
 	-moz-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.1);
 	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.1);
-	border: 1px solid #eceff1;
+	/*border: 1px solid #eceff1;*/
 }
 @media screen and (max-width: 767px) {
 	.widget_category_mansory .card.card-bg {
 		margin-left: 0;
 	}
+}
+.widget_category_mansory .card .flag-icon {
+	margin: 0 25px;
+	float: left;
+}
+.widget_category_mansory .card .card-img-top + .flag-icon {
+	position: absolute;
+	top: 0;
+  border: solid 3px white;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
 }
 
 .widget_widget_single_post .novita-testo, 
@@ -841,6 +855,7 @@ ul.page-numbers {
 	padding-bottom: 15px;
 	color: #fff;
 }
+
 
 #content {
 	background-color: #fff;
@@ -900,11 +915,12 @@ body.search article {
 .widget-area a {
 	font-weight: 600;
 }
+
+/*
 .widget-area span {
 	display: block;
 	font-size: 80%;
 }
-
 .widget-area .wp-post-image {
 	width: 100px;
 	width: 90%;
@@ -912,6 +928,7 @@ body.search article {
 	float: left;
 	margin: 10px 10px 5px 0;
 }
+*/
 
 .widget-area.primary-widget-area .widget-container, 
 .widget-area.page-widget-area .widget-container {
@@ -1092,6 +1109,12 @@ nav-tabs:after {
 }
 .it-footer-small-prints {
 	background: rgba(0, 0, 0, 0.5);
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.it-footer-small-prints li a, 
+.it-footer-small-prints li a:hover:not(.disabled) {
+	font-size: 15px;
 }
 
 .header-slim-right-zone ul li a {
@@ -1161,16 +1184,24 @@ nav-tabs:after {
 	max-height: 30px;
 }
 
-.it-footer-small-prints {
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
 
 
 .titolo-sezione h2 {
 	font-size: 2.222em;
 	margin: 0;
 	letter-spacing: 0;
+}
+.titolo-sezione .icona-sezione {
+	/* display: inline-block; */
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: #eaf2ec;
+	margin: 0px 24px 8px 0px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 32px;
+	line-height: 48px;
 }
 
 [id$="dettaglio-testo"] p {
@@ -1300,6 +1331,7 @@ nav-tabs:after {
 	border-radius: 4px;
 	position: relative;
 	padding: 0 64px;
+	margin-bottom: 96px;
 }
 
 .argomenti a {
