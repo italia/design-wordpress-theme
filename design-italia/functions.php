@@ -366,10 +366,12 @@ function footer_script(){ ?>
     document.body.classList.add('touch')
     }
     
-    const el = document.querySelector('.menu-item-has-children');
-    el.onclick = function() {
-      el.classList.toggle('active');
-    }
+    const elements = document.querySelectorAll('.menu-item-has-children');
+    elements.forEach(function(el, index){
+      el.onclick = function() {
+        el.classList.toggle('active');
+      }
+    })
 
   </script>
 <?php }
