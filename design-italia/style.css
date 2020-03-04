@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.30
+Version: 0.31
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -332,18 +332,23 @@ ul li li {
   text-align: left;
   z-index: 99999;
 }
-.menu-main .nav li.focus > ul, 
-.menu-main .nav li:hover > ul, 
-.menu-main .nav li:active > ul {
-  top: auto;
-  left: auto;
+
+@media screen and (min-width: 767px) {
+	.menu-main .nav li.focus > ul, 
+	.menu-main .nav li:hover > ul, 
+	.menu-main .nav li:active > ul {
+	  top: auto;
+	  left: auto;
+	}
+	.menu-main .nav li li.focus > ul, 
+	.menu-main .nav li li:hover > ul, 
+	.menu-main .nav li li:active > ul {
+	  left: 100%;
+	  top: 0;
+	}
 }
-.menu-main .nav li li.focus > ul, 
-.menu-main .nav li li:hover > ul, 
-.menu-main .nav li li:active > ul {
-  left: 100%;
-  top: 0;
-}
+
+
 .menu-main .nav a {
   color: #fff;
   text-decoration: none;
@@ -527,16 +532,9 @@ ul li li {
 #show-menu-lingua[type="checkbox"] {
 	display: none;
 }
-#show-menu-main[type="checkbox"]:checked ~ .nav, 
-#show-menu-lingua[type="checkbox"]:checked ~ .nav {
-  height: auto;
-  opacity: 1;
-  overflow: scroll;
-  -webkit-transition: all .4s ease-in-out;
-  -moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
+
+	
+
 @media screen and (max-width: 767px) {
 	.branding {
 		padding-top: 0px;
@@ -546,6 +544,7 @@ ul li li {
 		max-width: 100%;
 		padding-top: 25%;
 	}
+	/*
 	.header-slim-right-zone .nav .menu-item-has-children:hover ul, 
 	.header-slim-right-zone .nav .menu-item-has-children:active ul, 
   .menu-main .nav .menu-item-has-children:hover ul, 
@@ -559,6 +558,20 @@ ul li li {
   	left: 0;
   	
   }
+  */
+  	.menu-main .nav .menu-item-has-children.active > a:after {
+		content: '\e810';
+  	}
+	.menu-main .nav .menu-item-has-children.active ul {
+		position: relative;
+		display: block;
+		top: 0;
+		left: -5px;
+	}
+	.menu-main .nav .menu-item-has-children.active ul ul {
+	  left: 0;
+	}
+	
   .header-slim-right-zone .nav {
   	text-align: right;
   	margin-top: 30px;
@@ -592,7 +605,87 @@ ul li li {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
   }
+  
+  .it-header-center-wrapper {
+  	padding-left: 50px;
+  	margin: 10px 0;
+  }
+	.it-header-wrapper .searchform input[type="text"] {
+		display: none;
+	}
+	.it-header-wrapper .searchform:after {
+		padding-left: 7px;
+	}
+	.show-menu-main {
+		position: absolute;
+    top: -75px;
+    left: -15px;
+    bottom: auto;
+    right: auto;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    font-size: 0;
+    z-index: 1000001;
+  }
+	.show-menu-main:after {
+		left: 0;
+    top: 0;
+    width: 100%;
+		font-size: 1.75rem;
+	}
+	
+	#show-menu-main[type="checkbox"]:checked ~ .nav, 
+	#show-menu-lingua[type="checkbox"]:checked ~ .nav {
+	  height: auto;
+	  opacity: 1;
+	  overflow: scroll;
+	  -webkit-transition: all .4s ease-in-out;
+	  -moz-transition: all .4s ease-in-out;
+	  -o-transition: all .4s ease-in-out;
+	  transition: all .4s ease-in-out;
+	}
+	#show-menu-main[type="checkbox"]:checked ~ .show-menu-main:after {
+		content: "\2715";
+		position: fixed;
+		top: 12%;
+		left: 0;
+		width: 60px;
+	}
+
+	#show-menu-main[type="checkbox"]:checked ~ .nav {
+		background-color: #fff;
+		display: inline-block;
+		position: fixed;
+		top: 0;
+		bottom: auto;
+		left: auto;
+		right: 0;
+		width: calc(100% - 60px);
+		height: 100%;
+		min-height: 100%;
+		padding: 15px 0;
+		z-index: 1000000;
+		overflow-y: scroll;
+		box-shadow: -100px 0px 0px 0px rgba(0, 0, 0, .6);
+	}
+	#show-menu-main[type="checkbox"]:checked ~ .nav li {
+		box-shadow: 0 1px 0 0 rgba(102, 102, 102, .4);
+	}
+	#show-menu-main[type="checkbox"]:checked ~ .nav li:last-child, 
+	#show-menu-main[type="checkbox"]:checked ~ .nav li ul {
+		box-shadow: none;
+		border-radius: 0;
+	}
+	#show-menu-main[type="checkbox"]:checked ~ .nav a {
+		color: initial;
+	}
+	#show-menu-main[type="checkbox"]:checked ~ .nav li ul:before {
+		content: none;
+	}
 }
+
+
 
 [id^="menu-mega-menu"] > li.menu-item-has-children > a {
 	pointer-events: none;

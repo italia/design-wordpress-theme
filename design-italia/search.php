@@ -6,10 +6,17 @@
 
             <?php if ( have_posts() ) : ?>
             <header class="header mt-5 mb-5">
-               <h3 class="entry-title"><?php printf( __( 'Search Results for: %s', 'wppa' ), get_search_query() ); ?></h3>
-               <?php //get_search_form(); ?>
+               <?php // printf( __( 'Risultati per: %s', 'wppa' ), get_search_query() ); ?>
+               <?php if (strlen( trim(get_search_query()) ) >= 1 ) { ?>
+                  <h3 class='entry-title'><?php printf( __( 'Risultati per: %s', 'wppa' ), get_search_query() ); ?></h3>
+                  <?php get_search_form(); ?>
+               <?php } elseif (strlen( trim(get_search_query()) ) < 1 ) { ?> 
+                  <h3 class='entry-title'><?php _e( 'Inserisci un termine per la ricerca: ', 'wppa' ); ?></h3>
+                  <?php get_search_form(); ?>
+                  <hr class="mt-5 pb-5">
+               <?php }; ?>
             </header>
-
+ 
 				<div class="widget_category_mansory">
 					<div class="card-columns">
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

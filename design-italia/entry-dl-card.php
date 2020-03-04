@@ -12,7 +12,7 @@
 							<div class="card-body">
 								<div class="category-top">
 									<strong><?php the_category(', '); ?></strong>
-									<span class="data"><?php the_date(); ?></span>
+									<span class="data"><?php echo get_the_date( 'j M Y' ); ?></span>
 								</div>
 								<header class="entry-header">
 									<?php edit_post_link(); ?>

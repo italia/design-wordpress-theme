@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.31 - Aggiornata versione di Bootstrap Italia (v1.3.9), ottimizzazione menu piccoli schermi, fix around
+
 * 0.30 - Aggiornata versione di Bootstrap Italia (v1.3.8), fix around
 
 * 0.29 - Aggiunti template page Design Italia, fix around

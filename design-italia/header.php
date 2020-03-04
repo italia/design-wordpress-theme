@@ -72,8 +72,8 @@
                <div class="container">
                  <div class="row">
                    <div class="col-12">
-                     <label for="show-menu-main" class="show-menu-main">Menu</label>
                      <input type="checkbox" id="show-menu-main" role="button">
+                     <label for="show-menu-main" class="show-menu-main">Menu</label>
 
                      <?php if ( has_nav_menu( 'menu-main' ) ) {
                         wp_nav_menu(array( 'theme_location' => 'menu-main', 'container' => 'ul', 'menu_class' => 'nav' ));
