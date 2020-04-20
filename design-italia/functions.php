@@ -404,7 +404,7 @@ function wppa_breadcrumb() {
     echo '</a></li>';
     if (is_category() || is_single()) {
       echo '<li class="breadcrumb-item">';
-      the_category(' </li><li class="breadcrumb-item"> ');
+      echo implode(' </li><li class="breadcrumb-item"> ',array_reverse(explode(',',get_the_category_list(','))));
       if (is_single()) {
         echo '</li><li class="breadcrumb-item">';
         the_title();
