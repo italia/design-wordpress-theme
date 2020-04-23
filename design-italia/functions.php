@@ -64,7 +64,7 @@ add_theme_support( 'custom-background', $args );
 /* AGGIUNGI ASSETS DI BOOTSTRAP ITALIA */
 add_action( 'wp_enqueue_scripts', 'enqueue_wppa_styles' );
 function enqueue_wppa_styles() {
-    // wp_enqueue_style( 'icons8-icon-min', "//maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css");
+    // wp_enqueue_style( 'lineawesome-icon-font', "//maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css");
     wp_enqueue_style( 'lineawesome-icon-min', get_template_directory_uri() . "/lib/bootstrap-italia/css/line-awesome.min.css");
     wp_enqueue_style( 'bootstrap-italia-min', get_template_directory_uri() . "/lib/bootstrap-italia/css/bootstrap-italia.min.css");
     wp_enqueue_style( 'bootstrap-italia-map', get_template_directory_uri() . "/lib/bootstrap-italia/css/bootstrap-italia.min.css.map");
@@ -365,31 +365,8 @@ function footer_script(){ ?>
         || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) {
     document.body.classList.add('touch')
     }
-    
-    const elements = document.querySelectorAll('.menu-item-has-children');
-    elements.forEach(function(el, index){
-      el.onclick = function() {
-        el.classList.toggle('active');
-      }
-    })
-
   </script>
 <?php }
-
-
-
-
-function SearchFilter($query) {
-    // If 's' request variable is set but empty
-    if (isset($_GET['s']) && empty($_GET['s']) && $query->is_main_query()){
-        $query->is_search = true;
-        $query->is_home = false;
-    }
-    return $query;}
-add_filter('pre_get_posts','SearchFilter');
-
-
-
 
 
 /* AGGIUNGI BREADCRUMP NEI POST E NELLE PAGINE */
@@ -433,7 +410,6 @@ function wppa_breadcrumb() {
   elseif (is_search()) {echo"<li>Search Results"; echo'</li>';} */
   echo '</ul>';
 }
-
 
 // Numbered Pagination
 if ( !function_exists( 'wppa_pagination' ) ) {
@@ -677,7 +653,7 @@ class Category_Posts extends WP_Widget {
             $number = 5;
         }
         $cat_id         = $instance['cat_id'];
-        $random         = $instance['rand'] ? true : false; 
+        $orderchoice    = $instance['orderc']; 
         $excerpt        = $instance['excerpt'] ? true : false; 
         $thumbnail      = $instance['thumbnail'] ? true : false; 
         $categories     = $instance['categories'] ? true : false; 
@@ -690,18 +666,37 @@ class Category_Posts extends WP_Widget {
          * @see WP_Query::get_posts()
          * @param array $args An array of arguments used to retrieve the category posts.
          */
-        if( true === $random ) {
+
+        if( 'random' == $orderchoice ) {
             $query_args = [
                 'posts_per_page'    => $number,
                 'cat'               => $cat_id,
                 'orderby'           => 'rand'
             ];
-        }else{
-            $query_args = [
-                'posts_per_page'    => $number,
-                'cat'               => $cat_id,
-            ];
         }
+        if( 'perdate' == $orderchoice ) {
+          $query_args = [
+              'posts_per_page'    => $number,
+              'cat'               => $cat_id,
+              'orderby'           => 'publish_date',
+              'order'             => 'DESC',
+          ];
+        }
+        if( 'pertitle' == $orderchoice ) {
+          $query_args = [
+              'posts_per_page'    => $number,
+              'cat'               => $cat_id,
+              'orderby'           => 'title',
+              'order'             => 'ASC',
+          ];
+        }
+        if( 'perid' == $orderchoice ) {
+          $query_args = [
+            'posts_per_page'    => $number,
+            'cat'               => $cat_id,
+          ];
+        }
+
         $q = new WP_Query( apply_filters( 'category_posts_args', $query_args ) );
 
         if( $q->have_posts() ) {
@@ -722,6 +717,7 @@ class Category_Posts extends WP_Widget {
                     <?php } else { ?>
                       <article id="post-<?php the_ID(); ?>" <?php post_class('card'); ?> >
                     <?php } ?>
+
 
                     <?php 
                     if ( has_post_thumbnail() && true === $thumbnail ) { ?>
@@ -748,7 +744,7 @@ class Category_Posts extends WP_Widget {
                       <?php } ?>
                       <?php if( true === $date ) { ?> 
                         <span class="data">
-                          <?php echo get_the_date( 'j M Y' ); ?>
+                          <?php the_date(); ?>
                         </span>
                       <?php } ?>
                     </div>
@@ -791,7 +787,7 @@ class Category_Posts extends WP_Widget {
         $instance['title']          = strip_tags( $new_instance['title'] );
         $instance['number']         = (int) $new_instance['number'];
         $instance['cat_id']         = (int) $new_instance['cat_id'];
-        $instance['rand']           = $new_instance['rand'];
+        $instance['orderc']         = $new_instance['orderc'];
         $instance['excerpt']        = $new_instance['excerpt'];
         $instance['thumbnail']      = $new_instance['thumbnail'];
         $instance['date']           = $new_instance['date'];
@@ -814,15 +810,15 @@ class Category_Posts extends WP_Widget {
     public function form( $instance ) 
     {
 
-        $title      = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
-        $number     = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
-        $cat_id     = isset( $instance['cat_id'] ) ? absint( $instance['cat_id'] ) : 1;
-        $random     = isset( $instance['rand'] ) ? $instance['rand'] : false; 
-        $excerpt    = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
-        $thumbnail  = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
-        $date       = isset( $instance['date'] ) ? $instance['date'] : false; 
-        $shadow     = isset( $instance['shadow'] ) ? $instance['shadow'] : false; 
-        $categories = isset( $instance['categories'] ) ? $instance['categories'] : false; 
+        $title        = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+        $number       = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
+        $cat_id       = isset( $instance['cat_id'] ) ? absint( $instance['cat_id'] ) : 1;
+        $orderchoice  = isset( $instance['orderc'] ) ? $instance['orderc'] : false; 
+        $excerpt      = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
+        $thumbnail    = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
+        $date         = isset( $instance['date'] ) ? $instance['date'] : false; 
+        $shadow       = isset( $instance['shadow'] ) ? $instance['shadow'] : false; 
+        $categories   = isset( $instance['categories'] ) ? $instance['categories'] : false; 
         ?>
 
         <p>
@@ -853,9 +849,31 @@ class Category_Posts extends WP_Widget {
         </p>
 
         <p>
-            <?php $checked = ( $random ) ? ' checked=\"checked\" ' : ''; ?>
-            <input type="checkbox" id="<?php echo $this->get_field_id( 'rand' ); ?>" name="<?php echo $this->get_field_name( 'rand' ); ?>" value="true" <?php echo $checked; ?> />    
-            <label for="<?php echo $this->get_field_id('rand'); ?>"><?php _e( 'Visualizza articoli casualmente. Se deselezionato, verranno visualizzati prima i più recenti.' ); ?></label>
+            <label>
+                <input type="radio" value="random" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'random' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" checked />
+                <?php esc_attr_e( 'Visualizza articoli casualmente.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="radio" value="perdate" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'perdate' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <?php esc_attr_e( 'Visualizza articoli per data pubblicazione.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="radio" value="pertitle" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'pertitle' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <?php esc_attr_e( 'Visualizza articoli in ordine alfabetico.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="radio" value="perid" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'perid' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <?php esc_attr_e( 'Visualizza articoli per id.' ); ?>
+            </label>
         </p>
 
         <p>
@@ -951,7 +969,7 @@ class Single_Post extends WP_Widget {
             $number = 1;
         }
         $cat_id         = $instance['cat_id'];
-        $random         = $instance['rand'] ? true : false; 
+        $orderchoice    = $instance['orderc']; 
         $excerpt        = $instance['excerpt'] ? true : false; 
         $thumbnail      = $instance['thumbnail'] ? true : false; 
 
@@ -961,18 +979,35 @@ class Single_Post extends WP_Widget {
          * @see WP_Query::get_posts()
          * @param array $args An array of arguments used to retrieve the category posts.
          */
-        if( true === $random ) {
-            $query_args = [
-                'posts_per_page'    => $number,
-                'cat'               => $cat_id,
-                'orderby'           => 'rand'
-            ];
-        }else{
-            $query_args = [
-                'posts_per_page'    => $number,
-                'cat'               => $cat_id,
-            ];
-        }
+        if( 'random' == $orderchoice ) {
+          $query_args = [
+              'posts_per_page'    => $number,
+              'cat'               => $cat_id,
+              'orderby'           => 'rand'
+          ];
+      }
+      if( 'perdate' == $orderchoice ) {
+        $query_args = [
+            'posts_per_page'    => $number,
+            'cat'               => $cat_id,
+            'orderby'           => 'publish_date',
+            'order'             => 'DESC',
+        ];
+      }
+      if( 'pertitle' == $orderchoice ) {
+        $query_args = [
+            'posts_per_page'    => $number,
+            'cat'               => $cat_id,
+            'orderby'           => 'title',
+            'order'             => 'ASC',
+        ];
+      }
+      if( 'perid' == $orderchoice ) {
+        $query_args = [
+          'posts_per_page'    => $number,
+          'cat'               => $cat_id,
+        ];
+      }
         $q = new WP_Query( apply_filters( 'single_post_args', $query_args ) );
 
         if( $q->have_posts() ) {
@@ -1037,7 +1072,7 @@ class Single_Post extends WP_Widget {
         $instance['title']          = strip_tags( $new_instance['title'] );
         $instance['number']         = (int) $new_instance['number'];
         $instance['cat_id']         = (int) $new_instance['cat_id'];
-        $instance['rand']           = $new_instance['rand'];
+        $instance['orderc']         = $new_instance['orderc'];
         $instance['excerpt']        = $new_instance['excerpt'];
         $instance['thumbnail']      = $new_instance['thumbnail'];
         $this->flush_widget_cache();
@@ -1093,9 +1128,31 @@ class Single_Post extends WP_Widget {
         </p>
 
         <p>
-            <?php $checked = ( $random ) ? ' checked=\"checked\" ' : ''; ?>
-            <input type="checkbox" id="<?php echo $this->get_field_id( 'rand' ); ?>" name="<?php echo $this->get_field_name( 'rand' ); ?>" value="true" <?php echo $checked; ?> />    
-            <label for="<?php echo $this->get_field_id('rand'); ?>"><?php _e( 'Visualizza articolo casualmente. Se deselezionato, verrà visualizzato il più recente.' ); ?></label>
+            <label>
+                <input type="radio" value="random" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'random' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" checked />
+                <?php esc_attr_e( 'Visualizza articoli casualmente.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="radio" value="perdate" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'perdate' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <?php esc_attr_e( 'Visualizza articoli per data pubblicazione.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="radio" value="pertitle" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'pertitle' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <?php esc_attr_e( 'Visualizza articoli in ordine alfabetico.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="radio" value="perid" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'perid' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <?php esc_attr_e( 'Visualizza articoli per id.' ); ?>
+            </label>
         </p>
 
         <p>
