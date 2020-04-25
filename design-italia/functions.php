@@ -694,8 +694,6 @@ class Category_Posts extends WP_Widget {
           ];
         }
 
-        echo ($orderchoice);
-
         $q = new WP_Query( apply_filters( 'category_posts_args', $query_args ) );
 
         if( $q->have_posts() ) {
