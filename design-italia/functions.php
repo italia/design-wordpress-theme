@@ -653,7 +653,7 @@ class Category_Posts extends WP_Widget {
             $number = 5;
         }
         $cat_id         = $instance['cat_id'];
-        $orderchoice    = $instance['orderc']; 
+        $orderchoice    = $instance['rand']; 
         $excerpt        = $instance['excerpt'] ? true : false; 
         $thumbnail      = $instance['thumbnail'] ? true : false; 
         $categories     = $instance['categories'] ? true : false; 
@@ -667,35 +667,34 @@ class Category_Posts extends WP_Widget {
          * @param array $args An array of arguments used to retrieve the category posts.
          */
 
-        if( 'random' == $orderchoice ) {
+        if( 'true' == $orderchoice ) {
             $query_args = [
                 'posts_per_page'    => $number,
                 'cat'               => $cat_id,
                 'orderby'           => 'rand'
             ];
-        }
-        if( 'perdate' == $orderchoice ) {
+        } elseif( 'perdate' == $orderchoice ) {
           $query_args = [
               'posts_per_page'    => $number,
               'cat'               => $cat_id,
               'orderby'           => 'publish_date',
               'order'             => 'DESC',
           ];
-        }
-        if( 'pertitle' == $orderchoice ) {
+        } elseif( 'pertitle' == $orderchoice ) {
           $query_args = [
               'posts_per_page'    => $number,
               'cat'               => $cat_id,
               'orderby'           => 'title',
               'order'             => 'ASC',
           ];
-        }
-        if( 'perid' == $orderchoice ) {
+        } elseif( 'false' == $orderchoice || false == $orderchoice) {
           $query_args = [
             'posts_per_page'    => $number,
             'cat'               => $cat_id,
           ];
         }
+
+        echo ($orderchoice);
 
         $q = new WP_Query( apply_filters( 'category_posts_args', $query_args ) );
 
@@ -787,11 +786,11 @@ class Category_Posts extends WP_Widget {
         $instance['title']          = strip_tags( $new_instance['title'] );
         $instance['number']         = (int) $new_instance['number'];
         $instance['cat_id']         = (int) $new_instance['cat_id'];
-        $instance['orderc']         = $new_instance['orderc'];
+        $instance['rand']           = $new_instance['rand'];
         $instance['excerpt']        = $new_instance['excerpt'];
         $instance['thumbnail']      = $new_instance['thumbnail'];
         $instance['date']           = $new_instance['date'];
-        $instance['shadow']           = $new_instance['shadow'];
+        $instance['shadow']         = $new_instance['shadow'];
         $instance['categories']     = $new_instance['categories'];
         $this->flush_widget_cache();
 
@@ -813,7 +812,7 @@ class Category_Posts extends WP_Widget {
         $title        = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
         $number       = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
         $cat_id       = isset( $instance['cat_id'] ) ? absint( $instance['cat_id'] ) : 1;
-        $orderchoice  = isset( $instance['orderc'] ) ? $instance['orderc'] : false; 
+        $orderchoice  = isset( $instance['rand'] ) ? $instance['rand'] : false; 
         $excerpt      = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
         $thumbnail    = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
         $date         = isset( $instance['date'] ) ? $instance['date'] : false; 
@@ -850,28 +849,28 @@ class Category_Posts extends WP_Widget {
 
         <p>
             <label>
-                <input type="radio" value="random" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'random' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" checked />
+                <input type="radio" value="true" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'true' ); ?><?php checked( $orderchoice, true ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" checked/>
                 <?php esc_attr_e( 'Visualizza articoli casualmente.' ); ?>
             </label>
         </p>
 
         <p>
             <label>
-                <input type="radio" value="perdate" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'perdate' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <input type="radio" value="perdate" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'perdate' ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
                 <?php esc_attr_e( 'Visualizza articoli per data pubblicazione.' ); ?>
             </label>
         </p>
 
         <p>
             <label>
-                <input type="radio" value="pertitle" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'pertitle' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <input type="radio" value="pertitle" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'pertitle' ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
                 <?php esc_attr_e( 'Visualizza articoli in ordine alfabetico.' ); ?>
             </label>
         </p>
 
         <p>
             <label>
-                <input type="radio" value="perid" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'perid' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <input type="radio" value="false" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'false' ); ?><?php checked( $orderchoice, false ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
                 <?php esc_attr_e( 'Visualizza articoli per id.' ); ?>
             </label>
         </p>
@@ -969,7 +968,7 @@ class Single_Post extends WP_Widget {
             $number = 1;
         }
         $cat_id         = $instance['cat_id'];
-        $orderchoice    = $instance['orderc']; 
+        $orderchoice    = $instance['rand'];  
         $excerpt        = $instance['excerpt'] ? true : false; 
         $thumbnail      = $instance['thumbnail'] ? true : false; 
 
@@ -979,30 +978,28 @@ class Single_Post extends WP_Widget {
          * @see WP_Query::get_posts()
          * @param array $args An array of arguments used to retrieve the category posts.
          */
-        if( 'random' == $orderchoice ) {
+
+        if( 'true' == $orderchoice ) {
           $query_args = [
               'posts_per_page'    => $number,
               'cat'               => $cat_id,
               'orderby'           => 'rand'
           ];
-      }
-      if( 'perdate' == $orderchoice ) {
+      } elseif( 'perdate' == $orderchoice ) {
         $query_args = [
             'posts_per_page'    => $number,
             'cat'               => $cat_id,
             'orderby'           => 'publish_date',
             'order'             => 'DESC',
         ];
-      }
-      if( 'pertitle' == $orderchoice ) {
+      } elseif( 'pertitle' == $orderchoice ) {
         $query_args = [
             'posts_per_page'    => $number,
             'cat'               => $cat_id,
             'orderby'           => 'title',
             'order'             => 'ASC',
         ];
-      }
-      if( 'perid' == $orderchoice ) {
+      } elseif( 'false' == $orderchoice ) {
         $query_args = [
           'posts_per_page'    => $number,
           'cat'               => $cat_id,
@@ -1072,7 +1069,7 @@ class Single_Post extends WP_Widget {
         $instance['title']          = strip_tags( $new_instance['title'] );
         $instance['number']         = (int) $new_instance['number'];
         $instance['cat_id']         = (int) $new_instance['cat_id'];
-        $instance['orderc']         = $new_instance['orderc'];
+        $instance['rand']           = $new_instance['rand'];
         $instance['excerpt']        = $new_instance['excerpt'];
         $instance['thumbnail']      = $new_instance['thumbnail'];
         $this->flush_widget_cache();
@@ -1092,12 +1089,12 @@ class Single_Post extends WP_Widget {
     public function form( $instance ) 
     {
 
-        $title      = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
-        $number     = isset( $instance['number'] ) ? absint( $instance['number'] ) : 1;
-        $cat_id     = isset( $instance['cat_id'] ) ? absint( $instance['cat_id'] ) : 1;
-        $random     = isset( $instance['rand'] ) ? $instance['rand'] : false; 
-        $excerpt    = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
-        $thumbnail  = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
+        $title        = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+        $number       = isset( $instance['number'] ) ? absint( $instance['number'] ) : 1;
+        $cat_id       = isset( $instance['cat_id'] ) ? absint( $instance['cat_id'] ) : 1;
+        $orderchoice  = isset( $instance['rand'] ) ? $instance['rand'] : false; 
+        $excerpt      = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
+        $thumbnail    = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
         ?>
 
         <p>
@@ -1129,31 +1126,32 @@ class Single_Post extends WP_Widget {
 
         <p>
             <label>
-                <input type="radio" value="random" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'random' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" checked />
+                <input type="radio" value="true" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'true' ); ?><?php checked( $orderchoice, true ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
                 <?php esc_attr_e( 'Visualizza articoli casualmente.' ); ?>
             </label>
         </p>
 
         <p>
             <label>
-                <input type="radio" value="perdate" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'perdate' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <input type="radio" value="perdate" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'perdate' ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
                 <?php esc_attr_e( 'Visualizza articoli per data pubblicazione.' ); ?>
             </label>
         </p>
 
         <p>
             <label>
-                <input type="radio" value="pertitle" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'pertitle' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <input type="radio" value="pertitle" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'pertitle' ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
                 <?php esc_attr_e( 'Visualizza articoli in ordine alfabetico.' ); ?>
             </label>
         </p>
 
         <p>
             <label>
-                <input type="radio" value="perid" name="<?php echo $this->get_field_name( 'orderc' ); ?>" <?php checked( $orderchoice, 'perid' ); ?> id="<?php echo $this->get_field_id( 'orderc' ); ?>" />
+                <input type="radio" value="false" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'false' );?> <?php checked( $orderchoice, false ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
                 <?php esc_attr_e( 'Visualizza articoli per id.' ); ?>
             </label>
         </p>
+
 
         <p>
             <?php $checked = ( $excerpt ) ? ' checked=\"checked\" ' : ''; ?>
