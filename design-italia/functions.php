@@ -1,11 +1,11 @@
 <?php
 add_action('after_setup_theme', 'wppa_setup');
 
-function wppa_setup()	{
-	load_theme_textdomain('wppa', get_template_directory() . '/languages');
-	add_theme_support('title-tag');
-	add_theme_support('automatic-feed-links');
-	add_theme_support('post-thumbnails');
+function wppa_setup() {
+  load_theme_textdomain('wppa', get_template_directory() . '/languages');
+  add_theme_support('title-tag');
+  add_theme_support('automatic-feed-links');
+  add_theme_support('post-thumbnails');
   
   
   /* ADD BIG 4:3 THUMBS */
@@ -26,9 +26,9 @@ function wppa_setup()	{
 
   /* ADD LOGO TO CMS */
   add_theme_support( 'custom-logo', array(
-  	'height'      => 80,
-  	'width'       => 80,
-  	'flex-height' => true,
+    'height'      => 80,
+    'width'       => 80,
+    'flex-height' => true,
   ) );
   function wppa_the_custom_logo( $blog_id = 0 ) {
       echo get_custom_logo( $blog_id );
@@ -44,18 +44,18 @@ function wppa_setup()	{
   );
   add_theme_support( 'custom-header', $args );
 
-	global $content_width;
-	if (!isset($content_width)) $content_width = 640;
-	register_nav_menus(array(
-		'menu-main' => __('Main Menu', 'wppa'),
-		'mega-main' => __('Mega Menu', 'wppa'),
-		'menu-language'  => __( 'Lingua Menu', 'wppa' ),
-		'menu-social'  => __( 'Social Menu', 'wppa' ),
-		'menu-footer'  => __( 'Footer Menu', 'wppa' )
-	));
+  global $content_width;
+  if (!isset($content_width)) $content_width = 640;
+  register_nav_menus(array(
+    'menu-main' => __('Main Menu', 'wppa'),
+    'mega-main' => __('Mega Menu', 'wppa'),
+    'menu-language'  => __( 'Lingua Menu', 'wppa' ),
+    'menu-social'  => __( 'Social Menu', 'wppa' ),
+    'menu-footer'  => __( 'Footer Menu', 'wppa' )
+  ));
 
 $args = array(
-	'default-color' => 'ffffff',
+  'default-color' => 'ffffff',
   'default-image' => get_template_directory_uri() . '/img/blank.png',
 );
 add_theme_support( 'custom-background', $args );
@@ -76,115 +76,115 @@ add_action('comment_form_before', 'wppa_enqueue_comment_reply_script');
 
 function wppa_enqueue_comment_reply_script() {
 if (get_option('thread_comments')) {
-	wp_enqueue_script('comment-reply');
-	}
+  wp_enqueue_script('comment-reply');
+  }
 }
 
 add_filter('the_title', 'wppa_title');
 
 function wppa_title($title) {
-	if ($title == '') {
-		return '&rarr;';
-	} else {
-		return $title;
-	}
+  if ($title == '') {
+    return '&rarr;';
+  } else {
+    return $title;
+  }
 }
 
 add_filter('wp_title', 'wppa_filter_wp_title');
 
 function wppa_filter_wp_title($title) {
-	return $title . esc_attr(get_bloginfo('name'));
+  return $title . esc_attr(get_bloginfo('name'));
 }
 
 
 if (function_exists('register_sidebar')) {
 // function wppa_widgets_init() {
-	register_sidebar(array(
-		'name' => __('Home Widget Area', 'wppa') ,
-		'id' => 'home-widget-area',
-		'description'   => __( 'Widget area che compare in homepage.', 'wppa' ),
-		'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
-		'after_widget' => "</div>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	));
-	
-	register_sidebar(array(
-		'name' => __('Post Sidebar Widget Area', 'wppa') ,
-		'id' => 'primary-widget-area',
-		'description'   => __( 'Widget area che compare nella sidebar dei post.', 'wppa' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
-		'after_widget' => "</div>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	));
-
   register_sidebar(array(
-  	'name' => __('Page Sidebar Widget Area', 'wppa') ,
-  	'id' => 'page-widget-area',
-  	'description'   => __( 'Widget area che compare nella sidebar delle pagine.', 'wppa' ),
-  	'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
-  	'after_widget' => "</div>",
-  	'before_title' => '<h6 class="widget-title">',
-  	'after_title' => '</h6>',
+    'name' => __('Home Widget Area', 'wppa') ,
+    'id' => 'home-widget-area',
+    'description'   => __( 'Widget area che compare in homepage.', 'wppa' ),
+    'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ));
+  
+  register_sidebar(array(
+    'name' => __('Post Sidebar Widget Area', 'wppa') ,
+    'id' => 'primary-widget-area',
+    'description'   => __( 'Widget area che compare nella sidebar dei post.', 'wppa' ),
+    'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
   ));
 
-	register_sidebar( array(
-		'name' => __('Footer Widget Area', 'wppa') ,
-		'id' => 'footer-widget-area',
-		'description'   => __( 'Widget area che compare nel footer.', 'wppa' ),
-		'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
-		'after_widget' => "</div>",
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-	));
+  register_sidebar(array(
+    'name' => __('Page Sidebar Widget Area', 'wppa') ,
+    'id' => 'page-widget-area',
+    'description'   => __( 'Widget area che compare nella sidebar delle pagine.', 'wppa' ),
+    'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<h6 class="widget-title">',
+    'after_title' => '</h6>',
+  ));
 
-	register_sidebar( array(
-		'name' => __('Footer Sub Widget Area', 'wppa') ,
-		'id' => 'footer-sub-widget-area',
-		'description'   => __( 'Widget area che compare sotto la footer widget area.', 'wppa' ),
-		'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
-		'after_widget' => "</div>",
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-	));
+  register_sidebar( array(
+    'name' => __('Footer Widget Area', 'wppa') ,
+    'id' => 'footer-widget-area',
+    'description'   => __( 'Widget area che compare nel footer.', 'wppa' ),
+    'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<h4 class="widget-title">',
+    'after_title' => '</h4>',
+  ));
 
-	register_sidebar( array(
-		'name' => __('Post Footer Widget Area', 'wppa') ,
-		'id' => 'single-footer-widget-area',
-		'description'   => __( 'Widget area che compare sotto il contenuto del singolo post.', 'wppa' ),
-		'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
-		'after_widget' => "</div>",
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-	));
+  register_sidebar( array(
+    'name' => __('Footer Sub Widget Area', 'wppa') ,
+    'id' => 'footer-sub-widget-area',
+    'description'   => __( 'Widget area che compare sotto la footer widget area.', 'wppa' ),
+    'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<h4 class="widget-title">',
+    'after_title' => '</h4>',
+  ));
+
+  register_sidebar( array(
+    'name' => __('Post Footer Widget Area', 'wppa') ,
+    'id' => 'single-footer-widget-area',
+    'description'   => __( 'Widget area che compare sotto il contenuto del singolo post.', 'wppa' ),
+    'before_widget' => '<div id="%1$s" class="col-lg widget-container %2$s">',
+    'after_widget' => "</div>",
+    'before_title' => '<h4 class="widget-title">',
+    'after_title' => '</h4>',
+  ));
 }
 // add_action('widgets_init', 'wppa_widgets_init');
 
 
 function wppa_custom_pings($comment) {
-	$GLOBALS['comment'] = $comment;
+  $GLOBALS['comment'] = $comment;
 ?>
 <li <?php
-	comment_class(); ?> id="li-comment-<?php
-	comment_ID(); ?>"><?php
-	echo comment_author_link(); ?></li>
+  comment_class(); ?> id="li-comment-<?php
+  comment_ID(); ?>"><?php
+  echo comment_author_link(); ?></li>
 <?php
-	} add_filter('get_comments_number', 'wppa_comments_number');
+  } add_filter('get_comments_number', 'wppa_comments_number');
 
 function wppa_comments_number($count) {
-	if (!is_admin()) 	{
-		global $id;
-		// $comments_by_type = & separate_comments(get_comments('status=approve&post_id=' . $id));
-		$cc = get_comments('status=approve&post_id=' . $id);
+  if (!is_admin())  {
+    global $id;
+    // $comments_by_type = & separate_comments(get_comments('status=approve&post_id=' . $id));
+    $cc = get_comments('status=approve&post_id=' . $id);
     $comments_by_type = separate_comments($cc);
-		return count($comments_by_type['comment']);
-		} else {
-		return $count;
-		}
-	}
-	
-	
+    return count($comments_by_type['comment']);
+    } else {
+    return $count;
+    }
+  }
+  
+  
 /* ESTENSIONE DEL WIDGET POST */
 Class wppa_recent_posts_widget extends WP_Widget_Recent_Posts {
   function widget($args, $instance) {
@@ -219,7 +219,7 @@ Class wppa_recent_posts_widget extends WP_Widget_Recent_Posts {
         <!--  <?php the_post_thumbnail('thumbnail', array('class' => 'rounded float-right')); ?>-->
         <!--</a>-->
         <h5><strong><?php the_category( ', ' ); ?></strong></h5>
-      	<h5><?php the_time( get_option( 'date_format' ) ); ?></h5>
+        <h5><?php the_time( get_option( 'date_format' ) ); ?></h5>
         <h4><a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a></h4>
         <p><?php the_excerpt(); ?></p>
       </div>
@@ -367,6 +367,7 @@ function footer_script(){ ?>
     }
     
     const elements = document.querySelectorAll('.menu-item-has-children');
+
     elements.forEach(function(el, index){
       el.onclick = function() {
         el.classList.toggle('active');
@@ -393,80 +394,82 @@ add_filter('pre_get_posts','SearchFilter');
 
 
 /* AGGIUNGI BREADCRUMP NEI POST E NELLE PAGINE */
-function wppa_breadcrumb() {
-  global $post;
-  echo '<ul class="breadcrumb">';
-  if (!is_home()) {
-    echo '<li class="breadcrumb-item"><a href="';
-    echo get_option('home');
-    echo '">';
-    echo 'Home';
-    echo '</a></li>';
-    if (is_category() || is_single()) {
-      echo '<li class="breadcrumb-item">';
-      the_category(' </li><li class="breadcrumb-item"> ');
+if ( ! function_exists( 'wppa_breadcrumb' ) ) {
+  function wppa_breadcrumb() {
+    global $post;
+    echo '<ul class="breadcrumb">';
+    if (!is_home()) {
+      echo '<li class="breadcrumb-item"><a href="';
+      echo get_option('home');
+      echo '">';
+      echo 'Home';
+      echo '</a></li>';
+      if (is_category() || is_single()) {
+        echo '<li class="breadcrumb-item">';
+        echo implode(' </li><li class="breadcrumb-item"> ',array_reverse(explode(',',get_the_category_list(','))));
       if (is_single()) {
-        echo '</li><li class="breadcrumb-item">';
-        the_title();
-        echo '</li>';
-      }
-    } elseif (is_page()) {
-      if($post->post_parent){
-        $anc = get_post_ancestors( $post->ID );
-        $title = get_the_title();
-        foreach ( $anc as $ancestor ) {
-          $output = '<li class="breadcrumb-item"><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li>';
+          echo '</li><li class="breadcrumb-item">';
+          the_title();
+          echo '</li>';
         }
-        echo $output;
-        echo '<li class="breadcrumb-item">'.$title.'</li>';
-      } else {
-        echo '<li class="breadcrumb-item">'.get_the_title().'</li>';
+      } elseif (is_page()) {
+        if($post->post_parent){
+          $anc = get_post_ancestors( $post->ID );
+          $title = get_the_title();
+          foreach ( $anc as $ancestor ) {
+            $output = '<li class="breadcrumb-item"><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li>';
+          }
+          echo $output;
+          echo '<li class="breadcrumb-item">'.$title.'</li>';
+        } else {
+          echo '<li class="breadcrumb-item">'.get_the_title().'</li>';
+        }
       }
     }
+    /* elseif (is_tag()) {single_tag_title();}
+    elseif (is_day()) {echo"<li>Archive for "; the_time('F jS, Y'); echo'</li>';}
+    elseif (is_month()) {echo"<li>Archive for "; the_time('F, Y'); echo'</li>';}
+    elseif (is_year()) {echo"<li>Archive for "; the_time('Y'); echo'</li>';}
+    elseif (is_author()) {echo"<li>Author Archive"; echo'</li>';}
+    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
+    elseif (is_search()) {echo"<li>Search Results"; echo'</li>';} */
+    echo '</ul>';
   }
-  /* elseif (is_tag()) {single_tag_title();}
-  elseif (is_day()) {echo"<li>Archive for "; the_time('F jS, Y'); echo'</li>';}
-  elseif (is_month()) {echo"<li>Archive for "; the_time('F, Y'); echo'</li>';}
-  elseif (is_year()) {echo"<li>Archive for "; the_time('Y'); echo'</li>';}
-  elseif (is_author()) {echo"<li>Author Archive"; echo'</li>';}
-  elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
-  elseif (is_search()) {echo"<li>Search Results"; echo'</li>';} */
-  echo '</ul>';
 }
 
 
 // Numbered Pagination
 if ( !function_exists( 'wppa_pagination' ) ) {
-	
-	function wppa_pagination() {
-		
-		$prev_arrow = is_rtl() ? '<i class="it-chevron-right"></i>' : '<i class="it-chevron-left"></i>';
-		$next_arrow = is_rtl() ? '<i class="it-chevron-left"></i>' : '<i class="it-chevron-right"></i>';
-		
-		global $wp_query;
-		$total = $wp_query->max_num_pages;
-		$big = 999999999; // need an unlikely integer
-		if( $total > 1 )  {
-			 if( !$current_page = get_query_var('paged') )
-				 $current_page = 1;
-			 if( get_option('permalink_structure') ) {
-				 $format = 'page/%#%/';
-			 } else {
-				 $format = '&paged=%#%';
-			 }
-			echo paginate_links(array(
-				'base'			=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-				'format'		=> $format,
-				'current'		=> max( 1, get_query_var('paged') ),
-				'total' 		=> $total,
-				'mid_size'		=> 2,
-				'type' 			=> 'list',
-				'prev_text'		=> $prev_arrow,
-				'next_text'		=> $next_arrow,
-			 ) );
-		}
-	}
-	
+  
+  function wppa_pagination() {
+    
+    $prev_arrow = is_rtl() ? '<i class="it-chevron-right"></i>' : '<i class="it-chevron-left"></i>';
+    $next_arrow = is_rtl() ? '<i class="it-chevron-left"></i>' : '<i class="it-chevron-right"></i>';
+    
+    global $wp_query;
+    $total = $wp_query->max_num_pages;
+    $big = 999999999; // need an unlikely integer
+    if( $total > 1 )  {
+       if( !$current_page = get_query_var('paged') )
+         $current_page = 1;
+       if( get_option('permalink_structure') ) {
+         $format = 'page/%#%/';
+       } else {
+         $format = '&paged=%#%';
+       }
+      echo paginate_links(array(
+        'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+        'format'    => $format,
+        'current'   => max( 1, get_query_var('paged') ),
+        'total'     => $total,
+        'mid_size'    => 2,
+        'type'      => 'list',
+        'prev_text'   => $prev_arrow,
+        'next_text'   => $next_arrow,
+       ) );
+    }
+  }
+  
 }
 
 
@@ -474,8 +477,8 @@ if ( !function_exists( 'wppa_pagination' ) ) {
 
 /* Enqueue WordPress theme styles within Gutenberg. */
 function wppa_gutenberg_styles() {
-	 wp_enqueue_style( 'wppa-gutenberg', get_template_directory_uri() . '/lib/block/block.css', false, '@@pkg.version', 'all' );
-	 // wp_enqueue_style( 'wppa-gutenberg-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.25.2/dist/css/bootstrap-italia.min.css', false, '@@pkg.version', 'all' );
+   wp_enqueue_style( 'wppa-gutenberg', get_template_directory_uri() . '/lib/block/block.css', false, '@@pkg.version', 'all' );
+   // wp_enqueue_style( 'wppa-gutenberg-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap-italia@0.25.2/dist/css/bootstrap-italia.min.css', false, '@@pkg.version', 'all' );
 }
 add_action( 'enqueue_block_editor_assets', 'wppa_gutenberg_styles' );
 
@@ -488,63 +491,63 @@ add_action( 'after_setup_theme', 'wppa_setup_theme' );
 /* Custom styled buttons within Gutenberg. */
 function wppa_setup_theme_supported_features() {
     add_theme_support( 'editor-color-palette', array(
-			array(
-				'name'  => __( 'Blu', 'themeLangDomain' ),
-				'slug' => 'blu',
-				'color' => '#004d99',
-			),
-			array(
-				'name'  => __( 'Grigio scuro', 'themeLangDomain' ),
-				'slug' => 'grigioscuro',
-				'color' => '#3d4955',
-			),
-			array(
-				'name'  => __( 'Blu scuro', 'themeLangDomain' ),
-				'slug' => 'bluscuro',
-				'color' => '#17324d',
-			),
-			array(
-				'name'  => __( 'Azzurro', 'themeLangDomain' ),
-				'slug' => 'azzurro',
-				'color' => '#0073e6',
-			),
-			array(
-				'name'  => __( 'Grigio', 'themeLangDomain' ),
-				'slug' => 'grigio',
-				'color' => '#5c6f82',
-			),
-			array(
-				'name'  => __( 'Grigio chiaro', 'themeLangDomain' ),
-				'slug' => 'grigiochiaro',
-				'color' => '#94a1ae',
-			),
-			array(
-				'name'  => __( 'Verde', 'themeLangDomain' ),
-				'slug' => 'verde',
-				'color' => '#00cc85',
-			),
-			array(
-				'name'  => __( 'Rosso', 'themeLangDomain' ),
-				'slug' => 'rosso',
-				'color' => '#f73e5a',
-			),
-			array(
-				'name'  => __( 'Arancione', 'themeLangDomain' ),
-				'slug' => 'arancione',
-				'color' => '#ff9900',
-			),
-			array(
-				'name'  => __( 'Argento', 'themeLangDomain' ),
-				'slug' => 'argento',
-				'color' => '#eef0f6',
-			),
-			array(
-				'name'  => __( 'Bianco', 'themeLangDomain' ),
-				'slug' => 'bianco',
-				'color' => '#ffffff',
-			)
-		)
-	);
+      array(
+        'name'  => __( 'Blu', 'themeLangDomain' ),
+        'slug' => 'blu',
+        'color' => '#004d99',
+      ),
+      array(
+        'name'  => __( 'Grigio scuro', 'themeLangDomain' ),
+        'slug' => 'grigioscuro',
+        'color' => '#3d4955',
+      ),
+      array(
+        'name'  => __( 'Blu scuro', 'themeLangDomain' ),
+        'slug' => 'bluscuro',
+        'color' => '#17324d',
+      ),
+      array(
+        'name'  => __( 'Azzurro', 'themeLangDomain' ),
+        'slug' => 'azzurro',
+        'color' => '#0073e6',
+      ),
+      array(
+        'name'  => __( 'Grigio', 'themeLangDomain' ),
+        'slug' => 'grigio',
+        'color' => '#5c6f82',
+      ),
+      array(
+        'name'  => __( 'Grigio chiaro', 'themeLangDomain' ),
+        'slug' => 'grigiochiaro',
+        'color' => '#94a1ae',
+      ),
+      array(
+        'name'  => __( 'Verde', 'themeLangDomain' ),
+        'slug' => 'verde',
+        'color' => '#00cc85',
+      ),
+      array(
+        'name'  => __( 'Rosso', 'themeLangDomain' ),
+        'slug' => 'rosso',
+        'color' => '#f73e5a',
+      ),
+      array(
+        'name'  => __( 'Arancione', 'themeLangDomain' ),
+        'slug' => 'arancione',
+        'color' => '#ff9900',
+      ),
+      array(
+        'name'  => __( 'Argento', 'themeLangDomain' ),
+        'slug' => 'argento',
+        'color' => '#eef0f6',
+      ),
+      array(
+        'name'  => __( 'Bianco', 'themeLangDomain' ),
+        'slug' => 'bianco',
+        'color' => '#ffffff',
+      )
+    )
+  );
 }
 add_action( 'after_setup_theme', 'wppa_setup_theme_supported_features' );
 
@@ -588,31 +591,31 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 require_once dirname( __FILE__ ) . '/lib/tgm-plugin-activation/class-tgm-plugin-activation.php';
 add_action( 'tgmpa_register', 'wppa_register_required_plugins' );
 function wppa_register_required_plugins() {
-	$plugins = array(
-		array(
-			'name'      => 'Page Builder by SiteOrigin',
-			'slug'      => 'siteorigin-panels',
-			'required'  => false,
-		),
-		array(
-			'name'      => 'SiteOrigin Widgets Bundle',
-			'slug'      => 'so-widgets-bundle',
-			'required'  => false,
-		),
-	);
-	$config = array(
-		'id'           => 'wppa',                 // Unique ID for hashing notices for multiple instances of TGMPA.
-		'default_path' => '',                      // Default absolute path to bundled plugins.
-		'menu'         => 'tgmpa-install-plugins',   // Menu slug.
-		'parent_slug'  => 'plugins.php',            // Parent menu slug.
-		'capability'   => 'manage_options',         // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
-		'has_notices'  => true,                    // Show admin notices or not.
-		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
-		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
-		'message'      => '',                      // Message to output right before the plugins table.
-	);
-	tgmpa( $plugins, $config );
+  $plugins = array(
+    array(
+      'name'      => 'Page Builder by SiteOrigin',
+      'slug'      => 'siteorigin-panels',
+      'required'  => false,
+    ),
+    array(
+      'name'      => 'SiteOrigin Widgets Bundle',
+      'slug'      => 'so-widgets-bundle',
+      'required'  => false,
+    ),
+  );
+  $config = array(
+    'id'           => 'wppa',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+    'default_path' => '',                      // Default absolute path to bundled plugins.
+    'menu'         => 'tgmpa-install-plugins',   // Menu slug.
+    'parent_slug'  => 'plugins.php',            // Parent menu slug.
+    'capability'   => 'manage_options',         // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
+    'has_notices'  => true,                    // Show admin notices or not.
+    'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+    'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+    'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+    'message'      => '',                      // Message to output right before the plugins table.
+  );
+  tgmpa( $plugins, $config );
 }
 
 /* 
@@ -622,7 +625,7 @@ function wppa_register_required_plugins() {
 */
 
 function custom_excerpt_length( $length ) {
-	return 25;
+  return 25;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 10 );
 function new_excerpt_more( $more ) {
@@ -677,7 +680,7 @@ class Category_Posts extends WP_Widget {
             $number = 5;
         }
         $cat_id         = $instance['cat_id'];
-        $random         = $instance['rand'] ? true : false; 
+        $orderchoice    = $instance['rand']; 
         $excerpt        = $instance['excerpt'] ? true : false; 
         $thumbnail      = $instance['thumbnail'] ? true : false; 
         $categories     = $instance['categories'] ? true : false; 
@@ -690,18 +693,34 @@ class Category_Posts extends WP_Widget {
          * @see WP_Query::get_posts()
          * @param array $args An array of arguments used to retrieve the category posts.
          */
-        if( true === $random ) {
-            $query_args = [
-                'posts_per_page'    => $number,
-                'cat'               => $cat_id,
-                'orderby'           => 'rand'
-            ];
-        }else{
-            $query_args = [
-                'posts_per_page'    => $number,
-                'cat'               => $cat_id,
-            ];
-        }
+
+        if( 'true' == $orderchoice ) {
+          $query_args = [
+              'posts_per_page'    => $number,
+              'cat'               => $cat_id,
+              'orderby'           => 'rand'
+          ];
+        } elseif( 'perdate' == $orderchoice ) {
+          $query_args = [
+            'posts_per_page'    => $number,
+            'cat'               => $cat_id,
+            'orderby'           => 'publish_date',
+            'order'             => 'DESC',
+          ];
+        } elseif( 'pertitle' == $orderchoice ) {
+          $query_args = [
+            'posts_per_page'    => $number,
+            'cat'               => $cat_id,
+            'orderby'           => 'title',
+            'order'             => 'ASC',
+          ];
+        } elseif( 'false' == $orderchoice || false == $orderchoice) {
+          $query_args = [
+            'posts_per_page'    => $number,
+            'cat'               => $cat_id,
+          ];
+        } 
+        
         $q = new WP_Query( apply_filters( 'category_posts_args', $query_args ) );
 
         if( $q->have_posts() ) {
@@ -729,7 +748,7 @@ class Category_Posts extends WP_Widget {
                     <div class="card-img-top">
                       <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                         <?php 
-            							the_post_thumbnail('mansory-thumb', array('class' => 'img-fluid')); 
+                          the_post_thumbnail('mansory-thumb', array('class' => 'img-fluid')); 
                           // the_post_thumbnail( 'large' ); 
                         ?>
                       </a>
@@ -817,7 +836,7 @@ class Category_Posts extends WP_Widget {
         $title      = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
         $number     = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
         $cat_id     = isset( $instance['cat_id'] ) ? absint( $instance['cat_id'] ) : 1;
-        $random     = isset( $instance['rand'] ) ? $instance['rand'] : false; 
+        $orderchoice = isset( $instance['rand'] ) ? $instance['rand'] : false; 
         $excerpt    = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
         $thumbnail  = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
         $date       = isset( $instance['date'] ) ? $instance['date'] : false; 
@@ -852,11 +871,41 @@ class Category_Posts extends WP_Widget {
             </select>
         </p>
 
+        <hr>
+        
+        <h3><?php esc_attr_e( 'Seleziona l\'ordine di visualizzazione' ); ?></h3>
+
         <p>
-            <?php $checked = ( $random ) ? ' checked=\"checked\" ' : ''; ?>
-            <input type="checkbox" id="<?php echo $this->get_field_id( 'rand' ); ?>" name="<?php echo $this->get_field_name( 'rand' ); ?>" value="true" <?php echo $checked; ?> />    
-            <label for="<?php echo $this->get_field_id('rand'); ?>"><?php _e( 'Visualizza articoli casualmente. Se deselezionato, verranno visualizzati prima i più recenti.' ); ?></label>
+          <label>
+            <input type="radio" value="true" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'true' ); ?><?php checked( $orderchoice, true ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" checked/>
+            <?php esc_attr_e( 'Visualizza articoli casualmente.' ); ?>
+            </label>
         </p>
+
+        <p>
+            <label>
+              <input type="radio" value="perdate" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'perdate' ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
+              <?php esc_attr_e( 'Visualizza articoli per data pubblicazione.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+              <input type="radio" value="pertitle" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'pertitle' ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
+              <?php esc_attr_e( 'Visualizza articoli in ordine alfabetico.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+              <input type="radio" value="false" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'false' ); ?><?php checked( $orderchoice, false ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
+              <?php esc_attr_e( 'Visualizza articoli per id.' ); ?>
+            </label>
+        </p>
+
+        <hr>
+
+        <h3><?php esc_attr_e( 'Opzioni disponibili' ); ?></h3>
 
         <p>
             <?php $checked = ( $excerpt ) ? ' checked=\"checked\" ' : ''; ?>
@@ -951,7 +1000,7 @@ class Single_Post extends WP_Widget {
             $number = 1;
         }
         $cat_id         = $instance['cat_id'];
-        $random         = $instance['rand'] ? true : false; 
+        $orderchoice    = $instance['rand']; 
         $excerpt        = $instance['excerpt'] ? true : false; 
         $thumbnail      = $instance['thumbnail'] ? true : false; 
 
@@ -961,18 +1010,34 @@ class Single_Post extends WP_Widget {
          * @see WP_Query::get_posts()
          * @param array $args An array of arguments used to retrieve the category posts.
          */
-        if( true === $random ) {
-            $query_args = [
-                'posts_per_page'    => $number,
-                'cat'               => $cat_id,
-                'orderby'           => 'rand'
-            ];
-        }else{
-            $query_args = [
-                'posts_per_page'    => $number,
-                'cat'               => $cat_id,
-            ];
+
+        if( 'true' == $orderchoice ) {
+          $query_args = [
+              'posts_per_page'    => $number,
+              'cat'               => $cat_id,
+              'orderby'           => 'rand'
+          ];
+        } elseif( 'perdate' == $orderchoice ) {
+          $query_args = [
+            'posts_per_page'    => $number,
+            'cat'               => $cat_id,
+            'orderby'           => 'publish_date',
+            'order'             => 'DESC',
+          ];
+        } elseif( 'pertitle' == $orderchoice ) {
+          $query_args = [
+            'posts_per_page'    => $number,
+            'cat'               => $cat_id,
+            'orderby'           => 'title',
+            'order'             => 'ASC',
+          ];
+        } elseif( 'false' == $orderchoice || false == $orderchoice) {
+          $query_args = [
+            'posts_per_page'    => $number,
+            'cat'               => $cat_id,
+          ];
         }
+        
         $q = new WP_Query( apply_filters( 'single_post_args', $query_args ) );
 
         if( $q->have_posts() ) {
@@ -1060,7 +1125,7 @@ class Single_Post extends WP_Widget {
         $title      = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
         $number     = isset( $instance['number'] ) ? absint( $instance['number'] ) : 1;
         $cat_id     = isset( $instance['cat_id'] ) ? absint( $instance['cat_id'] ) : 1;
-        $random     = isset( $instance['rand'] ) ? $instance['rand'] : false; 
+        $orderchoice = isset( $instance['rand'] ) ? $instance['rand'] : false; 
         $excerpt    = isset( $instance['excerpt'] ) ? $instance['excerpt'] : false; 
         $thumbnail  = isset( $instance['thumbnail'] ) ? $instance['thumbnail'] : false; 
         ?>
@@ -1092,11 +1157,41 @@ class Single_Post extends WP_Widget {
             </select>
         </p>
 
+        <hr>
+        
+        <h3><?php esc_attr_e( 'Seleziona l\'ordine di visualizzazione' ); ?></h3>
+
         <p>
-            <?php $checked = ( $random ) ? ' checked=\"checked\" ' : ''; ?>
-            <input type="checkbox" id="<?php echo $this->get_field_id( 'rand' ); ?>" name="<?php echo $this->get_field_name( 'rand' ); ?>" value="true" <?php echo $checked; ?> />    
-            <label for="<?php echo $this->get_field_id('rand'); ?>"><?php _e( 'Visualizza articolo casualmente. Se deselezionato, verrà visualizzato il più recente.' ); ?></label>
+          <label>
+            <input type="radio" value="true" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'true' ); ?><?php checked( $orderchoice, true ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" checked/>
+            <?php esc_attr_e( 'Visualizza articoli casualmente.' ); ?>
+            </label>
         </p>
+
+        <p>
+            <label>
+              <input type="radio" value="perdate" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'perdate' ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
+              <?php esc_attr_e( 'Visualizza articoli per data pubblicazione.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+              <input type="radio" value="pertitle" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'pertitle' ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
+              <?php esc_attr_e( 'Visualizza articoli in ordine alfabetico.' ); ?>
+            </label>
+        </p>
+
+        <p>
+            <label>
+              <input type="radio" value="false" name="<?php echo $this->get_field_name( 'rand' ); ?>" <?php checked( $orderchoice, 'false' ); ?><?php checked( $orderchoice, false ); ?> id="<?php echo $this->get_field_id( 'rand' ); ?>" />
+              <?php esc_attr_e( 'Visualizza articoli per id.' ); ?>
+            </label>
+        </p>
+
+        <hr>
+
+        <h3><?php esc_attr_e( 'Opzioni disponibili' ); ?></h3>
 
         <p>
             <?php $checked = ( $excerpt ) ? ' checked=\"checked\" ' : ''; ?>

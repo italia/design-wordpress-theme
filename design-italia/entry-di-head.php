@@ -3,7 +3,14 @@
 		<div class="titolo-sezione">
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<?php edit_post_link(); ?>
-				<h2 class="mb-4"><?php the_title(); ?></h2>
+				<h2 class="mb-4">
+					<?php 
+						/* if ( has_post_format( 'video' )) {
+						  echo '<div class="icona-sezione"><i class="la la-play-circle"></i></div>';
+						} */
+					?>
+					<?php the_title(); ?>
+				</h2>
 				<?php if ( ! has_excerpt() ) { echo ''; } else { the_excerpt(); } ?>
 		   <?php endwhile; endif; ?>
 		</div>

@@ -3,7 +3,7 @@
    <div class="container">
       <div class="row">
 
-  	    <div class="col-lg-8 offset-lg-2">
+  	    <div class="col-lg-8 offset-lg-2 pt-5">
 			   <article id="post-0" class="post not-found">
 			      <header class="header">
 			         <h1 class="entry-title"><?php _e( '404 Pagina non trovata', 'wppa' ); ?></h1>

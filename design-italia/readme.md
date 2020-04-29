@@ -64,6 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Changelog
 
+* 0.33 - Aggiunto ordinamento widget DesignItalia (thx @leouzz), fix post breadcrumb (thx @fburatti), fix around
+
 * 0.32 - Fix menu piccoli schermi
 
 * 0.31 - Aggiornata versione di Bootstrap Italia (v1.3.9), ottimizzazione menu piccoli schermi, fix around
