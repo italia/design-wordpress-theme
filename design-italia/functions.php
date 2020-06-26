@@ -366,14 +366,25 @@ function footer_script(){ ?>
     document.body.classList.add('touch')
     }
     
+    // Toogle class mobile nav
     const elements = document.querySelectorAll('.menu-item-has-children');
-
     elements.forEach(function(el, index){
       el.onclick = function() {
         el.classList.toggle('active');
       }
     })
 
+    // Toogle class sticky header on scroll
+    var scrollPosition = window.scrollY;
+    var headerContainer = document.getElementsByClassName('it-header-wrapper')[0];
+    window.addEventListener('scroll', function() {
+      scrollPosition = window.scrollY;
+      if (scrollPosition >= 130) {
+        headerContainer.classList.add('is-sticky');
+      } else {
+        headerContainer.classList.remove('is-sticky');
+      }
+    });
   </script>
 <?php }
 

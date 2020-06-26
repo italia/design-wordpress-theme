@@ -9,7 +9,7 @@
       <div id="wrapper" class="hfeed">
          <header id="header" class="" role="banner">
 
-         <div class="it-header-wrapper">
+         <div class="it-header-wrapper it-header-sticky">
            <div class="it-header-slim-wrapper">
              <div class="container">
                <div class="row">
