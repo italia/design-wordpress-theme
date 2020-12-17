@@ -1,50 +1,106 @@
-### publiccode.yml
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
 
-publiccode-yaml-version: "http://w3id.org/publiccode/version/0.1"
-
-name: Design Italia
-url: "https://github.com/italia/design-wordpress-theme/"
-softwareVersion: "dev"
-releaseDate: "2017-07-16"
-
-platforms:
-  - web
-
-tags:
+publiccodeYmlVersion: '0.2'
+categories:
+  - website-builder
   - content-management
-
-developmentStatus: development
-
-softwareType: "standalone"
-
 description:
-  eng:
-    localisedName: Design Italia
-    genericName: WordPress Tema
-    shortDescription: >
-          Design Italia è un semplice tema utilizzabile per i siti internet 
-          della Pubblica Amministrazione italiana.
+  it:
+    features:
+      - 6 aree widget
+      - 4 posizioni del menu
+      - Responsive
+    genericName: 'Tema Wordpress '
+    longDescription: |
+      Design Italia Bootstrap Theme è un tema sviluppato per il CMS open source
+      WordPress 4, basato sul framework [Bootstrap
+      Italia](https://italia.github.io/bootstrap-italia/) manutenuto dal
+      Dipartimento per la Trasformazione Digitale.
 
-    longDescription: >
-          Design Italia è sviluppato per WordPress 4 (CMS open-source), su framework Bootstrap 4.
-          Design Italia rispetta le nuove linee guida di design dell'Agenzia per l'Italia digitale 
-          rilasciare dal Team per la trasformazione digitale e le caratteristiche per i 
-          servizi web della Pubblica Amministrazione contenute nel Piano triennale per 
-          l'informatica nella Pubblica Amministrazione 2017/2019.
 
-    featureList:
-       - Web
+      Design Italia Bootstrap Theme rispetta le nuove linee guida di design
+      dell'Agenzia per l'Italia Digitale. 
 
+
+      [Qui](http://design-italia.marcogargano.com/) è possibile visualizzare una
+      demo del progetto.
+
+
+      ## Principali caratteristiche
+
+
+      - **WordPress** - Design Italia Bootstrap Theme è realizzato per l'ultima
+      versione di WordPress disponibile in italiano, attualmente 5.0.3.
+
+      - **Bootstrap** - Design Italia Bootstrap Theme è sviluppato su framework
+      Bootstrap 4. Può esser utilizzato direttamente nell'editor di WordPress
+      come HTML.
+
+      - **Responsive** - Design Italia Bootstrap Theme si adatta a disposiviti
+      sia desktop che mobile, senza perdere alcuna funzionalità.
+
+      - **2 widget personalizzati** - Design Italia Bootstrap Theme offre 
+      widget sviluppati appositamente per sfruttare al meglio articoli e 
+      categorie, con diverse opzioni disponibili.
+
+      - **4 posizioni del menu** - Design Italia Bootstrap Theme mette a 
+      disposizione 4 posizioni di menu, nelle quali è possibile gestire la 
+      selezione della lingua e i canali social.
+
+      - **6 aree widget** - Design Italia Bootstrap Theme offre 6 aree dove è 
+      possibile inserire widget: una presente in home-page, due nel footer,  due
+      nella sidebar e un'ulteriore nel footer di post e pagine.
+
+      - **Logo e titolo** - Design Italia Bootstrap Theme permette la 
+      personalizzazione del logo, del titolo e del motto del sito direttamente 
+      dalla personalizzazione del tema.
+
+      - **Colori e link** - Design Italia Bootstrap Theme consente di
+      selezionare e personalizzare i colori per la testata, il footer e i suoi
+      link.
+
+      - **Home-page** - Design Italia Bootstrap Theme ha un template differente
+      per la home-page che ti permette di comunicare al meglio al tuo pubblico.
+    shortDescription: |-
+      Design Italia Wordpress è un tema utilizzabile per i siti internet della
+      Pubblica Amministrazione italiana
+developmentStatus: stable
+intendedAudience:
+  scope:
+    - government
+    - education
+it:
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: true
+    misureMinimeSicurezza: false
+    modelloInteroperabilita: false
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: false
 legal:
-  license: AGPL-3.0
-
+  authorsFile: |-
+    https://raw.githubusercontent.com/italia/design-wordpress-theme/master/AUTHORS
+  license: AGPL-3.0-only
+  mainCopyrightOwner: Marco Gargano
+  repoOwner: DTD
+localisation:
+  availableLanguages:
+    - it
+  localisationReady: false
 maintenance:
-  type: "community"
-
   contacts:
     - name: Marco Gargano
-
-localisation:
-  localisationReady: yes
-  availableLanguages:
-    - ita
+  type: community
+name: Design Italia Wordpress Theme
+platforms:
+  - web
+releaseDate: '2020-06-26'
+softwareType: addon
+softwareVersion: '0.34'
+url: 'https://github.com/italia/design-wordpress-theme'
