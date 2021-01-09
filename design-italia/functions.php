@@ -373,7 +373,7 @@ function footer_script(){ ?>
         el.classList.toggle('active');
       }
     })
-
+    
     // Toogle class sticky header on scroll
     var scrollPosition = window.scrollY;
     var headerContainer = document.getElementsByClassName('it-header-wrapper')[0];
@@ -385,6 +385,7 @@ function footer_script(){ ?>
         headerContainer.classList.remove('is-sticky');
       }
     });
+
   </script>
 <?php }
 
@@ -447,6 +448,7 @@ if ( ! function_exists( 'wppa_breadcrumb' ) ) {
     echo '</ul>';
   }
 }
+
 
 
 // Numbered Pagination

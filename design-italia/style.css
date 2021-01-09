@@ -4,7 +4,7 @@ Theme URI: https://github.com/italia/design-wordpress-theme/
 Author: Marco Gargano
 Author URI: http://marcogargano.com/
 Description: Design Italia è un tema di WordPress utilizzabile per i siti internet della Pubblica Amministrazione italiana. Design Italia rispetta le nuove linee guida di design dell’Agenzia per l’Italia digitale rilasciare dal Team per la Trasformazione Digitale e le caratteristiche per i servizi web della Pubblica Amministrazione contenute nel Piano triennale per l’informatica nella Pubblica Amministrazione 2017/2019. Nel tema vengono integrate le componenti di Bootstrap Italia.
-Version: 0.34
+Version: 0.35
 License: AGPL-3.0
 License URI: LICENSE
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-colors, custom-logo, custom-menu, footer-widgets, editor-style, featured-images, post-formats, theme-options
@@ -335,12 +335,14 @@ ul li li {
 
 @media screen and (min-width: 767px) {
 	.menu-main .nav li.focus > ul, 
+	.menu-main .nav li:focus-within > ul, 
 	.menu-main .nav li:hover > ul, 
 	.menu-main .nav li:active > ul {
 	  top: auto;
 	  left: auto;
 	}
 	.menu-main .nav li li.focus > ul, 
+	.menu-main .nav li li.focus-within > ul, 
 	.menu-main .nav li li:hover > ul, 
 	.menu-main .nav li li:active > ul {
 	  left: 100%;
@@ -366,7 +368,9 @@ ul li li {
   color: #fff;
 }
 .menu-main .nav > li:hover, 
-.menu-main .nav > li:active {
+.menu-main .nav > li:active, 
+.menu-main .nav > li:focus, 
+.menu-main .nav > li:focus-within {
 	background-color: rgba(0, 0, 0, 0.1);
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
@@ -404,7 +408,6 @@ ul li li {
 }
 .menu-main .nav .sub-menu ul {
 	margin: 0;
-	/*position: relative;*/
 	left: 0;
 }
 
@@ -415,11 +418,9 @@ ul li li {
 .menu-main .mega-menu li a {
 	position: relative;
 	font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
-.menu-main .mega-menu .menu-item-has-children:hover > a:before {
+.menu-main .mega-menu .menu-item-has-children:hover > a:before, 
+.menu-main .mega-menu .menu-item-has-children:focus > a:before {
 	content: '';
 	position: absolute;
 	top: auto;
@@ -440,12 +441,14 @@ ul li li {
 	content: none;
 }
 .menu-main .mega-menu > li.focus > ul, 
+.menu-main .mega-menu > li:focus-within > ul, 
 .menu-main .mega-menu > li:hover > ul, 
 .menu-main .mega-menu > li:active > ul {
 	left: 0;
 	right: 0;
 	position: absolute;
 	padding-top: 25px;
+	z-index: 9999 !important;
 }
 .menu-main .mega-menu .sub-menu > li {
 	width: 100%;
@@ -499,6 +502,9 @@ ul li li {
 	zoom: .8;
 	margin-left: 10px;
 	text-decoration: none;
+}
+.menu-main .nav.mega-menu > li.menu-item-has-children > a {
+	pointer-events: none;
 }
 
 /* NAV BAR WITH RESPONSIVE */
@@ -609,10 +615,12 @@ ul li li {
   .it-header-center-wrapper {
   	padding-left: 50px;
   	margin: 10px 0;
-	}
+  }
 	.it-header-wrapper.is-sticky .it-header-center-wrapper {
-		margin: 0;
+	    margin: 0;
 	}
+
+  
 	.it-header-wrapper .searchform input[type="text"] {
 		display: none;
 	}
@@ -693,9 +701,6 @@ ul li li {
 
 
 
-[id^="menu-mega-menu"] > li.menu-item-has-children > a {
-	pointer-events: none;
-}
 
 .menu-social {
 	min-height: 57px;
@@ -1282,9 +1287,11 @@ nav-tabs:after {
 	max-width: 200px;
 	max-height: 30px;
 }
+
 .it-header-wrapper.is-sticky {
-	height: 200px;
+    height: 200px;
 }
+
 
 .titolo-sezione h2 {
 	font-size: 2.222em;
@@ -1399,10 +1406,14 @@ nav-tabs:after {
 [id$="dettaglio-meta"]:before {
 	content: ' ';
 	position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 	top: -45px;
-	width: 45%;
+	bottom: auto;
+  width: 50%;
+  max-width: 1000px;	
 	height: 0px;
-	background: red;
 	left: 25%;
 	box-shadow: 0px 0px 50px 10px #000;
 }
