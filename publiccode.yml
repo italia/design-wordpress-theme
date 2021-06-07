@@ -83,6 +83,8 @@ it:
     cie: false
     pagopa: false
     spid: false
+  riuso:
+    codiceIPA: pcm
 legal:
   authorsFile: |-
     https://raw.githubusercontent.com/italia/design-wordpress-theme/master/AUTHORS
