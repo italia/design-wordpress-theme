@@ -66,6 +66,8 @@ description:
     shortDescription: |-
       Design Italia Wordpress è un tema utilizzabile per i siti internet della
       Pubblica Amministrazione italiana
+    screenshots:
+      - screenshot.png
 developmentStatus: stable
 intendedAudience:
   scope:
