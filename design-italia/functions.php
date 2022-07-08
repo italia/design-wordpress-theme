@@ -420,7 +420,7 @@ if ( ! function_exists( 'wppa_breadcrumb' ) ) {
 	if(get_post_type() != 'post'){
 		$post_type = get_post_type_object(get_post_type());
 		$slug = $post_type->rewrite;
-		echo '<li class="breadcrumb-item"><a href="' . $homeLink . '/' . $slug['slug'] . '/">' . $post_type->labels->menu_name . '</a></li>';				
+		echo '<li class="breadcrumb-item"><a href="' . home_url()  . '/' . $slug['slug'] . '/">' . $post_type->labels->menu_name . '</a></li>';				
 		echo '<li class="breadcrumb-item">';
 		the_title();
 		echo '</li>';
