@@ -81,7 +81,7 @@ Per una migliore gestione dei siti su WordPress, consigliamo di installare i seg
 + [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) - Creazione form di contatto
 + [dFactory Cookie Notice](https://wordpress.org/plugins/cookie-notice/) - Notifica utilizzo cookies
 + [Akismet](https://wordpress.org/plugins/akismet/) - Anti spam
-+ [Google Analytics Dashboard](https://wordpress.org/plugins/google-analytics-dashboard-for-wp/) - Integrzione Google Analytics
++ [Google Analytics Dashboard](https://wordpress.org/plugins/google-analytics-dashboard-for-wp/) - Integrazione Google Analytics
 + [Download Manager](https://wordpress.org/plugins/download-manager/) - Gestione allegati e documenti
 
 ---
