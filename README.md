@@ -1,6 +1,7 @@
 # ![developers.italia](https://avatars1.githubusercontent.com/u/15377824?s=36&v=4 "developers.italia") Design Italia
 ## Tema di WordPress per la Pubblica Amministrazione 
 
+⚠️ Questo repository è stato deprecato.
 
 **Design Italia** è un tema di WordPress utilizzabile per i **siti internet** della Pubblica Amministrazione italiana.
 
