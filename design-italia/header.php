@@ -18,12 +18,18 @@
                      <!-- <a class="d-none d-lg-block navbar-brand" href="#"> -->
                         <img class="header-slim-img" alt="" src="<?php header_image(); ?>">
                      <!-- </a> -->
+                     
+                     <?php do_action('design_italia_before_menu_language'); ?>
+                     
                      <?php if ( has_nav_menu( 'menu-language' ) ) { 
                         echo '<div class="header-slim-right-zone">';
                         echo '<label for="show-menu-lingua" class="show-menu-lingua">&#8942;</label><input type="checkbox" id="show-menu-lingua" role="button">';
                         wp_nav_menu(array( 'theme_location' => 'menu-language', 'container' => 'ul', 'menu_class' => 'nav float-right' ));
                         echo '</div>';
                      } ?>
+                     
+                     <?php do_action('design_italia_after_menu_language'); ?>
+                     
                    </div>
                  </div>
                </div>
