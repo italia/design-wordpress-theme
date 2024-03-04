@@ -417,8 +417,17 @@ if ( ! function_exists( 'wppa_breadcrumb' ) ) {
       echo 'Home';
       echo '</a></li>';
       if (is_category() || is_single()) {
-        echo '<li class="breadcrumb-item">';
-        echo implode(' </li><li class="breadcrumb-item"> ',array_reverse(explode(',',get_the_category_list(','))));
+	if(get_post_type() != 'post'){
+		$post_type = get_post_type_object(get_post_type());
+		$slug = $post_type->rewrite;
+		echo '<li class="breadcrumb-item"><a href="' . home_url()  . '/' . $slug['slug'] . '/">' . $post_type->labels->menu_name . '</a></li>';				
+		echo '<li class="breadcrumb-item">';
+		the_title();
+		echo '</li>';
+	}else{
+        	echo '<li class="breadcrumb-item">';
+	        echo implode(' </li><li class="breadcrumb-item"> ',array_reverse(explode(',',get_the_category_list(','))));
+	}
       if (is_single()) {
           echo '</li><li class="breadcrumb-item">';
           the_title();
